@@ -402,8 +402,12 @@
             .app-footer {
                 max-width: 1480px;
                 margin: 0 auto;
-                padding: 0 14px 24px;
+                padding: 8px 16px 40px;
                 display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 10px 16px;
             }
 
             .footer-repo {
@@ -413,27 +417,68 @@
                 font-size: 12.5px;
                 color: var(--text-secondary);
                 text-decoration: none;
-                padding: 8px 12px;
+                padding: 8px 4px;
                 border-radius: 6px;
-                transition: all 0.15s var(--ease-out-expo);
+                transition: color 0.15s var(--ease-out-expo);
                 white-space: nowrap;
+                min-width: 0;
             }
 
             .footer-repo:hover {
                 color: var(--text-primary);
-                background: var(--bg-elevated);
+            }
+
+            .star-cta {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                height: 36px;
+                padding: 0 16px;
+                background: var(--state-selected-bg);
+                color: var(--state-selected-fg);
+                border-radius: 6px;
+                font-size: 12.5px;
+                font-weight: 600;
+                text-decoration: none;
+                white-space: nowrap;
+                transition:
+                    filter 0.15s var(--ease-out-expo),
+                    transform 0.15s var(--ease-out-expo);
+            }
+
+            .star-cta:hover {
+                filter: brightness(1.08);
+            }
+
+            .star-cta:active {
+                transform: translateY(1px);
+            }
+
+            .star-cta svg {
+                fill: currentColor;
+                flex-shrink: 0;
             }
 
             .footer-star {
                 display: inline-flex;
                 align-items: center;
                 gap: 4px;
-                font-size: 11px;
-                padding: 2px 7px;
-                border: 1px solid var(--border-hairline);
+                font-size: 11.5px;
+                font-weight: 500;
+                padding: 2px 8px;
+                border: 1px solid currentColor;
                 border-radius: 4px;
-                color: var(--text-secondary);
-                transition: background-color 0.15s;
+                opacity: 0.85;
+                font-variant-numeric: tabular-nums;
+            }
+
+            @media (max-width: 480px) {
+                .app-footer {
+                    padding: 8px 14px 32px;
+                }
+                .star-cta {
+                    padding: 0 12px;
+                }
             }
 
             .matrix-head {
@@ -1014,8 +1059,8 @@
                 rel="noopener noreferrer"
             >
                 <svg
-                    width="14"
-                    height="14"
+                    width="15"
+                    height="15"
                     viewBox="0 0 24 24"
                     fill="currentColor"
                     aria-hidden="true"
@@ -1025,18 +1070,22 @@
                     />
                 </svg>
                 <span>Esai-Keshav/devfest2026-schedule</span>
+            </a>
+
+            <a
+                class="star-cta"
+                href="https://github.com/Esai-Keshav/devfest2026-schedule"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Star this repository on GitHub"
+            >
+                <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                        d="M12 .9l3.6 7.3 8.1 1.2-5.9 5.7 1.4 8-7.2-3.8-7.2 3.8 1.4-8L.3 9.4l8.1-1.2z"
+                    />
+                </svg>
+                <span>Star on GitHub</span>
                 <span class="footer-star mono" id="starCount" hidden>
-                    <svg
-                        width="9"
-                        height="9"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        aria-hidden="true"
-                    >
-                        <path
-                            d="M12 .9l3.6 7.3 8.1 1.2-5.9 5.7 1.4 8-7.2-3.8-7.2 3.8 1.4-8L.3 9.4l8.1-1.2z"
-                        />
-                    </svg>
                     <span id="starCountNum"></span>
                 </span>
             </a>
