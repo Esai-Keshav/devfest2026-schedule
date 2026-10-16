@@ -515,7 +515,7 @@
                 position: absolute;
                 left: 0;
                 right: 0;
-                border-top: 1.5px solid var(--ctp-red);
+                border-top: 1.75px solid var(--ctp-red);
                 pointer-events: none;
                 z-index: 35;
                 display: none;
@@ -802,15 +802,43 @@
                 .legend-bar {
                     display: none;
                 }
-                .search-input {
-                    width: 110px;
-                }
-                .search-input:focus {
-                    width: 145px;
-                }
                 .lane-tab {
                     height: 44px; /* Strict 44px ergonomic mobile hit target */
                     padding: 0 12px;
+                }
+                /* Search collapses to an icon; tap to expand */
+                .search-input {
+                    width: 34px;
+                    padding: 0;
+                    color: transparent;
+                    cursor: pointer;
+                }
+                .search-input::placeholder {
+                    color: transparent;
+                }
+                .search-wrap:focus-within .search-input {
+                    width: 180px;
+                    padding: 0 10px 0 30px;
+                    color: var(--text-primary);
+                    cursor: text;
+                }
+                .search-wrap:focus-within .search-input::placeholder {
+                    color: var(--text-muted);
+                }
+                .header-top:has(.search-wrap:focus-within) .brand-title {
+                    display: none;
+                }
+                .brand-title {
+                    font-size: 13px;
+                }
+            }
+            /* Very small phones: show icon-only brand + controls */
+            @media (max-width: 480px) {
+                .search-wrap:focus-within .search-input {
+                    width: 110px;
+                }
+                .ctrl-btn {
+                    padding: 0 8px;
                 }
             }
         </style>
@@ -844,6 +872,7 @@
                             type="search"
                             class="search-input"
                             placeholder="Filter..."
+                            aria-label="Filter sessions"
                             oninput="render()"
                         />
                     </div>
@@ -886,7 +915,10 @@
                         title="Switch light / dark theme"
                         aria-label="Toggle theme"
                     >
-                        <span id="themeIcon" style="display: inline-flex; align-items: center;"></span>
+                        <span
+                            id="themeIcon"
+                            style="display: inline-flex; align-items: center"
+                        ></span>
                     </button>
                 </div>
             </div>
@@ -1716,7 +1748,10 @@
 
                 const btnTheme = document.getElementById("btnTheme");
                 if (btnTheme) {
-                    btnTheme.title = theme === "dark" ? "Switch to light theme" : "Switch to dark theme";
+                    btnTheme.title =
+                        theme === "dark"
+                            ? "Switch to light theme"
+                            : "Switch to dark theme";
                 }
             }
 
