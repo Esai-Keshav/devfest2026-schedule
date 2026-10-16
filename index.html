@@ -15,11 +15,10 @@
         <meta name="apple-mobile-web-app-title" content="DevFest '26" />
         <title>DevFest Chennai 2026 Schedule</title>
 
-        <!-- Standalone PWA Web App Manifest -->
-        <link
-            rel="manifest"
-            href='data:application/manifest+json,{"name":"DevFest Chennai 2026","short_name":"DevFest 26","start_url":".","display":"standalone","background_color":"#11111b","theme_color":"#11111b","icons":[{"src":"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22%231e1e2e%22 stroke=%22%23b4befe%22 stroke-width=%224%22/><text x=%2250%22 y=%2264%22 font-family=%22monospace%22 font-size=%2242%22 font-weight=%22600%22 fill=%22%23cdd6f4%22 text-anchor=%22middle%22>DF</text></svg>","sizes":"192x192","type":"image/svg+xml"}]}'
-        />
+        <!-- PWA Manifest & Icons -->
+        <link rel="manifest" href="manifest.webmanifest" />
+        <link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
+        <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
 
         <!-- Geist & Geist Mono Typography -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -515,7 +514,7 @@
                 position: absolute;
                 left: 0;
                 right: 0;
-                border-top: 1.5px solid var(--ctp-red);
+                border-top: 1.75px solid var(--ctp-red);
                 pointer-events: none;
                 z-index: 35;
                 display: none;
@@ -802,15 +801,43 @@
                 .legend-bar {
                     display: none;
                 }
-                .search-input {
-                    width: 110px;
-                }
-                .search-input:focus {
-                    width: 145px;
-                }
                 .lane-tab {
                     height: 44px; /* Strict 44px ergonomic mobile hit target */
                     padding: 0 12px;
+                }
+                /* Search collapses to an icon; tap to expand */
+                .search-input {
+                    width: 34px;
+                    padding: 0;
+                    color: transparent;
+                    cursor: pointer;
+                }
+                .search-input::placeholder {
+                    color: transparent;
+                }
+                .search-wrap:focus-within .search-input {
+                    width: 180px;
+                    padding: 0 10px 0 30px;
+                    color: var(--text-primary);
+                    cursor: text;
+                }
+                .search-wrap:focus-within .search-input::placeholder {
+                    color: var(--text-muted);
+                }
+                .header-top:has(.search-wrap:focus-within) .brand-title {
+                    display: none;
+                }
+                .brand-title {
+                    font-size: 13px;
+                }
+            }
+            /* Very small phones: show icon-only brand + controls */
+            @media (max-width: 480px) {
+                .search-wrap:focus-within .search-input {
+                    width: 110px;
+                }
+                .ctrl-btn {
+                    padding: 0 8px;
                 }
             }
         </style>
@@ -844,6 +871,7 @@
                             type="search"
                             class="search-input"
                             placeholder="Filter..."
+                            aria-label="Filter sessions"
                             oninput="render()"
                         />
                     </div>
@@ -886,7 +914,10 @@
                         title="Switch light / dark theme"
                         aria-label="Toggle theme"
                     >
-                        <span id="themeIcon" style="display: inline-flex; align-items: center;"></span>
+                        <span
+                            id="themeIcon"
+                            style="display: inline-flex; align-items: center"
+                        ></span>
                     </button>
                 </div>
             </div>
@@ -1716,7 +1747,10 @@
 
                 const btnTheme = document.getElementById("btnTheme");
                 if (btnTheme) {
-                    btnTheme.title = theme === "dark" ? "Switch to light theme" : "Switch to dark theme";
+                    btnTheme.title =
+                        theme === "dark"
+                            ? "Switch to light theme"
+                            : "Switch to dark theme";
                 }
             }
 
