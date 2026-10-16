@@ -1,5 +1,8 @@
 # Agent scratch workspaces
 .superpowers/
-
+docs/
 # Local installs
 node_modules/
+
+# Local-only docs (kept on disk, not in repo)
+docs/
