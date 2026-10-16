@@ -1,1131 +1,1823 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="mocha">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <meta id="metaThemeColor" name="theme-color" content="#11111b" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="DevFest '26" />
-  <title>DevFest Chennai 2026 — Schedule</title>
+<!doctype html>
+<html lang="en" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+        />
+        <meta id="metaThemeColor" name="theme-color" content="#11111b" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent"
+        />
+        <meta name="apple-mobile-web-app-title" content="DevFest '26" />
+        <title>DevFest Chennai 2026 Schedule</title>
 
-  <!-- Standalone PWA Web App Manifest -->
-  <link rel="manifest" href='data:application/manifest+json,{"name":"DevFest Chennai 2026","short_name":"DevFest 26","start_url":".","display":"standalone","background_color":"#11111b","theme_color":"#11111b","icons":[{"src":"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22%231e1e2e%22 stroke=%22%23b4befe%22 stroke-width=%224%22/><text x=%2250%22 y=%2264%22 font-family=%22monospace%22 font-size=%2242%22 font-weight=%22600%22 fill=%22%23cdd6f4%22 text-anchor=%22middle%22>DF</text></svg>","sizes":"192x192","type":"image/svg+xml"}]}' />
+        <!-- Standalone PWA Web App Manifest -->
+        <link
+            rel="manifest"
+            href='data:application/manifest+json,{"name":"DevFest Chennai 2026","short_name":"DevFest 26","start_url":".","display":"standalone","background_color":"#11111b","theme_color":"#11111b","icons":[{"src":"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22%231e1e2e%22 stroke=%22%23b4befe%22 stroke-width=%224%22/><text x=%2250%22 y=%2264%22 font-family=%22monospace%22 font-size=%2242%22 font-weight=%22600%22 fill=%22%23cdd6f4%22 text-anchor=%22middle%22>DF</text></svg>","sizes":"192x192","type":"image/svg+xml"}]}'
+        />
 
-  <!-- Geist & Geist Mono Typography -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <!-- Geist & Geist Mono Typography -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Geist:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
 
-  <style>
-    /* ==========================================================================
-       CATPPUCCIN MOCHA (Dark Theme - Default)
+        <style>
+            /* ==========================================================================
+       CATPPUCCIN dark (Dark Theme - Default)
        ========================================================================== */
-    :root,
-    [data-theme="mocha"] {
-      --ctp-crust: #11111b;
-      --ctp-mantle: #181825;
-      --ctp-base: #1e1e2e;
-      --ctp-surface0: #313244;
-      --ctp-surface1: #45475a;
-      --ctp-surface2: #585b70;
-      --ctp-overlay0: #6c7086;
-      --ctp-subtext0: #a6adc8;
-      --ctp-subtext1: #bac2de;
-      --ctp-text: #cdd6f4;
+            :root,
+            [data-theme="dark"] {
+                --ctp-crust: #11111b;
+                --ctp-mantle: #181825;
+                --ctp-base: #1e1e2e;
+                --ctp-surface0: #313244;
+                --ctp-surface1: #45475a;
+                --ctp-surface2: #585b70;
+                --ctp-overlay0: #6c7086;
+                --ctp-subtext0: #a6adc8;
+                --ctp-subtext1: #bac2de;
+                --ctp-text: #cdd6f4;
 
-      --ctp-lavender: #b4befe;
-      --ctp-blue: #89b4fa;
-      --ctp-sapphire: #74c7ec;
-      --ctp-teal: #94e2d5;
-      --ctp-green: #a6e3a1;
-      --ctp-yellow: #f9e2af;
-      --ctp-peach: #fab387;
-      --ctp-mauve: #cba6f7;
-      --ctp-red: #f38ba8;
-      --ctp-flamingo: #f2cdcd;
+                --ctp-lavender: #b4befe;
+                --ctp-blue: #89b4fa;
+                --ctp-sapphire: #74c7ec;
+                --ctp-teal: #94e2d5;
+                --ctp-green: #a6e3a1;
+                --ctp-yellow: #f9e2af;
+                --ctp-peach: #fab387;
+                --ctp-mauve: #cba6f7;
+                --ctp-red: #f38ba8;
+                --ctp-flamingo: #f2cdcd;
 
-      /* Semantic UI Mappings */
-      --bg-canvas: var(--ctp-crust);
-      --bg-mantle: var(--ctp-mantle);
-      --bg-surface: var(--ctp-base);
-      --bg-elevated: var(--ctp-surface0);
-      --bg-glass: rgba(17, 17, 27, 0.88);
-      --bg-sheet: rgba(24, 24, 37, 0.96);
+                /* Semantic UI Mappings */
+                --bg-canvas: var(--ctp-crust);
+                --bg-mantle: var(--ctp-mantle);
+                --bg-surface: var(--ctp-base);
+                --bg-elevated: var(--ctp-surface0);
+                --bg-glass: rgba(17, 17, 27, 0.88);
+                --bg-sheet: rgba(24, 24, 37, 0.96);
 
-      --border-hairline: rgba(69, 71, 90, 0.55);
-      --border-subtle: rgba(49, 50, 68, 0.45);
-      --border-strong: var(--ctp-surface2);
+                --border-hairline: rgba(69, 71, 90, 0.55);
+                --border-subtle: rgba(49, 50, 68, 0.45);
+                --border-strong: var(--ctp-surface2);
 
-      --text-primary: var(--ctp-text);
-      --text-secondary: var(--ctp-subtext0);
-      --text-muted: var(--ctp-overlay0);
+                --text-primary: var(--ctp-text);
+                --text-secondary: var(--ctp-subtext0);
+                --text-muted: var(--ctp-overlay0);
 
-      --state-selected-bg: var(--ctp-lavender);
-      --state-selected-fg: var(--ctp-crust);
-      --state-conflict: var(--ctp-peach);
-      --state-conflict-bg: rgba(250, 179, 135, 0.12);
-      --state-conflict-border: rgba(250, 179, 135, 0.65);
-      --band-bg: rgba(180, 190, 254, 0.05);
-      --band-border: rgba(180, 190, 254, 0.45);
-      --shadow-elevated: 0 12px 32px rgba(0, 0, 0, 0.65);
-    }
+                --state-selected-bg: var(--ctp-lavender);
+                --state-selected-fg: var(--ctp-crust);
+                --state-conflict: var(--ctp-peach);
+                --state-conflict-bg: rgba(250, 179, 135, 0.12);
+                --state-conflict-border: rgba(250, 179, 135, 0.65);
+                --band-bg: rgba(180, 190, 254, 0.05);
+                --band-border: rgba(180, 190, 254, 0.45);
+                --shadow-elevated: 0 12px 32px rgba(0, 0, 0, 0.65);
+            }
 
-    /* ==========================================================================
-       CATPPUCCIN LATTE (Light Theme)
+            /* ==========================================================================
+       CATPPUCCIN light (Light Theme)
        ========================================================================== */
-    [data-theme="latte"] {
-      --ctp-crust: #dce0e8;
-      --ctp-mantle: #e6e9ef;
-      --ctp-base: #eff1f5;
-      --ctp-surface0: #ccd0da;
-      --ctp-surface1: #bcc0cc;
-      --ctp-surface2: #acb0be;
-      --ctp-overlay0: #9ca0b0;
-      --ctp-subtext0: #6c6f85;
-      --ctp-subtext1: #5c5f77;
-      --ctp-text: #4c4f69;
-
-      --ctp-lavender: #7287fd;
-      --ctp-blue: #1e66f5;
-      --ctp-sapphire: #209fb5;
-      --ctp-teal: #179299;
-      --ctp-green: #40a02b;
-      --ctp-yellow: #df8e1d;
-      --ctp-peach: #fe640b;
-      --ctp-mauve: #8839ef;
-      --ctp-red: #d20f39;
-      --ctp-flamingo: #dd7878;
-
-      /* Semantic UI Mappings */
-      --bg-canvas: var(--ctp-mantle);
-      --bg-mantle: var(--ctp-crust);
-      --bg-surface: var(--ctp-base);
-      --bg-elevated: var(--ctp-surface0);
-      --bg-glass: rgba(230, 233, 239, 0.88);
-      --bg-sheet: rgba(239, 241, 245, 0.97);
-
-      --border-hairline: rgba(188, 192, 204, 0.75);
-      --border-subtle: rgba(204, 208, 218, 0.65);
-      --border-strong: var(--ctp-surface2);
-
-      --text-primary: var(--ctp-text);
-      --text-secondary: var(--ctp-subtext0);
-      --text-muted: var(--ctp-overlay0);
-
-      --state-selected-bg: var(--ctp-blue);
-      --state-selected-fg: #eff1f5;
-      --state-conflict: var(--ctp-peach);
-      --state-conflict-bg: rgba(254, 100, 11, 0.10);
-      --state-conflict-border: rgba(254, 100, 11, 0.60);
-      --band-bg: rgba(30, 102, 245, 0.05);
-      --band-border: rgba(30, 102, 245, 0.40);
-      --shadow-elevated: 0 10px 28px rgba(76, 79, 105, 0.18);
-    }
-
-    :root {
-      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-      --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
-    }
-
-    * {
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-      margin: 0;
-      padding: 0;
-    }
-
-    html, body {
-      background-color: var(--bg-canvas);
-      color: var(--text-primary);
-      font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 13px;
-      line-height: 1.4;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      overscroll-behavior-y: none;
-      transition: background-color 0.2s var(--ease-out-expo), color 0.2s var(--ease-out-expo);
-    }
-
-    .mono {
-      font-family: 'Geist Mono', monospace;
-      font-variant-numeric: tabular-nums;
-    }
-
-    /* Top Navigation Bar */
-    .app-header {
-      position: sticky;
-      top: 0;
-      z-index: 60;
-      background: var(--bg-glass);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border-hairline);
-    }
-
-    .header-top {
-      max-width: 1480px;
-      margin: 0 auto;
-      height: 52px;
-      padding: 0 14px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-    }
-
-    .brand-group {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      min-width: 0;
-    }
-
-    .brand-mark {
-      width: 24px;
-      height: 24px;
-      border-radius: 5px;
-      background: var(--state-selected-bg);
-      color: var(--state-selected-fg);
-      font-weight: 700;
-      font-size: 11px;
-      display: grid;
-      place-items: center;
-      letter-spacing: -0.04em;
-      flex-shrink: 0;
-    }
-
-    .brand-title {
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      color: var(--text-primary);
-      white-space: nowrap;
-    }
-
-    .brand-meta {
-      font-size: 11px;
-      color: var(--text-secondary);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      padding-left: 10px;
-      border-left: 1px solid var(--border-hairline);
-    }
-
-    /* Header Controls */
-    .control-cluster {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .search-wrap {
-      position: relative;
-      display: flex;
-      align-items: center;
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 9px;
-      width: 13px;
-      height: 13px;
-      color: var(--text-muted);
-      pointer-events: none;
-    }
-
-    .search-input {
-      height: 34px;
-      width: 155px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-hairline);
-      border-radius: 6px;
-      padding: 0 10px 0 28px;
-      color: var(--text-primary);
-      font-family: inherit;
-      font-size: 12px;
-      outline: none;
-      transition: border-color 0.15s var(--ease-out-expo), width 0.2s var(--ease-out-expo), background-color 0.15s;
-    }
-    .search-input::placeholder {
-      color: var(--text-muted);
-    }
-    .search-input:focus {
-      border-color: var(--state-selected-bg);
-      background: var(--bg-elevated);
-    }
-
-    .ctrl-btn {
-      height: 34px;
-      padding: 0 10px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-hairline);
-      border-radius: 6px;
-      color: var(--text-secondary);
-      font-family: inherit;
-      font-size: 11.5px;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      cursor: pointer;
-      transition: all 0.15s var(--ease-out-expo);
-      white-space: nowrap;
-    }
-    .ctrl-btn:hover {
-      color: var(--text-primary);
-      border-color: var(--border-strong);
-      background: var(--bg-elevated);
-    }
-    .ctrl-btn.active {
-      background: var(--state-selected-bg);
-      color: var(--state-selected-fg);
-      border-color: var(--state-selected-bg);
-    }
-
-    /* Track Filter Rail */
-    .lane-rail {
-      max-width: 1480px;
-      margin: 0 auto;
-      padding: 0 14px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 1px solid var(--border-subtle);
-      overflow-x: auto;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-    .lane-rail::-webkit-scrollbar {
-      display: none;
-    }
-
-    .lane-tabs {
-      display: flex;
-      align-items: center;
-      gap: 2px;
-    }
-
-    .lane-tab {
-      height: 40px;
-      padding: 0 11px;
-      background: transparent;
-      border: none;
-      border-bottom: 2px solid transparent;
-      color: var(--text-secondary);
-      font-family: inherit;
-      font-size: 12px;
-      font-weight: 500;
-      cursor: pointer;
-      white-space: nowrap;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: color 0.15s ease, border-color 0.15s ease;
-    }
-    .lane-tab:hover {
-      color: var(--text-primary);
-    }
-    .lane-tab.active {
-      color: var(--text-primary);
-      border-bottom-color: var(--state-selected-bg);
-      font-weight: 600;
-    }
-    .lane-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-    .lane-code {
-      font-size: 10px;
-      color: var(--text-muted);
-      padding: 1px 4px;
-      border: 1px solid var(--border-hairline);
-      border-radius: 3px;
-    }
-
-    .legend-bar {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      font-size: 11px;
-      color: var(--text-secondary);
-      padding-left: 16px;
-      white-space: nowrap;
-    }
-    .legend-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .swatch {
-      width: 8px;
-      height: 8px;
-      border-radius: 2px;
-    }
-
-    /* Main Calendar Scroll Canvas */
-    .viewport {
-      max-width: 1480px;
-      margin: 0 auto;
-      overflow-x: auto;
-      padding-bottom: 240px;
-      position: relative;
-    }
-
-    .matrix-head {
-      display: grid;
-      position: sticky;
-      top: 0;
-      z-index: 30;
-      background: var(--bg-mantle);
-      border-bottom: 1px solid var(--border-hairline);
-    }
-
-    .time-col-head {
-      padding: 8px 8px 8px 0;
-      text-align: right;
-      font-size: 10px;
-      color: var(--text-muted);
-      border-right: 1px solid var(--border-hairline);
-      letter-spacing: 0.04em;
-    }
-
-    .lane-col-head {
-      padding: 8px 10px;
-      border-right: 1px solid var(--border-hairline);
-      min-width: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 6px;
-    }
-    .lane-col-head:last-child {
-      border-right: none;
-    }
-    .lane-col-name {
-      font-size: 11.5px;
-      font-weight: 600;
-      color: var(--text-primary);
-      letter-spacing: -0.01em;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .lane-col-sub {
-      font-size: 10px;
-      color: var(--text-muted);
-      white-space: nowrap;
-    }
-
-    /* Proportional Time Canvas */
-    .matrix-canvas {
-      display: grid;
-      position: relative;
-    }
-
-    .time-axis {
-      position: relative;
-      border-right: 1px solid var(--border-hairline);
-      background: var(--bg-mantle);
-      user-select: none;
-      z-index: 20;
-    }
-
-    .tick-label {
-      position: absolute;
-      right: 8px;
-      transform: translateY(-50%);
-      font-size: 10px;
-      color: var(--text-secondary);
-      line-height: 1;
-    }
-    .tick-label.minor {
-      color: var(--text-muted);
-      font-size: 9px;
-    }
-
-    .grid-guides {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 60px;
-      right: 0;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .guide-hour {
-      position: absolute;
-      left: 0;
-      right: 0;
-      border-top: 1px solid var(--border-hairline);
-    }
-    .guide-half {
-      position: absolute;
-      left: 0;
-      right: 0;
-      border-top: 1px dashed var(--border-subtle);
-    }
-
-    /* Active Time-Window Band across all lanes */
-    #activeWindowBand {
-      position: absolute;
-      left: 0;
-      right: 0;
-      background: var(--band-bg);
-      border-top: 1px solid var(--band-border);
-      border-bottom: 1px solid var(--band-border);
-      pointer-events: none;
-      z-index: 4;
-      display: none;
-    }
-
-    /* Live Time Hairline */
-    #liveTimeLine {
-      position: absolute;
-      left: 0;
-      right: 0;
-      border-top: 1.5px solid var(--ctp-red);
-      pointer-events: none;
-      z-index: 35;
-      display: none;
-    }
-    #liveTimeLine::before {
-      content: '';
-      position: absolute;
-      left: -3px;
-      top: -3.5px;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--ctp-red);
-    }
-
-    .lane-column {
-      position: relative;
-      border-right: 1px solid var(--border-subtle);
-      z-index: 10;
-    }
-    .lane-column:last-child {
-      border-right: none;
-    }
-
-    /* Session Card — Catppuccin Surface + Swiss Grid Geometry */
-    .slot-card {
-      position: absolute;
-      left: 3px;
-      right: 3px;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-hairline);
-      border-left-width: 3px;
-      border-radius: 5px;
-      padding: 5px 8px;
-      cursor: pointer;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      transition:
-        background-color 0.14s var(--ease-out-expo),
-        border-color 0.14s var(--ease-out-expo),
-        opacity 0.16s var(--ease-out-expo),
-        transform 0.14s var(--ease-out-expo);
-    }
-
-    .slot-card:hover {
-      background: var(--bg-elevated);
-      border-color: var(--border-strong);
-      z-index: 25;
-    }
-
-    .slot-card.is-spanning {
-      background: var(--bg-mantle);
-      border-style: dashed;
-      border-left-style: solid;
-      border-left-color: var(--ctp-mauve) !important;
-      z-index: 15;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 12px;
-    }
-
-    /* Interactive States (Selected vs Overlapping vs Dimmed) */
-    .slot-card.is-selected {
-      background: var(--state-selected-bg) !important;
-      color: var(--state-selected-fg) !important;
-      border-color: var(--state-selected-bg) !important;
-      z-index: 40 !important;
-      box-shadow: var(--shadow-elevated);
-    }
-    .slot-card.is-selected .slot-time,
-    .slot-card.is-selected .slot-title,
-    .slot-card.is-selected .slot-speaker,
-    .slot-card.is-selected .bookmark-btn {
-      color: var(--state-selected-fg) !important;
-    }
-
-    .slot-card.is-overlap {
-      background: var(--state-conflict-bg) !important;
-      border-color: var(--state-conflict-border) !important;
-      border-left-color: var(--state-conflict) !important;
-      z-index: 30 !important;
-    }
-
-    .slot-card.is-dimmed {
-      opacity: 0.20;
-    }
-
-    .slot-meta-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 4px;
-      margin-bottom: 2px;
-    }
-
-    .slot-time {
-      font-size: 10px;
-      font-weight: 500;
-      color: var(--text-secondary);
-      white-space: nowrap;
-      letter-spacing: -0.02em;
-    }
-
-    .slot-badges {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .conflict-indicator {
-      display: none;
-      font-size: 9px;
-      font-weight: 600;
-      color: var(--state-conflict);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-    .slot-card.is-overlap .conflict-indicator {
-      display: inline-block;
-    }
-
-    .bookmark-btn {
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      cursor: pointer;
-      padding: 2px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: color 0.12s ease;
-    }
-    .bookmark-btn:hover {
-      color: var(--text-primary);
-    }
-    .bookmark-btn.saved {
-      color: var(--ctp-yellow);
-    }
-
-    .slot-title {
-      font-size: 11.5px;
-      font-weight: 600;
-      color: var(--text-primary);
-      letter-spacing: -0.01em;
-      line-height: 1.25;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    .slot-speaker {
-      font-size: 10.5px;
-      color: var(--text-secondary);
-      margin-top: 2px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    /* Compact single-line layout for 10-minute lightning talks */
-    .slot-card.is-micro {
-      padding: 2px 7px;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      gap: 6px;
-    }
-    .slot-card.is-micro .slot-meta-row {
-      margin-bottom: 0;
-    }
-    .slot-card.is-micro .slot-title {
-      -webkit-line-clamp: 1;
-      font-size: 11px;
-    }
-
-    /* Bottom Crossover Inspector Sheet (Spring Physics) */
-    .inspector-sheet {
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 80;
-      background: var(--bg-sheet);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-top: 1px solid var(--border-strong);
-      box-shadow: var(--shadow-elevated);
-      transform: translateY(104%);
-      transition: transform 0.28s var(--ease-spring);
-      padding: 14px 16px calc(14px + env(safe-area-inset-bottom));
-      max-height: 56vh;
-      overflow-y: auto;
-    }
-    .inspector-sheet.is-open {
-      transform: translateY(0);
-    }
-
-    .sheet-container {
-      max-width: 1480px;
-      margin: 0 auto;
-    }
-
-    .sheet-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border-hairline);
-    }
-
-    .sheet-tag-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 4px;
-    }
-
-    .pill-tag {
-      font-size: 10px;
-      font-weight: 500;
-      padding: 1px 6px;
-      border-radius: 4px;
-      border: 1px solid var(--border-hairline);
-      background: var(--bg-surface);
-      color: var(--text-secondary);
-    }
-
-    .sheet-session-title {
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      color: var(--text-primary);
-      line-height: 1.3;
-    }
-
-    .sheet-session-speaker {
-      font-size: 12px;
-      color: var(--text-secondary);
-      margin-top: 2px;
-    }
-
-    .sheet-section-label {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin: 10px 0 8px;
-      font-size: 10.5px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--state-conflict);
-    }
-
-    .conflict-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 8px;
-    }
-
-    .conflict-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-hairline);
-      border-left: 3px solid var(--state-conflict);
-      border-radius: 5px;
-      padding: 8px 10px;
-      cursor: pointer;
-      transition: border-color 0.14s ease, background-color 0.14s ease;
-    }
-    .conflict-card:hover {
-      background: var(--bg-elevated);
-      border-color: var(--state-conflict-border);
-    }
-
-    @media (max-width: 768px) {
-      .brand-meta, .legend-bar {
-        display: none;
-      }
-      .search-input {
-        width: 110px;
-      }
-      .search-input:focus {
-        width: 145px;
-      }
-      .lane-tab {
-        height: 44px; /* Strict 44px ergonomic mobile hit target */
-        padding: 0 12px;
-      }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Sticky Architectural Header -->
-  <header class="app-header">
-    <div class="header-top">
-      <div class="brand-group">
-        <div class="brand-mark mono">DF</div>
-        <span class="brand-title">DevFest Chennai '26</span>
-        <span class="brand-meta mono">SAT 17 OCT • IITM RESEARCH PARK</span>
-      </div>
-
-      <div class="control-cluster">
-        <div class="search-wrap">
-          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-          <input
-            id="searchInput"
-            type="search"
-            class="search-input"
-            placeholder="Filter..."
-            oninput="render()"
-          />
-        </div>
-
-        <button id="btnSavedFilter" class="ctrl-btn" onclick="toggleSavedFilter()" title="Filter Saved Sessions">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-          </svg>
-          <span id="savedBadgeCount" class="mono">0</span>
-        </button>
-
-        <button id="btnDensity" class="ctrl-btn mono" onclick="cycleDensity()" title="Adjust Vertical Time Scale">
-          1.0x
-        </button>
-
-        <!-- Catppuccin Latte / Mocha Theme Switcher -->
-        <button id="btnTheme" class="ctrl-btn" onclick="toggleTheme()" title="Switch Catppuccin Latte / Mocha">
-          <span id="themeIcon"></span>
-          <span id="themeLabel" class="mono">Mocha</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Track Switcher & Status Legend -->
-    <div class="lane-rail">
-      <div id="laneTabs" class="lane-tabs"></div>
-      <div class="legend-bar mono">
-        <span class="legend-item"><span class="swatch" style="background:var(--state-selected-bg);"></span>Selected</span>
-        <span class="legend-item"><span class="swatch" style="background:var(--state-conflict);"></span>Overlapping</span>
-        <span class="legend-item"><span class="swatch" style="border:1px solid var(--border-strong);"></span>Empty Slot</span>
-      </div>
-    </div>
-  </header>
-
-  <!-- Proportional Calendar Matrix -->
-  <main class="viewport" onclick="clearSelection()">
-    <div id="calendarMount"></div>
-  </main>
-
-  <!-- Bottom Crossover Inspector Sheet -->
-  <aside id="inspectorSheet" class="inspector-sheet" onclick="event.stopPropagation()">
-    <div class="sheet-container">
-      <div class="sheet-header">
-        <div style="min-width:0;">
-          <div class="sheet-tag-row">
-            <span id="sheetTime" class="pill-tag mono" style="color:var(--text-primary); border-color:var(--border-strong);"></span>
-            <span id="sheetHall" class="pill-tag"></span>
-            <span id="sheetLevel" class="pill-tag"></span>
-          </div>
-          <h2 id="sheetTitle" class="sheet-session-title"></h2>
-          <p id="sheetSpeaker" class="sheet-session-speaker"></p>
-        </div>
-
-        <div style="display:flex; gap:6px; flex-shrink:0;">
-          <button id="sheetSaveBtn" class="ctrl-btn" onclick="toggleSaveSelected()">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-            </svg>
-            <span>Save</span>
-          </button>
-          <button class="ctrl-btn" onclick="clearSelection()" aria-label="Close Inspector">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <div>
-        <div class="sheet-section-label mono">
-          <span>Concurrent Crossover Sessions (<span id="sheetConflictCount">0</span>)</span>
-          <span style="color:var(--text-muted); text-transform:none;">Tap card to switch focus</span>
-        </div>
-        <div id="sheetConflictList" class="conflict-grid"></div>
-      </div>
-    </div>
-  </aside>
-
-  <script>
-    const START_MIN = 8 * 60;       // 08:00 AM
-    const END_MIN   = 17 * 60 + 30; // 05:30 PM
-
-    function toMin(tStr) {
-      const [t, mod] = tStr.trim().split(' ');
-      let [h, m] = t.split(':').map(Number);
-      if (mod === 'PM' && h !== 12) h += 12;
-      if (mod === 'AM' && h === 12) h = 0;
-      return h * 60 + m;
-    }
-
-    function fmtMin(m) {
-      let h = Math.floor(m / 60);
-      let mins = m % 60;
-      const mod = h >= 12 ? 'PM' : 'AM';
-      if (h > 12) h -= 12;
-      if (h === 0) h = 12;
-      return `${h}:${mins.toString().padStart(2, '0')} ${mod}`;
-    }
-
-    // 7 Architectural Lanes mapped to official Catppuccin Accent Tokens
-    const LANES = [
-      { id: 'tech',      code: 'D7-A', short: 'Main Stage',   name: 'D7 Auditorium',    sub: 'Tech Track',      accent: 'var(--ctp-blue)' },
-      { id: 'deeptech',  code: 'D7-B', short: 'Deep Tech',    name: 'D7 Amphitheater',  sub: 'Deep Tech',       accent: 'var(--ctp-mauve)' },
-      { id: 'lightning', code: 'D6-L', short: 'Lightning',    name: 'D6 Multi-purpose', sub: 'Lightning Talks', accent: 'var(--ctp-sapphire)' },
-      { id: 'agentwars', code: 'D6-W', short: 'Agent Wars',   name: 'D6 Multi-purpose', sub: 'Tournament',      accent: 'var(--ctp-yellow)' },
-      { id: 'vibe',      code: 'D6-V', short: 'Vibe Lounge',  name: 'D6 Multi-purpose', sub: 'Vibe Coding',     accent: 'var(--ctp-teal)' },
-      { id: 'workshop',  code: 'RMN',  short: 'Workshops',    name: 'Raman Hall',       sub: 'Hands-On Lab',    accent: 'var(--ctp-green)' },
-      { id: 'lounges',   code: 'PRE',  short: 'Lounges',      name: 'D7 Pre-Function',  sub: 'Creators/Meetup', accent: 'var(--ctp-flamingo)' }
-    ];
-
-    // Official Agenda Data (https://devfest.gdgchennai.in/agenda)
-    const SESSIONS = [
-      // Common Check-In
-      { id: 'checkin', col: 'lounges', spanAll: true, timeLabel: '8:00 AM - 9:00 AM', start: toMin('8:00 AM'), end: toMin('9:00 AM'), hall: 'D7 Pre-Function Area', track: 'General', level: '', title: 'Check-in & Badge Collection', speaker: 'Welcome kits, attendee registration & breakfast coffee' },
-
-      // D7 Auditorium (Tech Track)
-      { id: 'welcome', col: 'tech', timeLabel: '9:00 AM - 9:15 AM', start: toMin('9:00 AM'), end: toMin('9:15 AM'), hall: 'D7 Auditorium', track: 'Tech', level: '', title: 'Welcome Note', speaker: 'GDG Chennai Organizing Team' },
-      { id: 'keynote', col: 'tech', timeLabel: '9:15 AM - 9:45 AM', start: toMin('9:15 AM'), end: toMin('9:45 AM'), hall: 'D7 Auditorium', track: 'Tech', level: '', title: 'Keynote', speaker: 'Swaathi Kakarla & Karthik Kamalakannan' },
-      { id: 'next-billion', col: 'tech', timeLabel: '9:45 AM - 10:15 AM', start: toMin('9:45 AM'), end: toMin('10:15 AM'), hall: 'D7 Auditorium', track: 'Tech', level: '', title: "The Next Billion Users Won't Be Human", speaker: 'Sanju Sivalingam' },
-      { id: 'qualcomm-dev', col: 'tech', timeLabel: '10:15 AM - 10:25 AM', start: toMin('10:15 AM'), end: toMin('10:25 AM'), hall: 'D7 Auditorium', track: 'Tech', level: 'Beginner', title: 'Qualcomm as a Dev-AI Native Company', speaker: 'Kartikey Rawat' },
-      { id: 'poshmark-ai', col: 'tech', timeLabel: '10:25 AM - 10:35 AM', start: toMin('10:25 AM'), end: toMin('10:35 AM'), hall: 'D7 Auditorium', track: 'Tech', level: 'Intermediate', title: 'From Models to Decisions: AI Reshaping Poshmark', speaker: 'Manu Vishwakarma & Shreya Sevelar' },
-      // 10:35 AM - 10:45 AM intentionally left empty
-      { id: 'kotlin-ota', col: 'tech', timeLabel: '10:45 AM - 11:10 AM', start: toMin('10:45 AM'), end: toMin('11:10 AM'), hall: 'D7 Auditorium', track: 'Tech', level: 'Intermediate', title: 'Kotlin Over the Air: Reimagining Android/KMP Delivery', speaker: 'Aditya Shinde' },
-      { id: 'gemma-101', col: 'tech', timeLabel: '11:10 AM - 11:35 AM', start: toMin('11:10 AM'), end: toMin('11:35 AM'), hall: 'D7 Auditorium', track: 'Tech', level: 'Expert', title: 'Gemma 101: Fine-Tuning Open Models with LoRA', speaker: 'Neeraj Pathak' },
-      { id: 'owasp-nettacker', col: 'tech', timeLabel: '11:35 AM - 12:00 PM', start: toMin('11:35 AM'), end: toMin('12:00 PM'), hall: 'D7 Auditorium', track: 'Tech', level: '', title: 'Developing & Using OWASP Nettacker for Security Testing', speaker: 'Achintya Jai' },
-      { id: 'beyond-happy-path', col: 'tech', timeLabel: '12:00 PM - 12:25 PM', start: toMin('12:00 PM'), end: toMin('12:25 PM'), hall: 'D7 Auditorium', track: 'Tech', level: 'Intermediate', title: 'Beyond the Happy Path: Production Agent Guardrails on GCP', speaker: 'Saurabh Mishra' },
-
-      // D7 Amphitheater (Deep Tech)
-      { id: 'city-breathe', col: 'deeptech', timeLabel: '10:45 AM - 11:20 AM', start: toMin('10:45 AM'), end: toMin('11:20 AM'), hall: 'D7 Amphitheater', track: 'Deep Tech', level: 'Beginner', title: 'Can AI Help a City Breathe?', speaker: 'Dishant Parakh' },
-      { id: 'physical-ai-trust', col: 'deeptech', timeLabel: '11:20 AM - 11:55 AM', start: toMin('11:20 AM'), end: toMin('11:55 AM'), hall: 'D7 Amphitheater', track: 'Deep Tech', level: 'Intermediate', title: 'When AI Leaves the Lab: Building Physical AI People Can Trust', speaker: 'Pulkit Verma' },
-      { id: 'water-pipeline', col: 'deeptech', timeLabel: '11:55 AM - 12:30 PM', start: toMin('11:55 AM'), end: toMin('12:30 PM'), hall: 'D7 Amphitheater', track: 'Deep Tech', level: 'Intermediate', title: 'Automatic Defect Detection of Water / Sewer Pipeline', speaker: 'Dr Moumita Mukherjee' },
-
-      // D6 Lightning Talks
-      { id: 'android-perf', col: 'lightning', timeLabel: '11:00 AM - 11:20 AM', start: toMin('11:00 AM'), end: toMin('11:20 AM'), hall: 'D6 Multi-purpose Hall', track: 'Lightning', level: 'Intermediate', title: 'Simplified Performance Debugging on Android', speaker: 'Shangeeth Sivan Adiyapatham' },
-      { id: 'ai-sres', col: 'lightning', timeLabel: '11:25 AM - 11:45 AM', start: toMin('11:25 AM'), end: toMin('11:45 AM'), hall: 'D6 Multi-purpose Hall', track: 'Lightning', level: '', title: 'AI Assisted SREs Are a Thing!', speaker: 'Imran Roshan' },
-      { id: 'local-gemma', col: 'lightning', timeLabel: '11:50 AM - 12:10 PM', start: toMin('11:50 AM'), end: toMin('12:10 PM'), hall: 'D6 Multi-purpose Hall', track: 'Lightning', level: 'Beginner', title: 'Local AI: The Google Gemma Edition', speaker: 'Gokulbarath N' },
-      { id: 'infra-agentic', col: 'lightning', timeLabel: '12:15 PM - 12:35 PM', start: toMin('12:15 PM'), end: toMin('12:35 PM'), hall: 'D6 Multi-purpose Hall', track: 'Lightning', level: 'Expert', title: 'Rethinking Infrastructure for Agentic Workloads', speaker: 'Dhanush Kandhan' },
-
-      // D6 Agent Wars
-      { id: 'wars-signup', col: 'agentwars', timeLabel: '11:00 AM - 11:30 AM', start: toMin('11:00 AM'), end: toMin('11:30 AM'), hall: 'D6 Multi-purpose Hall', track: 'Agent Wars', level: 'Intermediate', title: 'Agent Wars: Signup & Qualifier', speaker: 'D6 Arena' },
-      { id: 'wars-qual', col: 'agentwars', timeLabel: '11:30 AM - 12:00 PM', start: toMin('11:30 AM'), end: toMin('12:00 PM'), hall: 'D6 Multi-purpose Hall', track: 'Agent Wars', level: 'Intermediate', title: 'Agent Wars: Live Tournament Qualifiers', speaker: 'D6 Arena' },
-      { id: 'wars-qual-ext', col: 'agentwars', timeLabel: '12:00 PM - 12:40 PM', start: toMin('12:00 PM'), end: toMin('12:40 PM'), hall: 'D6 Multi-purpose Hall', track: 'Agent Wars', level: 'Intermediate', title: 'Agent Wars: Qualifiers Extended', speaker: 'D6 Arena' },
-
-      // D6 Vibe Lounge
-      { id: 'vibe-am', col: 'vibe', timeLabel: '11:00 AM - 12:00 PM', start: toMin('11:00 AM'), end: toMin('12:00 PM'), hall: 'D6 Multi-purpose Hall', track: 'Vibe Lounge', level: 'Beginner', title: 'Vibe Lounge', speaker: 'D6 Multi-purpose Hall' },
-      { id: 'vibe-noon', col: 'vibe', timeLabel: '12:00 PM - 12:35 PM', start: toMin('12:00 PM'), end: toMin('12:35 PM'), hall: 'D6 Multi-purpose Hall', track: 'Vibe Lounge', level: 'Beginner', title: 'Vibe Coding Lounge', speaker: 'D6 Multi-purpose Hall' },
-
-      // Raman Hall Workshop
-      { id: 'offload-testing', col: 'workshop', timeLabel: '11:00 AM - 12:30 PM', start: toMin('11:00 AM'), end: toMin('12:30 PM'), hall: 'Raman Hall', track: 'Workshop', level: 'Beginner', title: 'Offload Testing to Agents', speaker: 'Somasundaram Mahesh' },
-
-      // Pre-Function Lounges
-      { id: 'lounges-am', col: 'lounges', timeLabel: '10:45 AM - 12:25 PM', start: toMin('10:45 AM'), end: toMin('12:25 PM'), hall: 'D7 Pre-Function Area', track: 'Lounges', level: 'Beginner', title: 'Creators & Meetup Lounge', speaker: 'Podcasting, Creator Studio & Mentor Meetups' },
-
-      // Common Lunch Break
-      { id: 'lunch', col: 'lounges', spanAll: true, timeLabel: '12:30 PM - 1:45 PM', start: toMin('12:30 PM'), end: toMin('1:45 PM'), hall: 'Research Park Food Courts', track: 'Break', level: '', title: 'Lunch & Exhibition Break (F&B)', speaker: 'All parallel tracks pause • Resumes at 2:00 PM' },
-
-      // AFTERNOON
-      // D7 Auditorium
-      { id: 'webmcp', col: 'tech', timeLabel: '2:00 PM - 2:25 PM', start: toMin('2:00 PM'), end: toMin('2:25 PM'), hall: 'D7 Auditorium', track: 'Tech', level: 'Intermediate', title: "Don't Let AI Agents Push Your Buttons: WebMCP", speaker: 'Jeeththenthar L' },
-      { id: 'gemini-nano', col: 'tech', timeLabel: '2:25 PM - 2:50 PM', start: toMin('2:25 PM'), end: toMin('2:50 PM'), hall: 'D7 Auditorium', track: 'Tech', level: '', title: 'From Receipts to Smart Search: Gemini Nano on Android', speaker: 'Dinoy Raj' },
-      { id: 'tokenomics', col: 'tech', timeLabel: '2:50 PM - 3:15 PM', start: toMin('2:50 PM'), end: toMin('3:15 PM'), hall: 'D7 Auditorium', track: 'Tech', level: 'Intermediate', title: 'Tokenomics: Cutting Token Costs in Multi-Agent AI', speaker: 'Bhargav Patel' },
-      { id: 'firebase-ai', col: 'tech', timeLabel: '3:15 PM - 3:40 PM', start: toMin('3:15 PM'), end: toMin('3:40 PM'), hall: 'D7 Auditorium', track: 'Tech', level: 'Beginner', title: 'Secure Frontend AI: Firebase AI Logic & Gemini', speaker: 'Srushti Raybhoge' },
-      { id: 'goldrush-ai', col: 'tech', timeLabel: '3:40 PM - 4:05 PM', start: toMin('3:40 PM'), end: toMin('4:05 PM'), hall: 'D7 Auditorium', track: 'Tech', level: 'Beginner', title: 'Opportunities in AI: Culture of Goldrush in California', speaker: 'Hariprasad Sudharshan' },
-      { id: 'lead-gen-gemini', col: 'tech', timeLabel: '4:05 PM - 4:30 PM', start: toMin('4:05 PM'), end: toMin('4:30 PM'), hall: 'D7 Auditorium', track: 'Tech', level: 'Beginner', title: 'Using Gemini & AI Studio to Build a B2B Lead Gen Engine', speaker: 'Varun Poladiya' },
-
-      // D7 Amphitheater
-      { id: 'malware-deepfake', col: 'deeptech', timeLabel: '2:00 PM - 2:35 PM', start: toMin('2:00 PM'), end: toMin('2:35 PM'), hall: 'D7 Amphitheater', track: 'Deep Tech', level: 'Intermediate', title: 'From Malware Images to Deepfake Detection', speaker: 'Dr Lakshmanan Nataraj' },
-      { id: 'ai-vr-health', col: 'deeptech', timeLabel: '2:35 PM - 3:10 PM', start: toMin('2:35 PM'), end: toMin('3:10 PM'), hall: 'D7 Amphitheater', track: 'Deep Tech', level: 'Beginner', title: 'AI & VR for Healthcare', speaker: 'Dr Nimeshika Jayachandran' },
-      { id: 'ml-physical-world', col: 'deeptech', timeLabel: '3:10 PM - 4:30 PM', start: toMin('3:10 PM'), end: toMin('4:30 PM'), hall: 'D7 Amphitheater', track: 'Deep Tech', level: 'Intermediate', title: 'Machine Learning the Physical World (80m Lecture & Q&A)', speaker: 'Dr Ayana Ghosh' },
-
-      // D6 Lightning Talks
-      { id: 'ai-native-prod', col: 'lightning', timeLabel: '2:00 PM - 2:20 PM', start: toMin('2:00 PM'), end: toMin('2:20 PM'), hall: 'D6 Multi-purpose Hall', track: 'Lightning', level: 'Beginner', title: 'Lessons from Building an AI Native Product Ground Up', speaker: 'Rashmi Asokan' },
-      { id: 'edge-continuum', col: 'lightning', timeLabel: '2:25 PM - 2:45 PM', start: toMin('2:25 PM'), end: toMin('2:45 PM'), hall: 'D6 Multi-purpose Hall', track: 'Lightning', level: 'Intermediate', title: 'Open Source On-Device Inference Across Edge Continuum', speaker: 'Aakash Dhakshnamoorthy' },
-      { id: 'privacy-gemma4', col: 'lightning', timeLabel: '2:50 PM - 3:10 PM', start: toMin('2:50 PM'), end: toMin('3:10 PM'), hall: 'D6 Multi-purpose Hall', track: 'Lightning', level: 'Beginner', title: 'Building Privacy-First Edge AI with Gemma 4', speaker: 'Gokulakrishnan L' },
-      { id: 'qualcomm-edge', col: 'lightning', timeLabel: '3:15 PM - 3:35 PM', start: toMin('3:15 PM'), end: toMin('3:35 PM'), hall: 'D6 Multi-purpose Hall', track: 'Lightning', level: 'Intermediate', title: 'Building AI at the Edge with Qualcomm AI Stack', speaker: 'Kartikey Rawat' },
-
-      // D6 Agent Wars
-      { id: 'wars-semis', col: 'agentwars', timeLabel: '2:00 PM - 2:20 PM', start: toMin('2:00 PM'), end: toMin('2:20 PM'), hall: 'D6 Multi-purpose Hall', track: 'Agent Wars', level: 'Intermediate', title: 'Agent Wars: Semi-Finals', speaker: 'Elimination Bracket' },
-      { id: 'wars-finals', col: 'agentwars', timeLabel: '2:20 PM - 4:30 PM', start: toMin('2:20 PM'), end: toMin('4:30 PM'), hall: 'D6 Multi-purpose Hall', track: 'Agent Wars', level: 'Intermediate', title: 'Agent Wars: Live Tournament Finals', speaker: 'Championship Finale & Leaderboard' },
-
-      // D6 Vibe Lounge
-      { id: 'vibe-pm', col: 'vibe', timeLabel: '2:00 PM - 4:30 PM', start: toMin('2:00 PM'), end: toMin('4:30 PM'), hall: 'D6 Multi-purpose Hall', track: 'Vibe Lounge', level: 'Beginner', title: 'Vibe Coding Lounge', speaker: 'D6 Multi-purpose Hall' },
-
-      // Raman Hall Afternoon Workshop
-      { id: 'arduino-uno', col: 'workshop', timeLabel: '2:00 PM - 4:45 PM', start: toMin('2:00 PM'), end: toMin('4:45 PM'), hall: 'Raman Hall', track: 'Workshop', level: 'Intermediate', title: 'Building Physical AI: Arduino UNO Q Workshop (165m)', speaker: 'Salman Faris' },
-
-      // Pre-Function Afternoon Lounges
-      { id: 'lounges-pm', col: 'lounges', timeLabel: '2:00 PM - 4:15 PM', start: toMin('2:00 PM'), end: toMin('4:15 PM'), hall: 'D7 Pre-Function Area', track: 'Lounges', level: 'Beginner', title: 'Creators & Meetup Lounge', speaker: 'Developer Spotlights, OSS Booths & Mentor Hours' },
-
-      // Evening Break & Closing
-      { id: 'high-tea', col: 'lounges', spanAll: true, timeLabel: '4:30 PM - 5:00 PM', start: toMin('4:30 PM'), end: toMin('5:00 PM'), hall: 'D7 Pre-Function Area', track: 'Break', level: '', title: 'Quick Break & Evening Tea (F&B)', speaker: 'All parallel halls adjourn to D7 Auditorium' },
-      { id: 'closing', col: 'tech', spanAll: true, timeLabel: '5:00 PM - 5:30 PM', start: toMin('5:00 PM'), end: toMin('5:30 PM'), hall: 'D7 Auditorium', track: 'Closing', level: '', title: 'Closing Note & Awards Ceremony', speaker: 'All Tracks Converge in D7 Auditorium' }
-    ];
-
-    // State
-    let currentTheme = localStorage.getItem('df26_ctp_theme') || 'mocha';
-    let activeLane = window.innerWidth < 768 ? 'tech' : 'ALL';
-    let selectedId = null;
-    let filterSavedOnly = false;
-    let densityIndex = 1;
-    const DENSITIES = [
-      { label: '0.8x', px: 3.0 },
-      { label: '1.0x', px: 3.8 },
-      { label: '1.3x', px: 5.0 }
-    ];
-
-    let savedSet = new Set(JSON.parse(localStorage.getItem('df26_bookmarks') || '[]'));
-
-    function applyTheme(theme) {
-      currentTheme = theme;
-      document.documentElement.setAttribute('data-theme', theme);
-      localStorage.setItem('df26_ctp_theme', theme);
-
-      const metaColor = document.getElementById('metaThemeColor');
-      if (metaColor) {
-        metaColor.setAttribute('content', theme === 'mocha' ? '#11111b' : '#e6e9ef');
-      }
-
-      const iconEl = document.getElementById('themeIcon');
-      const labelEl = document.getElementById('themeLabel');
-      if (theme === 'mocha') {
-        labelEl.textContent = 'Mocha';
-        iconEl.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
-      } else {
-        labelEl.textContent = 'Latte';
-        iconEl.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
-      }
-    }
-
-    function toggleTheme() {
-      applyTheme(currentTheme === 'mocha' ? 'latte' : 'mocha');
-    }
-
-    function syncSavedStorage() {
-      localStorage.setItem('df26_bookmarks', JSON.stringify([...savedSet]));
-      document.getElementById('savedBadgeCount').textContent = savedSet.size;
-    }
-
-    function toggleBookmark(id, e) {
-      if (e) e.stopPropagation();
-      if (savedSet.has(id)) savedSet.delete(id);
-      else savedSet.add(id);
-      syncSavedStorage();
-      render();
-    }
-
-    function toggleSaveSelected() {
-      if (!selectedId) return;
-      toggleBookmark(selectedId);
-    }
-
-    function toggleSavedFilter() {
-      filterSavedOnly = !filterSavedOnly;
-      document.getElementById('btnSavedFilter').classList.toggle('active', filterSavedOnly);
-      render();
-    }
-
-    function cycleDensity() {
-      densityIndex = (densityIndex + 1) % DENSITIES.length;
-      document.getElementById('btnDensity').textContent = DENSITIES[densityIndex].label;
-      render();
-    }
-
-    function setLane(laneId) {
-      activeLane = laneId;
-      renderLaneTabs();
-      render();
-    }
-
-    function isOverlapping(a, b) {
-      if (a.id === b.id) return false;
-      return a.start < b.end && a.end > b.start;
-    }
-
-    function bookmarkSvg(filled) {
-      return `<svg width="11" height="11" viewBox="0 0 24 24" fill="${filled ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>`;
-    }
-
-    function renderLaneTabs() {
-      const mount = document.getElementById('laneTabs');
-      const allTab = `
-        <button class="lane-tab ${activeLane === 'ALL' ? 'active' : ''}" onclick="setLane('ALL')">
+            [data-theme="light"] {
+                --ctp-crust: #dce0e8;
+                --ctp-mantle: #e6e9ef;
+                --ctp-base: #eff1f5;
+                --ctp-surface0: #ccd0da;
+                --ctp-surface1: #bcc0cc;
+                --ctp-surface2: #acb0be;
+                --ctp-overlay0: #9ca0b0;
+                --ctp-subtext0: #6c6f85;
+                --ctp-subtext1: #5c5f77;
+                --ctp-text: #4c4f69;
+
+                --ctp-lavender: #7287fd;
+                --ctp-blue: #1e66f5;
+                --ctp-sapphire: #209fb5;
+                --ctp-teal: #179299;
+                --ctp-green: #40a02b;
+                --ctp-yellow: #df8e1d;
+                --ctp-peach: #fe640b;
+                --ctp-mauve: #8839ef;
+                --ctp-red: #d20f39;
+                --ctp-flamingo: #dd7878;
+
+                /* Semantic UI Mappings */
+                --bg-canvas: var(--ctp-mantle);
+                --bg-mantle: var(--ctp-crust);
+                --bg-surface: var(--ctp-base);
+                --bg-elevated: var(--ctp-surface0);
+                --bg-glass: rgba(230, 233, 239, 0.88);
+                --bg-sheet: rgba(239, 241, 245, 0.97);
+
+                --border-hairline: rgba(188, 192, 204, 0.75);
+                --border-subtle: rgba(204, 208, 218, 0.65);
+                --border-strong: var(--ctp-surface2);
+
+                --text-primary: var(--ctp-text);
+                --text-secondary: var(--ctp-subtext0);
+                --text-muted: var(--ctp-overlay0);
+
+                --state-selected-bg: var(--ctp-blue);
+                --state-selected-fg: #eff1f5;
+                --state-conflict: var(--ctp-peach);
+                --state-conflict-bg: rgba(254, 100, 11, 0.1);
+                --state-conflict-border: rgba(254, 100, 11, 0.6);
+                --band-bg: rgba(30, 102, 245, 0.05);
+                --band-border: rgba(30, 102, 245, 0.4);
+                --shadow-elevated: 0 10px 28px rgba(76, 79, 105, 0.18);
+            }
+
+            :root {
+                --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+                --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+            }
+
+            * {
+                box-sizing: border-box;
+                -webkit-tap-highlight-color: transparent;
+                margin: 0;
+                padding: 0;
+            }
+
+            html,
+            body {
+                background-color: var(--bg-canvas);
+                color: var(--text-primary);
+                font-family:
+                    "Geist",
+                    -apple-system,
+                    BlinkMacSystemFont,
+                    sans-serif;
+                font-size: 13px;
+                line-height: 1.4;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                overscroll-behavior-y: none;
+                transition:
+                    background-color 0.2s var(--ease-out-expo),
+                    color 0.2s var(--ease-out-expo);
+            }
+
+            .mono {
+                font-family: "Geist Mono", monospace;
+                font-variant-numeric: tabular-nums;
+            }
+
+            /* Top Navigation Bar */
+            .app-header {
+                position: sticky;
+                top: 0;
+                z-index: 60;
+                background: var(--bg-glass);
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                border-bottom: 1px solid var(--border-hairline);
+            }
+
+            .header-top {
+                max-width: 1480px;
+                margin: 0 auto;
+                height: 52px;
+                padding: 0 14px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 10px;
+            }
+
+            .brand-group {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                min-width: 0;
+            }
+
+            .brand-mark {
+                width: 24px;
+                height: 24px;
+                border-radius: 5px;
+                background: var(--state-selected-bg);
+                color: var(--state-selected-fg);
+                font-weight: 700;
+                font-size: 11px;
+                display: grid;
+                place-items: center;
+                letter-spacing: -0.04em;
+                flex-shrink: 0;
+            }
+
+            .brand-title {
+                font-size: 14px;
+                font-weight: 600;
+                letter-spacing: -0.02em;
+                color: var(--text-primary);
+                white-space: nowrap;
+            }
+
+            .brand-meta {
+                font-size: 11px;
+                color: var(--text-secondary);
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                padding-left: 10px;
+                border-left: 1px solid var(--border-hairline);
+            }
+
+            /* Header Controls */
+            .control-cluster {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+            }
+
+            .search-wrap {
+                position: relative;
+                display: flex;
+                align-items: center;
+            }
+
+            .search-icon {
+                position: absolute;
+                left: 9px;
+                width: 13px;
+                height: 13px;
+                color: var(--text-muted);
+                pointer-events: none;
+            }
+
+            .search-input {
+                height: 34px;
+                width: 155px;
+                background: var(--bg-surface);
+                border: 1px solid var(--border-hairline);
+                border-radius: 6px;
+                padding: 0 10px 0 28px;
+                color: var(--text-primary);
+                font-family: inherit;
+                font-size: 12px;
+                outline: none;
+                transition:
+                    border-color 0.15s var(--ease-out-expo),
+                    width 0.2s var(--ease-out-expo),
+                    background-color 0.15s;
+            }
+            .search-input::placeholder {
+                color: var(--text-muted);
+            }
+            .search-input:focus {
+                border-color: var(--state-selected-bg);
+                background: var(--bg-elevated);
+            }
+
+            .ctrl-btn {
+                height: 34px;
+                padding: 0 10px;
+                background: var(--bg-surface);
+                border: 1px solid var(--border-hairline);
+                border-radius: 6px;
+                color: var(--text-secondary);
+                font-family: inherit;
+                font-size: 11.5px;
+                font-weight: 500;
+                display: inline-flex;
+                align-items: center;
+                gap: 5px;
+                cursor: pointer;
+                transition: all 0.15s var(--ease-out-expo);
+                white-space: nowrap;
+            }
+            .ctrl-btn:hover {
+                color: var(--text-primary);
+                border-color: var(--border-strong);
+                background: var(--bg-elevated);
+            }
+            .ctrl-btn.active {
+                background: var(--state-selected-bg);
+                color: var(--state-selected-fg);
+                border-color: var(--state-selected-bg);
+            }
+
+            /* Track Filter Rail */
+            .lane-rail {
+                max-width: 1480px;
+                margin: 0 auto;
+                padding: 0 14px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-top: 1px solid var(--border-subtle);
+                overflow-x: auto;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+            .lane-rail::-webkit-scrollbar {
+                display: none;
+            }
+
+            .lane-tabs {
+                display: flex;
+                align-items: center;
+                gap: 2px;
+            }
+
+            .lane-tab {
+                height: 40px;
+                padding: 0 11px;
+                background: transparent;
+                border: none;
+                border-bottom: 2px solid transparent;
+                color: var(--text-secondary);
+                font-family: inherit;
+                font-size: 12px;
+                font-weight: 500;
+                cursor: pointer;
+                white-space: nowrap;
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                transition:
+                    color 0.15s ease,
+                    border-color 0.15s ease;
+            }
+            .lane-tab:hover {
+                color: var(--text-primary);
+            }
+            .lane-tab.active {
+                color: var(--text-primary);
+                border-bottom-color: var(--state-selected-bg);
+                font-weight: 600;
+            }
+            .lane-dot {
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                flex-shrink: 0;
+            }
+            .lane-code {
+                font-size: 10px;
+                color: var(--text-muted);
+                padding: 1px 4px;
+                border: 1px solid var(--border-hairline);
+                border-radius: 3px;
+            }
+
+            .legend-bar {
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                font-size: 11px;
+                color: var(--text-secondary);
+                padding-left: 16px;
+                white-space: nowrap;
+            }
+            .legend-item {
+                display: inline-flex;
+                align-items: center;
+                gap: 5px;
+            }
+            .swatch {
+                width: 8px;
+                height: 8px;
+                border-radius: 2px;
+            }
+
+            /* Main Calendar Scroll Canvas */
+            .viewport {
+                max-width: 1480px;
+                margin: 0 auto;
+                overflow-x: auto;
+                padding-bottom: 240px;
+                position: relative;
+            }
+
+            .matrix-head {
+                display: grid;
+                position: sticky;
+                top: 0;
+                z-index: 30;
+                background: var(--bg-mantle);
+                border-bottom: 1px solid var(--border-hairline);
+            }
+
+            .time-col-head {
+                padding: 8px 8px 8px 0;
+                text-align: right;
+                font-size: 10px;
+                color: var(--text-muted);
+                border-right: 1px solid var(--border-hairline);
+                letter-spacing: 0.04em;
+            }
+
+            .lane-col-head {
+                padding: 8px 10px;
+                border-right: 1px solid var(--border-hairline);
+                min-width: 0;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 6px;
+            }
+            .lane-col-head:last-child {
+                border-right: none;
+            }
+            .lane-col-name {
+                font-size: 11.5px;
+                font-weight: 600;
+                color: var(--text-primary);
+                letter-spacing: -0.01em;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: flex;
+                align-items: center;
+                gap: 6px;
+            }
+            .lane-col-sub {
+                font-size: 10px;
+                color: var(--text-muted);
+                white-space: nowrap;
+            }
+
+            /* Proportional Time Canvas */
+            .matrix-canvas {
+                display: grid;
+                position: relative;
+            }
+
+            .time-axis {
+                position: relative;
+                border-right: 1px solid var(--border-hairline);
+                background: var(--bg-mantle);
+                user-select: none;
+                z-index: 20;
+            }
+
+            .tick-label {
+                position: absolute;
+                right: 8px;
+                transform: translateY(-50%);
+                font-size: 10px;
+                color: var(--text-secondary);
+                line-height: 1;
+            }
+            .tick-label.minor {
+                color: var(--text-muted);
+                font-size: 9px;
+            }
+
+            .grid-guides {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 60px;
+                right: 0;
+                pointer-events: none;
+                z-index: 1;
+            }
+
+            .guide-hour {
+                position: absolute;
+                left: 0;
+                right: 0;
+                border-top: 1px solid var(--border-hairline);
+            }
+            .guide-half {
+                position: absolute;
+                left: 0;
+                right: 0;
+                border-top: 1px dashed var(--border-subtle);
+            }
+
+            /* Active Time-Window Band across all lanes */
+            #activeWindowBand {
+                position: absolute;
+                left: 0;
+                right: 0;
+                background: var(--band-bg);
+                border-top: 1px solid var(--band-border);
+                border-bottom: 1px solid var(--band-border);
+                pointer-events: none;
+                z-index: 4;
+                display: none;
+            }
+
+            /* Live Time Hairline */
+            #liveTimeLine {
+                position: absolute;
+                left: 0;
+                right: 0;
+                border-top: 1.5px solid var(--ctp-red);
+                pointer-events: none;
+                z-index: 35;
+                display: none;
+            }
+            #liveTimeLine::before {
+                content: "";
+                position: absolute;
+                left: -3px;
+                top: -3.5px;
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: var(--ctp-red);
+            }
+
+            .lane-column {
+                position: relative;
+                border-right: 1px solid var(--border-subtle);
+                z-index: 10;
+            }
+            .lane-column:last-child {
+                border-right: none;
+            }
+
+            /* Session Card — Catppuccin Surface + Swiss Grid Geometry */
+            .slot-card {
+                position: absolute;
+                left: 3px;
+                right: 3px;
+                background: var(--bg-surface);
+                border: 1px solid var(--border-hairline);
+                border-left-width: 3px;
+                border-radius: 5px;
+                padding: 5px 8px;
+                cursor: pointer;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                transition:
+                    background-color 0.14s var(--ease-out-expo),
+                    border-color 0.14s var(--ease-out-expo),
+                    opacity 0.16s var(--ease-out-expo),
+                    transform 0.14s var(--ease-out-expo);
+            }
+
+            .slot-card:hover {
+                background: var(--bg-elevated);
+                border-color: var(--border-strong);
+                z-index: 25;
+            }
+
+            .slot-card.is-spanning {
+                background: var(--bg-mantle);
+                border-style: dashed;
+                border-left-style: solid;
+                border-left-color: var(--ctp-mauve) !important;
+                z-index: 15;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 12px;
+            }
+
+            /* Interactive States (Selected vs Overlapping vs Dimmed) */
+            .slot-card.is-selected {
+                background: var(--state-selected-bg) !important;
+                color: var(--state-selected-fg) !important;
+                border-color: var(--state-selected-bg) !important;
+                z-index: 40 !important;
+                box-shadow: var(--shadow-elevated);
+            }
+            .slot-card.is-selected .slot-time,
+            .slot-card.is-selected .slot-title,
+            .slot-card.is-selected .slot-speaker,
+            .slot-card.is-selected .bookmark-btn {
+                color: var(--state-selected-fg) !important;
+            }
+
+            .slot-card.is-overlap {
+                background: var(--state-conflict-bg) !important;
+                border-color: var(--state-conflict-border) !important;
+                border-left-color: var(--state-conflict) !important;
+                z-index: 30 !important;
+            }
+
+            .slot-card.is-dimmed {
+                opacity: 0.2;
+            }
+
+            .slot-meta-row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 4px;
+                margin-bottom: 2px;
+            }
+
+            .slot-time {
+                font-size: 10px;
+                font-weight: 500;
+                color: var(--text-secondary);
+                white-space: nowrap;
+                letter-spacing: -0.02em;
+            }
+
+            .slot-badges {
+                display: flex;
+                align-items: center;
+                gap: 4px;
+            }
+
+            .conflict-indicator {
+                display: none;
+                font-size: 9px;
+                font-weight: 600;
+                color: var(--state-conflict);
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+            }
+            .slot-card.is-overlap .conflict-indicator {
+                display: inline-block;
+            }
+
+            .bookmark-btn {
+                background: transparent;
+                border: none;
+                color: var(--text-muted);
+                cursor: pointer;
+                padding: 2px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                transition: color 0.12s ease;
+            }
+            .bookmark-btn:hover {
+                color: var(--text-primary);
+            }
+            .bookmark-btn.saved {
+                color: var(--ctp-yellow);
+            }
+
+            .slot-title {
+                font-size: 11.5px;
+                font-weight: 600;
+                color: var(--text-primary);
+                letter-spacing: -0.01em;
+                line-height: 1.25;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+
+            .slot-speaker {
+                font-size: 10.5px;
+                color: var(--text-secondary);
+                margin-top: 2px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            /* Compact single-line layout for 10-minute lightning talks */
+            .slot-card.is-micro {
+                padding: 2px 7px;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                gap: 6px;
+            }
+            .slot-card.is-micro .slot-meta-row {
+                margin-bottom: 0;
+            }
+            .slot-card.is-micro .slot-title {
+                -webkit-line-clamp: 1;
+                font-size: 11px;
+            }
+
+            /* Bottom Crossover Inspector Sheet (Spring Physics) */
+            .inspector-sheet {
+                position: fixed;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 80;
+                background: var(--bg-sheet);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-top: 1px solid var(--border-strong);
+                box-shadow: var(--shadow-elevated);
+                transform: translateY(104%);
+                transition: transform 0.28s var(--ease-spring);
+                padding: 14px 16px calc(14px + env(safe-area-inset-bottom));
+                max-height: 56vh;
+                overflow-y: auto;
+            }
+            .inspector-sheet.is-open {
+                transform: translateY(0);
+            }
+
+            .sheet-container {
+                max-width: 1480px;
+                margin: 0 auto;
+            }
+
+            .sheet-header {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                gap: 12px;
+                padding-bottom: 12px;
+                border-bottom: 1px solid var(--border-hairline);
+            }
+
+            .sheet-tag-row {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                flex-wrap: wrap;
+                margin-bottom: 4px;
+            }
+
+            .pill-tag {
+                font-size: 10px;
+                font-weight: 500;
+                padding: 1px 6px;
+                border-radius: 4px;
+                border: 1px solid var(--border-hairline);
+                background: var(--bg-surface);
+                color: var(--text-secondary);
+            }
+
+            .sheet-session-title {
+                font-size: 15px;
+                font-weight: 600;
+                letter-spacing: -0.02em;
+                color: var(--text-primary);
+                line-height: 1.3;
+            }
+
+            .sheet-session-speaker {
+                font-size: 12px;
+                color: var(--text-secondary);
+                margin-top: 2px;
+            }
+
+            .sheet-section-label {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin: 10px 0 8px;
+                font-size: 10.5px;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+                color: var(--state-conflict);
+            }
+
+            .conflict-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 8px;
+            }
+
+            .conflict-card {
+                background: var(--bg-surface);
+                border: 1px solid var(--border-hairline);
+                border-left: 3px solid var(--state-conflict);
+                border-radius: 5px;
+                padding: 8px 10px;
+                cursor: pointer;
+                transition:
+                    border-color 0.14s ease,
+                    background-color 0.14s ease;
+            }
+            .conflict-card:hover {
+                background: var(--bg-elevated);
+                border-color: var(--state-conflict-border);
+            }
+
+            @media (max-width: 768px) {
+                .brand-meta,
+                .legend-bar {
+                    display: none;
+                }
+                .search-input {
+                    width: 110px;
+                }
+                .search-input:focus {
+                    width: 145px;
+                }
+                .lane-tab {
+                    height: 44px; /* Strict 44px ergonomic mobile hit target */
+                    padding: 0 12px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Sticky Architectural Header -->
+        <header class="app-header">
+            <div class="header-top">
+                <div class="brand-group">
+                    <div class="brand-mark mono">DF</div>
+                    <span class="brand-title">DevFest Chennai '26</span>
+                    <span class="brand-meta mono"
+                        >SAT 17 OCT • IITM RESEARCH PARK</span
+                    >
+                </div>
+
+                <div class="control-cluster">
+                    <div class="search-wrap">
+                        <svg
+                            class="search-icon"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <input
+                            id="searchInput"
+                            type="search"
+                            class="search-input"
+                            placeholder="Filter..."
+                            oninput="render()"
+                        />
+                    </div>
+
+                    <button
+                        id="btnSavedFilter"
+                        class="ctrl-btn"
+                        onclick="toggleSavedFilter()"
+                        title="Filter Saved Sessions"
+                    >
+                        <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path
+                                d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
+                            ></path>
+                        </svg>
+                        <span id="savedBadgeCount" class="mono">0</span>
+                    </button>
+
+                    <button
+                        id="btnDensity"
+                        class="ctrl-btn mono"
+                        onclick="cycleDensity()"
+                        title="Adjust Vertical Time Scale"
+                    >
+                        1.0x
+                    </button>
+
+                    <!-- Catppuccin light / dark Theme Switcher -->
+                    <button
+                        id="btnTheme"
+                        class="ctrl-btn"
+                        onclick="toggleTheme()"
+                        title="Switch Catppuccin light / dark"
+                    >
+                        <span id="themeIcon"></span>
+                        <span id="themeLabel" class="mono">dark</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Track Switcher & Status Legend -->
+            <div class="lane-rail">
+                <div id="laneTabs" class="lane-tabs"></div>
+                <div class="legend-bar mono">
+                    <span class="legend-item"
+                        ><span
+                            class="swatch"
+                            style="background: var(--state-selected-bg)"
+                        ></span
+                        >Selected</span
+                    >
+                    <span class="legend-item"
+                        ><span
+                            class="swatch"
+                            style="background: var(--state-conflict)"
+                        ></span
+                        >Overlapping</span
+                    >
+                    <span class="legend-item"
+                        ><span
+                            class="swatch"
+                            style="border: 1px solid var(--border-strong)"
+                        ></span
+                        >Empty Slot</span
+                    >
+                </div>
+            </div>
+        </header>
+
+        <!-- Proportional Calendar Matrix -->
+        <main class="viewport" onclick="clearSelection()">
+            <div id="calendarMount"></div>
+        </main>
+
+        <!-- Bottom Crossover Inspector Sheet -->
+        <aside
+            id="inspectorSheet"
+            class="inspector-sheet"
+            onclick="event.stopPropagation()"
+        >
+            <div class="sheet-container">
+                <div class="sheet-header">
+                    <div style="min-width: 0">
+                        <div class="sheet-tag-row">
+                            <span
+                                id="sheetTime"
+                                class="pill-tag mono"
+                                style="
+                                    color: var(--text-primary);
+                                    border-color: var(--border-strong);
+                                "
+                            ></span>
+                            <span id="sheetHall" class="pill-tag"></span>
+                            <span id="sheetLevel" class="pill-tag"></span>
+                        </div>
+                        <h2 id="sheetTitle" class="sheet-session-title"></h2>
+                        <p id="sheetSpeaker" class="sheet-session-speaker"></p>
+                    </div>
+
+                    <div style="display: flex; gap: 6px; flex-shrink: 0">
+                        <button
+                            id="sheetSaveBtn"
+                            class="ctrl-btn"
+                            onclick="toggleSaveSelected()"
+                        >
+                            <svg
+                                width="12"
+                                height="12"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path
+                                    d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
+                                ></path>
+                            </svg>
+                            <span>Save</span>
+                        </button>
+                        <button
+                            class="ctrl-btn"
+                            onclick="clearSelection()"
+                            aria-label="Close Inspector"
+                        >
+                            <svg
+                                width="13"
+                                height="13"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="sheet-section-label mono">
+                        <span
+                            >Concurrent Crossover Sessions (<span
+                                id="sheetConflictCount"
+                                >0</span
+                            >)</span
+                        >
+                        <span
+                            style="
+                                color: var(--text-muted);
+                                text-transform: none;
+                            "
+                            >Tap card to switch focus</span
+                        >
+                    </div>
+                    <div id="sheetConflictList" class="conflict-grid"></div>
+                </div>
+            </div>
+        </aside>
+
+        <script>
+            const START_MIN = 8 * 60; // 08:00 AM
+            const END_MIN = 17 * 60 + 30; // 05:30 PM
+
+            function toMin(tStr) {
+                const [t, mod] = tStr.trim().split(" ");
+                let [h, m] = t.split(":").map(Number);
+                if (mod === "PM" && h !== 12) h += 12;
+                if (mod === "AM" && h === 12) h = 0;
+                return h * 60 + m;
+            }
+
+            function fmtMin(m) {
+                let h = Math.floor(m / 60);
+                let mins = m % 60;
+                const mod = h >= 12 ? "PM" : "AM";
+                if (h > 12) h -= 12;
+                if (h === 0) h = 12;
+                return `${h}:${mins.toString().padStart(2, "0")} ${mod}`;
+            }
+
+            // 7 Architectural Lanes mapped to official Catppuccin Accent Tokens
+            const LANES = [
+                {
+                    id: "tech",
+                    code: "D7-A",
+                    short: "Main Stage",
+                    name: "D7 Auditorium",
+                    sub: "Tech Track",
+                    accent: "var(--ctp-blue)",
+                },
+                {
+                    id: "deeptech",
+                    code: "D7-B",
+                    short: "Deep Tech",
+                    name: "D7 Amphitheater",
+                    sub: "Deep Tech",
+                    accent: "var(--ctp-mauve)",
+                },
+                {
+                    id: "lightning",
+                    code: "D6-L",
+                    short: "Lightning",
+                    name: "D6 Multi-purpose",
+                    sub: "Lightning Talks",
+                    accent: "var(--ctp-sapphire)",
+                },
+                {
+                    id: "agentwars",
+                    code: "D6-W",
+                    short: "Agent Wars",
+                    name: "D6 Multi-purpose",
+                    sub: "Tournament",
+                    accent: "var(--ctp-yellow)",
+                },
+                {
+                    id: "vibe",
+                    code: "D6-V",
+                    short: "Vibe Lounge",
+                    name: "D6 Multi-purpose",
+                    sub: "Vibe Coding",
+                    accent: "var(--ctp-teal)",
+                },
+                {
+                    id: "workshop",
+                    code: "RMN",
+                    short: "Workshops",
+                    name: "Raman Hall",
+                    sub: "Hands-On Lab",
+                    accent: "var(--ctp-green)",
+                },
+                {
+                    id: "lounges",
+                    code: "PRE",
+                    short: "Lounges",
+                    name: "D7 Pre-Function",
+                    sub: "Creators/Meetup",
+                    accent: "var(--ctp-flamingo)",
+                },
+            ];
+
+            // Official Agenda Data (https://devfest.gdgchennai.in/agenda)
+            const SESSIONS = [
+                // Common Check-In
+                {
+                    id: "checkin",
+                    col: "lounges",
+                    spanAll: true,
+                    timeLabel: "8:00 AM - 9:00 AM",
+                    start: toMin("8:00 AM"),
+                    end: toMin("9:00 AM"),
+                    hall: "D7 Pre-Function Area",
+                    track: "General",
+                    level: "",
+                    title: "Check-in & Badge Collection",
+                    speaker:
+                        "Welcome kits, attendee registration & breakfast coffee",
+                },
+
+                // D7 Auditorium (Tech Track)
+                {
+                    id: "welcome",
+                    col: "tech",
+                    timeLabel: "9:00 AM - 9:15 AM",
+                    start: toMin("9:00 AM"),
+                    end: toMin("9:15 AM"),
+                    hall: "D7 Auditorium",
+                    track: "Tech",
+                    level: "",
+                    title: "Welcome Note",
+                    speaker: "GDG Chennai Organizing Team",
+                },
+                {
+                    id: "keynote",
+                    col: "tech",
+                    timeLabel: "9:15 AM - 9:45 AM",
+                    start: toMin("9:15 AM"),
+                    end: toMin("9:45 AM"),
+                    hall: "D7 Auditorium",
+                    track: "Tech",
+                    level: "",
+                    title: "Keynote",
+                    speaker: "Swaathi Kakarla & Karthik Kamalakannan",
+                },
+                {
+                    id: "next-billion",
+                    col: "tech",
+                    timeLabel: "9:45 AM - 10:15 AM",
+                    start: toMin("9:45 AM"),
+                    end: toMin("10:15 AM"),
+                    hall: "D7 Auditorium",
+                    track: "Tech",
+                    level: "",
+                    title: "The Next Billion Users Won't Be Human",
+                    speaker: "Sanju Sivalingam",
+                },
+                {
+                    id: "qualcomm-dev",
+                    col: "tech",
+                    timeLabel: "10:15 AM - 10:25 AM",
+                    start: toMin("10:15 AM"),
+                    end: toMin("10:25 AM"),
+                    hall: "D7 Auditorium",
+                    track: "Tech",
+                    level: "Beginner",
+                    title: "Qualcomm as a Dev-AI Native Company",
+                    speaker: "Kartikey Rawat",
+                },
+                {
+                    id: "poshmark-ai",
+                    col: "tech",
+                    timeLabel: "10:25 AM - 10:35 AM",
+                    start: toMin("10:25 AM"),
+                    end: toMin("10:35 AM"),
+                    hall: "D7 Auditorium",
+                    track: "Tech",
+                    level: "Intermediate",
+                    title: "From Models to Decisions: AI Reshaping Poshmark",
+                    speaker: "Manu Vishwakarma & Shreya Sevelar",
+                },
+                // 10:35 AM - 10:45 AM intentionally left empty
+                {
+                    id: "kotlin-ota",
+                    col: "tech",
+                    timeLabel: "10:45 AM - 11:10 AM",
+                    start: toMin("10:45 AM"),
+                    end: toMin("11:10 AM"),
+                    hall: "D7 Auditorium",
+                    track: "Tech",
+                    level: "Intermediate",
+                    title: "Kotlin Over the Air: Reimagining Android/KMP Delivery",
+                    speaker: "Aditya Shinde",
+                },
+                {
+                    id: "gemma-101",
+                    col: "tech",
+                    timeLabel: "11:10 AM - 11:35 AM",
+                    start: toMin("11:10 AM"),
+                    end: toMin("11:35 AM"),
+                    hall: "D7 Auditorium",
+                    track: "Tech",
+                    level: "Expert",
+                    title: "Gemma 101: Fine-Tuning Open Models with LoRA",
+                    speaker: "Neeraj Pathak",
+                },
+                {
+                    id: "owasp-nettacker",
+                    col: "tech",
+                    timeLabel: "11:35 AM - 12:00 PM",
+                    start: toMin("11:35 AM"),
+                    end: toMin("12:00 PM"),
+                    hall: "D7 Auditorium",
+                    track: "Tech",
+                    level: "",
+                    title: "Developing & Using OWASP Nettacker for Security Testing",
+                    speaker: "Achintya Jai",
+                },
+                {
+                    id: "beyond-happy-path",
+                    col: "tech",
+                    timeLabel: "12:00 PM - 12:25 PM",
+                    start: toMin("12:00 PM"),
+                    end: toMin("12:25 PM"),
+                    hall: "D7 Auditorium",
+                    track: "Tech",
+                    level: "Intermediate",
+                    title: "Beyond the Happy Path: Production Agent Guardrails on GCP",
+                    speaker: "Saurabh Mishra",
+                },
+
+                // D7 Amphitheater (Deep Tech)
+                {
+                    id: "city-breathe",
+                    col: "deeptech",
+                    timeLabel: "10:45 AM - 11:20 AM",
+                    start: toMin("10:45 AM"),
+                    end: toMin("11:20 AM"),
+                    hall: "D7 Amphitheater",
+                    track: "Deep Tech",
+                    level: "Beginner",
+                    title: "Can AI Help a City Breathe?",
+                    speaker: "Dishant Parakh",
+                },
+                {
+                    id: "physical-ai-trust",
+                    col: "deeptech",
+                    timeLabel: "11:20 AM - 11:55 AM",
+                    start: toMin("11:20 AM"),
+                    end: toMin("11:55 AM"),
+                    hall: "D7 Amphitheater",
+                    track: "Deep Tech",
+                    level: "Intermediate",
+                    title: "When AI Leaves the Lab: Building Physical AI People Can Trust",
+                    speaker: "Pulkit Verma",
+                },
+                {
+                    id: "water-pipeline",
+                    col: "deeptech",
+                    timeLabel: "11:55 AM - 12:30 PM",
+                    start: toMin("11:55 AM"),
+                    end: toMin("12:30 PM"),
+                    hall: "D7 Amphitheater",
+                    track: "Deep Tech",
+                    level: "Intermediate",
+                    title: "Automatic Defect Detection of Water / Sewer Pipeline",
+                    speaker: "Dr Moumita Mukherjee",
+                },
+
+                // D6 Lightning Talks
+                {
+                    id: "android-perf",
+                    col: "lightning",
+                    timeLabel: "11:00 AM - 11:20 AM",
+                    start: toMin("11:00 AM"),
+                    end: toMin("11:20 AM"),
+                    hall: "D6 Multi-purpose Hall",
+                    track: "Lightning",
+                    level: "Intermediate",
+                    title: "Simplified Performance Debugging on Android",
+                    speaker: "Shangeeth Sivan Adiyapatham",
+                },
+                {
+                    id: "ai-sres",
+                    col: "lightning",
+                    timeLabel: "11:25 AM - 11:45 AM",
+                    start: toMin("11:25 AM"),
+                    end: toMin("11:45 AM"),
+                    hall: "D6 Multi-purpose Hall",
+                    track: "Lightning",
+                    level: "",
+                    title: "AI Assisted SREs Are a Thing!",
+                    speaker: "Imran Roshan",
+                },
+                {
+                    id: "local-gemma",
+                    col: "lightning",
+                    timeLabel: "11:50 AM - 12:10 PM",
+                    start: toMin("11:50 AM"),
+                    end: toMin("12:10 PM"),
+                    hall: "D6 Multi-purpose Hall",
+                    track: "Lightning",
+                    level: "Beginner",
+                    title: "Local AI: The Google Gemma Edition",
+                    speaker: "Gokulbarath N",
+                },
+                {
+                    id: "infra-agentic",
+                    col: "lightning",
+                    timeLabel: "12:15 PM - 12:35 PM",
+                    start: toMin("12:15 PM"),
+                    end: toMin("12:35 PM"),
+                    hall: "D6 Multi-purpose Hall",
+                    track: "Lightning",
+                    level: "Expert",
+                    title: "Rethinking Infrastructure for Agentic Workloads",
+                    speaker: "Dhanush Kandhan",
+                },
+
+                // D6 Agent Wars
+                {
+                    id: "wars-signup",
+                    col: "agentwars",
+                    timeLabel: "11:00 AM - 11:30 AM",
+                    start: toMin("11:00 AM"),
+                    end: toMin("11:30 AM"),
+                    hall: "D6 Multi-purpose Hall",
+                    track: "Agent Wars",
+                    level: "Intermediate",
+                    title: "Agent Wars: Signup & Qualifier",
+                    speaker: "D6 Arena",
+                },
+                {
+                    id: "wars-qual",
+                    col: "agentwars",
+                    timeLabel: "11:30 AM - 12:00 PM",
+                    start: toMin("11:30 AM"),
+                    end: toMin("12:00 PM"),
+                    hall: "D6 Multi-purpose Hall",
+                    track: "Agent Wars",
+                    level: "Intermediate",
+                    title: "Agent Wars: Live Tournament Qualifiers",
+                    speaker: "D6 Arena",
+                },
+                {
+                    id: "wars-qual-ext",
+                    col: "agentwars",
+                    timeLabel: "12:00 PM - 12:40 PM",
+                    start: toMin("12:00 PM"),
+                    end: toMin("12:40 PM"),
+                    hall: "D6 Multi-purpose Hall",
+                    track: "Agent Wars",
+                    level: "Intermediate",
+                    title: "Agent Wars: Qualifiers Extended",
+                    speaker: "D6 Arena",
+                },
+
+                // D6 Vibe Lounge
+                {
+                    id: "vibe-am",
+                    col: "vibe",
+                    timeLabel: "11:00 AM - 12:00 PM",
+                    start: toMin("11:00 AM"),
+                    end: toMin("12:00 PM"),
+                    hall: "D6 Multi-purpose Hall",
+                    track: "Vibe Lounge",
+                    level: "Beginner",
+                    title: "Vibe Lounge",
+                    speaker: "D6 Multi-purpose Hall",
+                },
+                {
+                    id: "vibe-noon",
+                    col: "vibe",
+                    timeLabel: "12:00 PM - 12:35 PM",
+                    start: toMin("12:00 PM"),
+                    end: toMin("12:35 PM"),
+                    hall: "D6 Multi-purpose Hall",
+                    track: "Vibe Lounge",
+                    level: "Beginner",
+                    title: "Vibe Coding Lounge",
+                    speaker: "D6 Multi-purpose Hall",
+                },
+
+                // Raman Hall Workshop
+                {
+                    id: "offload-testing",
+                    col: "workshop",
+                    timeLabel: "11:00 AM - 12:30 PM",
+                    start: toMin("11:00 AM"),
+                    end: toMin("12:30 PM"),
+                    hall: "Raman Hall",
+                    track: "Workshop",
+                    level: "Beginner",
+                    title: "Offload Testing to Agents",
+                    speaker: "Somasundaram Mahesh",
+                },
+
+                // Pre-Function Lounges
+                {
+                    id: "lounges-am",
+                    col: "lounges",
+                    timeLabel: "10:45 AM - 12:25 PM",
+                    start: toMin("10:45 AM"),
+                    end: toMin("12:25 PM"),
+                    hall: "D7 Pre-Function Area",
+                    track: "Lounges",
+                    level: "Beginner",
+                    title: "Creators & Meetup Lounge",
+                    speaker: "Podcasting, Creator Studio & Mentor Meetups",
+                },
+
+                // Common Lunch Break
+                {
+                    id: "lunch",
+                    col: "lounges",
+                    spanAll: true,
+                    timeLabel: "12:30 PM - 1:45 PM",
+                    start: toMin("12:30 PM"),
+                    end: toMin("1:45 PM"),
+                    hall: "Research Park Food Courts",
+                    track: "Break",
+                    level: "",
+                    title: "Lunch & Exhibition Break (F&B)",
+                    speaker: "All parallel tracks pause • Resumes at 2:00 PM",
+                },
+
+                // AFTERNOON
+                // D7 Auditorium
+                {
+                    id: "webmcp",
+                    col: "tech",
+                    timeLabel: "2:00 PM - 2:25 PM",
+                    start: toMin("2:00 PM"),
+                    end: toMin("2:25 PM"),
+                    hall: "D7 Auditorium",
+                    track: "Tech",
+                    level: "Intermediate",
+                    title: "Don't Let AI Agents Push Your Buttons: WebMCP",
+                    speaker: "Jeeththenthar L",
+                },
+                {
+                    id: "gemini-nano",
+                    col: "tech",
+                    timeLabel: "2:25 PM - 2:50 PM",
+                    start: toMin("2:25 PM"),
+                    end: toMin("2:50 PM"),
+                    hall: "D7 Auditorium",
+                    track: "Tech",
+                    level: "",
+                    title: "From Receipts to Smart Search: Gemini Nano on Android",
+                    speaker: "Dinoy Raj",
+                },
+                {
+                    id: "tokenomics",
+                    col: "tech",
+                    timeLabel: "2:50 PM - 3:15 PM",
+                    start: toMin("2:50 PM"),
+                    end: toMin("3:15 PM"),
+                    hall: "D7 Auditorium",
+                    track: "Tech",
+                    level: "Intermediate",
+                    title: "Tokenomics: Cutting Token Costs in Multi-Agent AI",
+                    speaker: "Bhargav Patel",
+                },
+                {
+                    id: "firebase-ai",
+                    col: "tech",
+                    timeLabel: "3:15 PM - 3:40 PM",
+                    start: toMin("3:15 PM"),
+                    end: toMin("3:40 PM"),
+                    hall: "D7 Auditorium",
+                    track: "Tech",
+                    level: "Beginner",
+                    title: "Secure Frontend AI: Firebase AI Logic & Gemini",
+                    speaker: "Srushti Raybhoge",
+                },
+                {
+                    id: "goldrush-ai",
+                    col: "tech",
+                    timeLabel: "3:40 PM - 4:05 PM",
+                    start: toMin("3:40 PM"),
+                    end: toMin("4:05 PM"),
+                    hall: "D7 Auditorium",
+                    track: "Tech",
+                    level: "Beginner",
+                    title: "Opportunities in AI: Culture of Goldrush in California",
+                    speaker: "Hariprasad Sudharshan",
+                },
+                {
+                    id: "lead-gen-gemini",
+                    col: "tech",
+                    timeLabel: "4:05 PM - 4:30 PM",
+                    start: toMin("4:05 PM"),
+                    end: toMin("4:30 PM"),
+                    hall: "D7 Auditorium",
+                    track: "Tech",
+                    level: "Beginner",
+                    title: "Using Gemini & AI Studio to Build a B2B Lead Gen Engine",
+                    speaker: "Varun Poladiya",
+                },
+
+                // D7 Amphitheater
+                {
+                    id: "malware-deepfake",
+                    col: "deeptech",
+                    timeLabel: "2:00 PM - 2:35 PM",
+                    start: toMin("2:00 PM"),
+                    end: toMin("2:35 PM"),
+                    hall: "D7 Amphitheater",
+                    track: "Deep Tech",
+                    level: "Intermediate",
+                    title: "From Malware Images to Deepfake Detection",
+                    speaker: "Dr Lakshmanan Nataraj",
+                },
+                {
+                    id: "ai-vr-health",
+                    col: "deeptech",
+                    timeLabel: "2:35 PM - 3:10 PM",
+                    start: toMin("2:35 PM"),
+                    end: toMin("3:10 PM"),
+                    hall: "D7 Amphitheater",
+                    track: "Deep Tech",
+                    level: "Beginner",
+                    title: "AI & VR for Healthcare",
+                    speaker: "Dr Nimeshika Jayachandran",
+                },
+                {
+                    id: "ml-physical-world",
+                    col: "deeptech",
+                    timeLabel: "3:10 PM - 4:30 PM",
+                    start: toMin("3:10 PM"),
+                    end: toMin("4:30 PM"),
+                    hall: "D7 Amphitheater",
+                    track: "Deep Tech",
+                    level: "Intermediate",
+                    title: "Machine Learning the Physical World (80m Lecture & Q&A)",
+                    speaker: "Dr Ayana Ghosh",
+                },
+
+                // D6 Lightning Talks
+                {
+                    id: "ai-native-prod",
+                    col: "lightning",
+                    timeLabel: "2:00 PM - 2:20 PM",
+                    start: toMin("2:00 PM"),
+                    end: toMin("2:20 PM"),
+                    hall: "D6 Multi-purpose Hall",
+                    track: "Lightning",
+                    level: "Beginner",
+                    title: "Lessons from Building an AI Native Product Ground Up",
+                    speaker: "Rashmi Asokan",
+                },
+                {
+                    id: "edge-continuum",
+                    col: "lightning",
+                    timeLabel: "2:25 PM - 2:45 PM",
+                    start: toMin("2:25 PM"),
+                    end: toMin("2:45 PM"),
+                    hall: "D6 Multi-purpose Hall",
+                    track: "Lightning",
+                    level: "Intermediate",
+                    title: "Open Source On-Device Inference Across Edge Continuum",
+                    speaker: "Aakash Dhakshnamoorthy",
+                },
+                {
+                    id: "privacy-gemma4",
+                    col: "lightning",
+                    timeLabel: "2:50 PM - 3:10 PM",
+                    start: toMin("2:50 PM"),
+                    end: toMin("3:10 PM"),
+                    hall: "D6 Multi-purpose Hall",
+                    track: "Lightning",
+                    level: "Beginner",
+                    title: "Building Privacy-First Edge AI with Gemma 4",
+                    speaker: "Gokulakrishnan L",
+                },
+                {
+                    id: "qualcomm-edge",
+                    col: "lightning",
+                    timeLabel: "3:15 PM - 3:35 PM",
+                    start: toMin("3:15 PM"),
+                    end: toMin("3:35 PM"),
+                    hall: "D6 Multi-purpose Hall",
+                    track: "Lightning",
+                    level: "Intermediate",
+                    title: "Building AI at the Edge with Qualcomm AI Stack",
+                    speaker: "Kartikey Rawat",
+                },
+
+                // D6 Agent Wars
+                {
+                    id: "wars-semis",
+                    col: "agentwars",
+                    timeLabel: "2:00 PM - 2:20 PM",
+                    start: toMin("2:00 PM"),
+                    end: toMin("2:20 PM"),
+                    hall: "D6 Multi-purpose Hall",
+                    track: "Agent Wars",
+                    level: "Intermediate",
+                    title: "Agent Wars: Semi-Finals",
+                    speaker: "Elimination Bracket",
+                },
+                {
+                    id: "wars-finals",
+                    col: "agentwars",
+                    timeLabel: "2:20 PM - 4:30 PM",
+                    start: toMin("2:20 PM"),
+                    end: toMin("4:30 PM"),
+                    hall: "D6 Multi-purpose Hall",
+                    track: "Agent Wars",
+                    level: "Intermediate",
+                    title: "Agent Wars: Live Tournament Finals",
+                    speaker: "Championship Finale & Leaderboard",
+                },
+
+                // D6 Vibe Lounge
+                {
+                    id: "vibe-pm",
+                    col: "vibe",
+                    timeLabel: "2:00 PM - 4:30 PM",
+                    start: toMin("2:00 PM"),
+                    end: toMin("4:30 PM"),
+                    hall: "D6 Multi-purpose Hall",
+                    track: "Vibe Lounge",
+                    level: "Beginner",
+                    title: "Vibe Coding Lounge",
+                    speaker: "D6 Multi-purpose Hall",
+                },
+
+                // Raman Hall Afternoon Workshop
+                {
+                    id: "arduino-uno",
+                    col: "workshop",
+                    timeLabel: "2:00 PM - 4:45 PM",
+                    start: toMin("2:00 PM"),
+                    end: toMin("4:45 PM"),
+                    hall: "Raman Hall",
+                    track: "Workshop",
+                    level: "Intermediate",
+                    title: "Building Physical AI: Arduino UNO Q Workshop (165m)",
+                    speaker: "Salman Faris",
+                },
+
+                // Pre-Function Afternoon Lounges
+                {
+                    id: "lounges-pm",
+                    col: "lounges",
+                    timeLabel: "2:00 PM - 4:15 PM",
+                    start: toMin("2:00 PM"),
+                    end: toMin("4:15 PM"),
+                    hall: "D7 Pre-Function Area",
+                    track: "Lounges",
+                    level: "Beginner",
+                    title: "Creators & Meetup Lounge",
+                    speaker: "Developer Spotlights, OSS Booths & Mentor Hours",
+                },
+
+                // Evening Break & Closing
+                {
+                    id: "high-tea",
+                    col: "lounges",
+                    spanAll: true,
+                    timeLabel: "4:30 PM - 5:00 PM",
+                    start: toMin("4:30 PM"),
+                    end: toMin("5:00 PM"),
+                    hall: "D7 Pre-Function Area",
+                    track: "Break",
+                    level: "",
+                    title: "Quick Break & Evening Tea (F&B)",
+                    speaker: "All parallel halls adjourn to D7 Auditorium",
+                },
+                {
+                    id: "closing",
+                    col: "tech",
+                    spanAll: true,
+                    timeLabel: "5:00 PM - 5:30 PM",
+                    start: toMin("5:00 PM"),
+                    end: toMin("5:30 PM"),
+                    hall: "D7 Auditorium",
+                    track: "Closing",
+                    level: "",
+                    title: "Closing Note & Awards Ceremony",
+                    speaker: "All Tracks Converge in D7 Auditorium",
+                },
+            ];
+
+            // State
+            let currentTheme = localStorage.getItem("df26_ctp_theme") || "dark";
+            let activeLane = window.innerWidth < 768 ? "tech" : "ALL";
+            let selectedId = null;
+            let filterSavedOnly = false;
+            let densityIndex = 1;
+            const DENSITIES = [
+                { label: "0.8x", px: 3.0 },
+                { label: "1.0x", px: 3.8 },
+                { label: "1.3x", px: 5.0 },
+            ];
+
+            let savedSet = new Set(
+                JSON.parse(localStorage.getItem("df26_bookmarks") || "[]"),
+            );
+
+            function applyTheme(theme) {
+                currentTheme = theme;
+                document.documentElement.setAttribute("data-theme", theme);
+                localStorage.setItem("df26_ctp_theme", theme);
+
+                const metaColor = document.getElementById("metaThemeColor");
+                if (metaColor) {
+                    metaColor.setAttribute(
+                        "content",
+                        theme === "dark" ? "#11111b" : "#e6e9ef",
+                    );
+                }
+
+                const iconEl = document.getElementById("themeIcon");
+                const labelEl = document.getElementById("themeLabel");
+                if (theme === "dark") {
+                    labelEl.textContent = "dark";
+                    iconEl.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+                } else {
+                    labelEl.textContent = "light";
+                    iconEl.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+                }
+            }
+
+            function toggleTheme() {
+                applyTheme(currentTheme === "dark" ? "light" : "dark");
+            }
+
+            function syncSavedStorage() {
+                localStorage.setItem(
+                    "df26_bookmarks",
+                    JSON.stringify([...savedSet]),
+                );
+                document.getElementById("savedBadgeCount").textContent =
+                    savedSet.size;
+            }
+
+            function toggleBookmark(id, e) {
+                if (e) e.stopPropagation();
+                if (savedSet.has(id)) savedSet.delete(id);
+                else savedSet.add(id);
+                syncSavedStorage();
+                render();
+            }
+
+            function toggleSaveSelected() {
+                if (!selectedId) return;
+                toggleBookmark(selectedId);
+            }
+
+            function toggleSavedFilter() {
+                filterSavedOnly = !filterSavedOnly;
+                document
+                    .getElementById("btnSavedFilter")
+                    .classList.toggle("active", filterSavedOnly);
+                render();
+            }
+
+            function cycleDensity() {
+                densityIndex = (densityIndex + 1) % DENSITIES.length;
+                document.getElementById("btnDensity").textContent =
+                    DENSITIES[densityIndex].label;
+                render();
+            }
+
+            function setLane(laneId) {
+                activeLane = laneId;
+                renderLaneTabs();
+                render();
+            }
+
+            function isOverlapping(a, b) {
+                if (a.id === b.id) return false;
+                return a.start < b.end && a.end > b.start;
+            }
+
+            function bookmarkSvg(filled) {
+                return `<svg width="11" height="11" viewBox="0 0 24 24" fill="${filled ? "currentColor" : "none"}" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>`;
+            }
+
+            function renderLaneTabs() {
+                const mount = document.getElementById("laneTabs");
+                const allTab = `
+        <button class="lane-tab ${activeLane === "ALL" ? "active" : ""}" onclick="setLane('ALL')">
           <span>All Lanes</span>
           <span class="lane-code mono">7</span>
         </button>
       `;
-      const tabs = LANES.map(l => `
-        <button class="lane-tab ${activeLane === l.id ? 'active' : ''}" onclick="setLane('${l.id}')">
+                const tabs = LANES.map(
+                    (l) => `
+        <button class="lane-tab ${activeLane === l.id ? "active" : ""}" onclick="setLane('${l.id}')">
           <span class="lane-dot" style="background:${l.accent};"></span>
           <span>${l.short}</span>
           <span class="lane-code mono">${l.code}</span>
         </button>
-      `).join('');
-      mount.innerHTML = allTab + tabs;
-    }
+      `,
+                ).join("");
+                mount.innerHTML = allTab + tabs;
+            }
 
-    function render() {
-      const px = DENSITIES[densityIndex].px;
-      const totalMins = END_MIN - START_MIN;
-      const canvasHeight = totalMins * px;
-      const q = document.getElementById('searchInput').value.trim().toLowerCase();
+            function render() {
+                const px = DENSITIES[densityIndex].px;
+                const totalMins = END_MIN - START_MIN;
+                const canvasHeight = totalMins * px;
+                const q = document
+                    .getElementById("searchInput")
+                    .value.trim()
+                    .toLowerCase();
 
-      const visibleLanes = activeLane === 'ALL'
-        ? LANES
-        : LANES.filter(l => l.id === activeLane);
+                const visibleLanes =
+                    activeLane === "ALL"
+                        ? LANES
+                        : LANES.filter((l) => l.id === activeLane);
 
-      const gridCols = activeLane === 'ALL'
-        ? `60px repeat(${visibleLanes.length}, minmax(162px, 1fr))`
-        : `60px 1fr`;
+                const gridCols =
+                    activeLane === "ALL"
+                        ? `60px repeat(${visibleLanes.length}, minmax(162px, 1fr))`
+                        : `60px 1fr`;
 
-      // 1. Sticky Column Header
-      const headHtml = `
+                // 1. Sticky Column Header
+                const headHtml = `
         <div class="matrix-head" style="grid-template-columns: ${gridCols};">
           <div class="time-col-head mono">IST</div>
-          ${visibleLanes.map(l => `
+          ${visibleLanes
+              .map(
+                  (l) => `
             <div class="lane-col-head">
               <span class="lane-col-name">
                 <span class="lane-dot" style="background:${l.accent};"></span>
@@ -1133,56 +1825,69 @@
               </span>
               <span class="lane-col-sub mono">${l.sub}</span>
             </div>
-          `).join('')}
+          `,
+              )
+              .join("")}
         </div>
       `;
 
-      // 2. Vertical Time Axis (30m intervals)
-      let axisHtml = '';
-      for (let m = START_MIN; m <= END_MIN; m += 30) {
-        const y = (m - START_MIN) * px;
-        const isHour = m % 60 === 0;
-        axisHtml += `
-          <div class="tick-label mono ${isHour ? '' : 'minor'}" style="top:${y}px;">
-            ${isHour ? fmtMin(m).replace(':00 ', ' ') : ':30'}
+                // 2. Vertical Time Axis (30m intervals)
+                let axisHtml = "";
+                for (let m = START_MIN; m <= END_MIN; m += 30) {
+                    const y = (m - START_MIN) * px;
+                    const isHour = m % 60 === 0;
+                    axisHtml += `
+          <div class="tick-label mono ${isHour ? "" : "minor"}" style="top:${y}px;">
+            ${isHour ? fmtMin(m).replace(":00 ", " ") : ":30"}
           </div>
         `;
-      }
+                }
 
-      // 3. Horizontal Hairline Guides + Active Window Band
-      let guidesHtml = `<div id="activeWindowBand"></div><div id="liveTimeLine"></div>`;
-      for (let m = START_MIN; m <= END_MIN; m += 30) {
-        const y = (m - START_MIN) * px;
-        guidesHtml += `<div class="${m % 60 === 0 ? 'guide-hour' : 'guide-half'}" style="top:${y}px;"></div>`;
-      }
+                // 3. Horizontal Hairline Guides + Active Window Band
+                let guidesHtml = `<div id="activeWindowBand"></div><div id="liveTimeLine"></div>`;
+                for (let m = START_MIN; m <= END_MIN; m += 30) {
+                    const y = (m - START_MIN) * px;
+                    guidesHtml += `<div class="${m % 60 === 0 ? "guide-hour" : "guide-half"}" style="top:${y}px;"></div>`;
+                }
 
-      // 4. Lane Columns with Authentic Empty Spaces
-      const columnsHtml = visibleLanes.map((lane, idx) => {
-        const laneItems = SESSIONS.filter(s => {
-          if (s.spanAll) return idx === 0;
-          return s.col === lane.id;
-        });
+                // 4. Lane Columns with Authentic Empty Spaces
+                const columnsHtml = visibleLanes
+                    .map((lane, idx) => {
+                        const laneItems = SESSIONS.filter((s) => {
+                            if (s.spanAll) return idx === 0;
+                            return s.col === lane.id;
+                        });
 
-        const cardsHtml = laneItems.map(s => {
-          const top = (s.start - START_MIN) * px;
-          const height = Math.max((s.end - s.start) * px - 2, 22);
-          const duration = s.end - s.start;
-          const isSaved = savedSet.has(s.id);
-          const isMicro = duration <= 12;
+                        const cardsHtml = laneItems
+                            .map((s) => {
+                                const top = (s.start - START_MIN) * px;
+                                const height = Math.max(
+                                    (s.end - s.start) * px - 2,
+                                    22,
+                                );
+                                const duration = s.end - s.start;
+                                const isSaved = savedSet.has(s.id);
+                                const isMicro = duration <= 12;
 
-          const matchesSearch = !q ||
-            s.title.toLowerCase().includes(q) ||
-            s.speaker.toLowerCase().includes(q) ||
-            s.timeLabel.toLowerCase().includes(q);
-          const matchesSaved = !filterSavedOnly || isSaved;
-          const dimFilter = (matchesSearch && matchesSaved) ? '' : 'opacity: 0.14;';
+                                const matchesSearch =
+                                    !q ||
+                                    s.title.toLowerCase().includes(q) ||
+                                    s.speaker.toLowerCase().includes(q) ||
+                                    s.timeLabel.toLowerCase().includes(q);
+                                const matchesSaved =
+                                    !filterSavedOnly || isSaved;
+                                const dimFilter =
+                                    matchesSearch && matchesSaved
+                                        ? ""
+                                        : "opacity: 0.14;";
 
-          const spanWidth = (s.spanAll && activeLane === 'ALL')
-            ? `width: calc(${visibleLanes.length * 100}% - 6px);`
-            : '';
+                                const spanWidth =
+                                    s.spanAll && activeLane === "ALL"
+                                        ? `width: calc(${visibleLanes.length * 100}% - 6px);`
+                                        : "";
 
-          if (s.spanAll) {
-            return `
+                                if (s.spanAll) {
+                                    return `
               <div
                 id="slot-${s.id}"
                 data-id="${s.id}"
@@ -1197,10 +1902,10 @@
                 <span class="slot-speaker" style="margin:0;">${s.speaker}</span>
               </div>
             `;
-          }
+                                }
 
-          if (isMicro) {
-            return `
+                                if (isMicro) {
+                                    return `
               <div
                 id="slot-${s.id}"
                 data-id="${s.id}"
@@ -1210,20 +1915,20 @@
                 title="${s.timeLabel} • ${s.title} (${s.speaker})"
               >
                 <div style="display:flex; align-items:center; gap:6px; min-width:0;">
-                  <span class="slot-time mono">${s.timeLabel.split(' - ')[0]}</span>
+                  <span class="slot-time mono">${s.timeLabel.split(" - ")[0]}</span>
                   <span class="slot-title">${s.title}</span>
                 </div>
                 <div class="slot-badges">
                   <span class="conflict-indicator mono">Overlap</span>
-                  <button class="bookmark-btn ${isSaved ? 'saved' : ''}" onclick="toggleBookmark('${s.id}', event)" aria-label="Save">
+                  <button class="bookmark-btn ${isSaved ? "saved" : ""}" onclick="toggleBookmark('${s.id}', event)" aria-label="Save">
                     ${bookmarkSvg(isSaved)}
                   </button>
                 </div>
               </div>
             `;
-          }
+                                }
 
-          return `
+                                return `
             <div
               id="slot-${s.id}"
               data-id="${s.id}"
@@ -1235,21 +1940,23 @@
                 <span class="slot-time mono">${s.timeLabel}</span>
                 <div class="slot-badges">
                   <span class="conflict-indicator mono">Overlap</span>
-                  <button class="bookmark-btn ${isSaved ? 'saved' : ''}" onclick="toggleBookmark('${s.id}', event)" aria-label="Save">
+                  <button class="bookmark-btn ${isSaved ? "saved" : ""}" onclick="toggleBookmark('${s.id}', event)" aria-label="Save">
                     ${bookmarkSvg(isSaved)}
                   </button>
                 </div>
               </div>
               <div class="slot-title">${s.title}</div>
-              ${duration >= 25 ? `<div class="slot-speaker">${s.speaker}</div>` : ''}
+              ${duration >= 25 ? `<div class="slot-speaker">${s.speaker}</div>` : ""}
             </div>
           `;
-        }).join('');
+                            })
+                            .join("");
 
-        return `<div class="lane-column" style="height:${canvasHeight}px;">${cardsHtml}</div>`;
-      }).join('');
+                        return `<div class="lane-column" style="height:${canvasHeight}px;">${cardsHtml}</div>`;
+                    })
+                    .join("");
 
-      document.getElementById('calendarMount').innerHTML = `
+                document.getElementById("calendarMount").innerHTML = `
         ${headHtml}
         <div class="matrix-canvas" style="grid-template-columns: ${gridCols}; height:${canvasHeight}px;">
           <div class="time-axis">${axisHtml}</div>
@@ -1258,84 +1965,105 @@
         </div>
       `;
 
-      syncSelectionStates();
-      updateLiveLine();
-    }
+                syncSelectionStates();
+                updateLiveLine();
+            }
 
-    function selectSession(id, e) {
-      if (e) e.stopPropagation();
-      selectedId = (selectedId === id) ? null : id;
-      syncSelectionStates();
-    }
+            function selectSession(id, e) {
+                if (e) e.stopPropagation();
+                selectedId = selectedId === id ? null : id;
+                syncSelectionStates();
+            }
 
-    function clearSelection() {
-      if (!selectedId) return;
-      selectedId = null;
-      syncSelectionStates();
-    }
+            function clearSelection() {
+                if (!selectedId) return;
+                selectedId = null;
+                syncSelectionStates();
+            }
 
-    function syncSelectionStates() {
-      const px = DENSITIES[densityIndex].px;
-      const cards = document.querySelectorAll('.slot-card');
-      const sheet = document.getElementById('inspectorSheet');
-      const band = document.getElementById('activeWindowBand');
+            function syncSelectionStates() {
+                const px = DENSITIES[densityIndex].px;
+                const cards = document.querySelectorAll(".slot-card");
+                const sheet = document.getElementById("inspectorSheet");
+                const band = document.getElementById("activeWindowBand");
 
-      if (!selectedId) {
-        sheet.classList.remove('is-open');
-        if (band) band.style.display = 'none';
-        cards.forEach(c => c.classList.remove('is-selected', 'is-overlap', 'is-dimmed'));
-        return;
-      }
+                if (!selectedId) {
+                    sheet.classList.remove("is-open");
+                    if (band) band.style.display = "none";
+                    cards.forEach((c) =>
+                        c.classList.remove(
+                            "is-selected",
+                            "is-overlap",
+                            "is-dimmed",
+                        ),
+                    );
+                    return;
+                }
 
-      const sel = SESSIONS.find(s => s.id === selectedId);
-      if (!sel) return;
+                const sel = SESSIONS.find((s) => s.id === selectedId);
+                if (!sel) return;
 
-      if (band) {
-        band.style.display = 'block';
-        band.style.top = `${(sel.start - START_MIN) * px}px`;
-        band.style.height = `${(sel.end - sel.start) * px}px`;
-      }
+                if (band) {
+                    band.style.display = "block";
+                    band.style.top = `${(sel.start - START_MIN) * px}px`;
+                    band.style.height = `${(sel.end - sel.start) * px}px`;
+                }
 
-      const conflicts = SESSIONS.filter(s => isOverlapping(sel, s)).sort((a, b) => a.start - b.start);
-      const conflictIds = new Set(conflicts.map(c => c.id));
+                const conflicts = SESSIONS.filter((s) =>
+                    isOverlapping(sel, s),
+                ).sort((a, b) => a.start - b.start);
+                const conflictIds = new Set(conflicts.map((c) => c.id));
 
-      cards.forEach(c => {
-        const id = c.dataset.id;
-        c.classList.remove('is-selected', 'is-overlap', 'is-dimmed');
-        if (id === selectedId) c.classList.add('is-selected');
-        else if (conflictIds.has(id)) c.classList.add('is-overlap');
-        else c.classList.add('is-dimmed');
-      });
+                cards.forEach((c) => {
+                    const id = c.dataset.id;
+                    c.classList.remove(
+                        "is-selected",
+                        "is-overlap",
+                        "is-dimmed",
+                    );
+                    if (id === selectedId) c.classList.add("is-selected");
+                    else if (conflictIds.has(id)) c.classList.add("is-overlap");
+                    else c.classList.add("is-dimmed");
+                });
 
-      // Populate Bottom Drawer
-      document.getElementById('sheetTime').textContent = sel.timeLabel;
-      document.getElementById('sheetHall').textContent = `${sel.hall} • ${sel.track}`;
-      const levelEl = document.getElementById('sheetLevel');
-      if (sel.level) {
-        levelEl.textContent = sel.level;
-        levelEl.style.display = 'inline-block';
-      } else {
-        levelEl.style.display = 'none';
-      }
+                // Populate Bottom Drawer
+                document.getElementById("sheetTime").textContent =
+                    sel.timeLabel;
+                document.getElementById("sheetHall").textContent =
+                    `${sel.hall} • ${sel.track}`;
+                const levelEl = document.getElementById("sheetLevel");
+                if (sel.level) {
+                    levelEl.textContent = sel.level;
+                    levelEl.style.display = "inline-block";
+                } else {
+                    levelEl.style.display = "none";
+                }
 
-      document.getElementById('sheetTitle').textContent = sel.title;
-      document.getElementById('sheetSpeaker').textContent = sel.speaker;
+                document.getElementById("sheetTitle").textContent = sel.title;
+                document.getElementById("sheetSpeaker").textContent =
+                    sel.speaker;
 
-      const saveBtn = document.getElementById('sheetSaveBtn');
-      const isSaved = savedSet.has(sel.id);
-      saveBtn.classList.toggle('active', isSaved);
-      saveBtn.querySelector('span').textContent = isSaved ? 'Saved' : 'Save';
+                const saveBtn = document.getElementById("sheetSaveBtn");
+                const isSaved = savedSet.has(sel.id);
+                saveBtn.classList.toggle("active", isSaved);
+                saveBtn.querySelector("span").textContent = isSaved
+                    ? "Saved"
+                    : "Save";
 
-      document.getElementById('sheetConflictCount').textContent = conflicts.length;
-      const listMount = document.getElementById('sheetConflictList');
+                document.getElementById("sheetConflictCount").textContent =
+                    conflicts.length;
+                const listMount = document.getElementById("sheetConflictList");
 
-      if (!conflicts.length) {
-        listMount.innerHTML = `<div style="color:var(--text-muted); font-size:12px; padding:4px 0;">No overlapping sessions during this time window.</div>`;
-      } else {
-        listMount.innerHTML = conflicts.map(c => {
-          const laneMeta = LANES.find(l => l.id === c.col);
-          const leftColor = laneMeta ? laneMeta.accent : 'var(--state-conflict)';
-          return `
+                if (!conflicts.length) {
+                    listMount.innerHTML = `<div style="color:var(--text-muted); font-size:12px; padding:4px 0;">No overlapping sessions during this time window.</div>`;
+                } else {
+                    listMount.innerHTML = conflicts
+                        .map((c) => {
+                            const laneMeta = LANES.find((l) => l.id === c.col);
+                            const leftColor = laneMeta
+                                ? laneMeta.accent
+                                : "var(--state-conflict)";
+                            return `
             <div class="conflict-card" style="border-left-color:${leftColor};" onclick="jumpToConflict('${c.id}', '${c.col}', event)">
               <div style="display:flex; justify-content:space-between; font-size:10px; color:var(--text-secondary);" class="mono">
                 <span>${c.timeLabel}</span>
@@ -1345,40 +2073,45 @@
               <div style="font-size:11px; color:var(--text-secondary); margin-top:1px;">${c.speaker}</div>
             </div>
           `;
-        }).join('');
-      }
+                        })
+                        .join("");
+                }
 
-      sheet.classList.add('is-open');
-    }
+                sheet.classList.add("is-open");
+            }
 
-    function jumpToConflict(id, col, e) {
-      if (e) e.stopPropagation();
-      if (activeLane !== 'ALL' && activeLane !== col) {
-        activeLane = col;
-        renderLaneTabs();
-      }
-      selectedId = id;
-      render();
-      const el = document.getElementById(`slot-${id}`);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
+            function jumpToConflict(id, col, e) {
+                if (e) e.stopPropagation();
+                if (activeLane !== "ALL" && activeLane !== col) {
+                    activeLane = col;
+                    renderLaneTabs();
+                }
+                selectedId = id;
+                render();
+                const el = document.getElementById(`slot-${id}`);
+                if (el)
+                    el.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
 
-    function updateLiveLine() {
-      const now = new Date();
-      const mins = now.getHours() * 60 + now.getMinutes();
-      const line = document.getElementById('liveTimeLine');
-      if (!line) return;
-      if (mins >= START_MIN && mins <= END_MIN) {
-        line.style.display = 'block';
-        line.style.top = `${(mins - START_MIN) * DENSITIES[densityIndex].px}px`;
-      } else {
-        line.style.display = 'none';
-      }
-    }
+            function updateLiveLine() {
+                const now = new Date();
+                const mins = now.getHours() * 60 + now.getMinutes();
+                const line = document.getElementById("liveTimeLine");
+                if (!line) return;
+                if (mins >= START_MIN && mins <= END_MIN) {
+                    line.style.display = "block";
+                    line.style.top = `${(mins - START_MIN) * DENSITIES[densityIndex].px}px`;
+                } else {
+                    line.style.display = "none";
+                }
+            }
 
-    // Offline Service Worker for reliable venue usage
-    if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
-      const sw = `
+            // Offline Service Worker for reliable venue usage
+            if (
+                "serviceWorker" in navigator &&
+                window.location.protocol.startsWith("http")
+            ) {
+                const sw = `
         const CACHE = 'df26-catppuccin-v1';
         self.addEventListener('install', e => self.skipWaiting());
         self.addEventListener('activate', e => e.waitUntil(self.clients.claim()));
@@ -1390,19 +2123,25 @@
           );
         });
       `;
-      navigator.serviceWorker.register(URL.createObjectURL(new Blob([sw], { type: 'application/javascript' }))).catch(() => {});
-    }
+                navigator.serviceWorker
+                    .register(
+                        URL.createObjectURL(
+                            new Blob([sw], { type: "application/javascript" }),
+                        ),
+                    )
+                    .catch(() => {});
+            }
 
-    window.addEventListener('keydown', e => {
-      if (e.key === 'Escape') clearSelection();
-    });
+            window.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") clearSelection();
+            });
 
-    // Boot
-    applyTheme(currentTheme);
-    syncSavedStorage();
-    renderLaneTabs();
-    render();
-    setInterval(updateLiveLine, 60000);
-  </script>
-</body>
+            // Boot
+            applyTheme(currentTheme);
+            syncSavedStorage();
+            renderLaneTabs();
+            render();
+            setInterval(updateLiveLine, 60000);
+        </script>
+    </body>
 </html>
