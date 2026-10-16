@@ -2,14 +2,1082 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="0; url=devfest2026-schedule.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="DevFest '26" />
   <title>DevFest Chennai 2026 — Timetable</title>
-  <script>
-    window.location.replace("devfest2026-schedule.html" + window.location.search + window.location.hash);
-  </script>
+
+  <!-- Inline Web App Manifest for Add-to-Home-Screen PWA -->
+  <link rel="manifest" href='data:application/manifest+json,{"name":"DevFest Chennai 2026 Schedule","short_name":"DevFest 26","start_url":".","display":"standalone","background_color":"#0a0a0a","theme_color":"#0a0a0a","icons":[{"src":"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%230a0a0a%22/><text x=%2250%22 y=%2266%22 font-family=%22monospace%22 font-size=%2248%22 font-weight=%22bold%22 fill=%22%23ffffff%22 text-anchor=%22middle%22>DF</text></svg>","sizes":"192x192","type":"image/svg+xml"}]}' />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --surface: #121212;
+      --surface-elevated: #1a1a1a;
+      --border: #242424;
+      --border-subtle: #181818;
+      --text: #f5f5f5;
+      --text-muted: #888888;
+      --text-dim: #555555;
+      --accent: #ffffff;
+      --conflict: #f59e0b;
+      --conflict-bg: rgba(245, 158, 11, 0.09);
+      --selected-bg: #ffffff;
+      --selected-text: #0a0a0a;
+      --px-per-min: 3.6;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 14px;
+      line-height: 1.4;
+      overscroll-behavior-y: none;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Top Bar */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: rgba(10, 10, 10, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 14px;
+    }
+
+    .topbar-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+
+    .brand span {
+      font-size: 11px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .search-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      width: 150px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .search-box:focus {
+      border-color: var(--text-muted);
+    }
+
+    .btn-icon {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 6px 9px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+    .btn-icon.active {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+    }
+
+    /* Sticky Track Switcher (Mobile-First) */
+    .track-nav {
+      position: sticky;
+      top: 49px;
+      z-index: 55;
+      background: rgba(10, 10, 10, 0.95);
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .track-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .track-nav-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: flex;
+      padding: 0 10px;
+    }
+
+    .track-tab {
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--text-muted);
+      padding: 10px 12px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .track-tab:hover {
+      color: var(--text);
+    }
+    .track-tab.active {
+      color: var(--text);
+      border-bottom-color: var(--text);
+      font-weight: 600;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    /* Calendar Viewport */
+    .calendar-wrapper {
+      max-width: 1440px;
+      margin: 0 auto;
+      overflow-x: auto;
+      position: relative;
+      padding-bottom: 220px;
+    }
+
+    .calendar-surface {
+      display: grid;
+      position: relative;
+      min-width: 100%;
+    }
+
+    /* Column Header Row inside Matrix */
+    .matrix-header {
+      display: grid;
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .gutter-head {
+      border-right: 1px solid var(--border);
+      padding: 8px 6px;
+      font-size: 10px;
+      color: var(--text-dim);
+      text-align: right;
+    }
+
+    .col-head {
+      padding: 8px 10px;
+      border-right: 1px solid var(--border);
+      min-width: 0;
+    }
+    .col-head:last-child {
+      border-right: none;
+    }
+    .col-head-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .col-head-sub {
+      font-size: 10px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Proportional Time Body */
+    .matrix-body {
+      display: grid;
+      position: relative;
+    }
+
+    .time-gutter {
+      position: relative;
+      border-right: 1px solid var(--border);
+      background: var(--bg);
+      user-select: none;
+      z-index: 20;
+    }
+
+    .time-label {
+      position: absolute;
+      right: 8px;
+      transform: translateY(-50%);
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+    .time-label.half {
+      color: var(--text-dim);
+      font-size: 9px;
+    }
+
+    /* Background Grid Lines */
+    .grid-lines {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 56px;
+      right: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .line-hour {
+      position: absolute;
+      left: 0;
+      right: 0;
+      border-top: 1px solid var(--border);
+    }
+    .line-half {
+      position: absolute;
+      left: 0;
+      right: 0;
+      border-top: 1px dashed var(--border-subtle);
+    }
+
+    /* Active Selection Time-Slice Band */
+    #timeSliceBand {
+      position: absolute;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.035);
+      border-top: 1px solid rgba(255, 255, 255, 0.4);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+      pointer-events: none;
+      z-index: 4;
+      display: none;
+    }
+
+    /* Live Current Time Red Line */
+    #nowIndicator {
+      position: absolute;
+      left: 0;
+      right: 0;
+      border-top: 1.5px solid #ef4444;
+      pointer-events: none;
+      z-index: 35;
+      display: none;
+    }
+    #nowIndicator::before {
+      content: '';
+      position: absolute;
+      left: -4px;
+      top: -4px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #ef4444;
+    }
+
+    /* Track Columns */
+    .track-col {
+      position: relative;
+      border-right: 1px solid var(--border-subtle);
+      z-index: 10;
+    }
+    .track-col:last-child {
+      border-right: none;
+    }
+
+    /* Calendar Session Block */
+    .ev-block {
+      position: absolute;
+      left: 4px;
+      right: 4px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left-width: 3px;
+      border-radius: 5px;
+      padding: 5px 8px;
+      cursor: pointer;
+      overflow: hidden;
+      transition: opacity 0.15s ease, transform 0.12s ease, border-color 0.15s ease, background-color 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .ev-block:hover {
+      border-color: #555;
+      z-index: 25;
+    }
+
+    .ev-block.span-all {
+      background: rgba(20, 20, 20, 0.9);
+      border-left-color: #777 !important;
+      z-index: 15;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 12px;
+    }
+
+    /* Interactive States */
+    .ev-block.is-selected {
+      background: var(--selected-bg) !important;
+      color: var(--selected-text) !important;
+      border-color: var(--selected-bg) !important;
+      z-index: 40 !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+    }
+    .ev-block.is-selected .ev-time,
+    .ev-block.is-selected .ev-title,
+    .ev-block.is-selected .ev-meta {
+      color: var(--selected-text) !important;
+    }
+
+    .ev-block.is-overlap {
+      background: var(--conflict-bg) !important;
+      border-color: var(--conflict) !important;
+      z-index: 30 !important;
+    }
+
+    .ev-block.is-dimmed {
+      opacity: 0.18;
+    }
+
+    .ev-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4px;
+      margin-bottom: 2px;
+    }
+
+    .ev-time {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .ev-star {
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      padding: 0 2px;
+      font-size: 12px;
+      line-height: 1;
+      cursor: pointer;
+    }
+    .ev-star.starred {
+      color: #f59e0b;
+    }
+    .ev-block.is-selected .ev-star.starred {
+      color: #d97706;
+    }
+
+    .ev-title {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.25;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .ev-meta {
+      font-size: 10.5px;
+      color: var(--text-muted);
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .conflict-tag {
+      display: none;
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--conflict);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .ev-block.is-overlap .conflict-tag {
+      display: inline;
+    }
+
+    /* Bottom Sheet Crossover Inspector */
+    .bottom-sheet {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 70;
+      background: rgba(16, 16, 16, 0.97);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid #333;
+      transform: translateY(105%);
+      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 12px 14px calc(12px + env(safe-area-inset-bottom));
+      max-height: 52vh;
+      overflow-y: auto;
+    }
+    .bottom-sheet.open {
+      transform: translateY(0);
+    }
+
+    .sheet-inner {
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    .sheet-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sheet-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin: 2px 0;
+      color: var(--text);
+    }
+
+    .sheet-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .overlap-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .overlap-item {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--conflict);
+      border-radius: 5px;
+      padding: 7px 10px;
+      cursor: pointer;
+    }
+    .overlap-item:hover {
+      border-color: var(--conflict);
+    }
+
+    @media (max-width: 640px) {
+      .brand span {
+        display: none;
+      }
+      .search-box {
+        width: 115px;
+      }
+      .ev-title {
+        font-size: 12px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <p>Redirecting to <a href="devfest2026-schedule.html">devfest2026-schedule.html</a>...</p>
+
+  <!-- Top Bar -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <h1>DevFest Chennai '26</h1>
+        <span>Sat, 17 Oct • IITM Research Park</span>
+      </div>
+
+      <div class="actions">
+        <input
+          id="searchInput"
+          type="search"
+          class="search-box"
+          placeholder="Filter..."
+          oninput="render()"
+        />
+        <button id="btnSaved" class="btn-icon" onclick="toggleSavedFilter()">
+          ★ <span id="savedCount">0</span>
+        </button>
+        <button id="btnZoom" class="btn-icon mono" onclick="cycleZoom()" title="Toggle Vertical Spacing">
+          1x
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile-Friendly Track / Hall Switcher -->
+  <nav class="track-nav" id="trackNav"></nav>
+
+  <!-- Main Proportional Calendar Canvas -->
+  <main class="calendar-wrapper" onclick="clearSelection()">
+    <div id="calendarContainer" class="calendar-surface"></div>
+  </main>
+
+  <!-- Bottom Sheet: Selected Session & Crossover Conflicts -->
+  <aside id="inspectorSheet" class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="sheet-inner">
+      <div class="sheet-top">
+        <div style="min-width:0;">
+          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+            <span id="sheetTime" class="mono" style="font-size:11px; font-weight:600; color:#fff;"></span>
+            <span id="sheetHall" style="font-size:11px; color:var(--text-muted);"></span>
+            <span id="sheetLevel" style="font-size:10px; padding:1px 6px; border:1px solid var(--border); border-radius:4px; color:var(--text-muted);"></span>
+          </div>
+          <div id="sheetTitle" class="sheet-title"></div>
+          <div id="sheetSpeaker" class="sheet-sub"></div>
+        </div>
+
+        <div style="display:flex; gap:6px; shrink:0;">
+          <button id="sheetStarBtn" class="btn-icon" onclick="toggleStarSelected()">★ Save</button>
+          <button class="btn-icon" onclick="clearSelection()">✕</button>
+        </div>
+      </div>
+
+      <div>
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-top:10px;">
+          <span class="mono" style="font-size:10px; text-transform:uppercase; letter-spacing:0.06em; color:var(--conflict);">
+            Concurrent / Overlapping Sessions (<span id="sheetOverlapCount">0</span>)
+          </span>
+          <span style="font-size:10px; color:var(--text-dim);">Tap any card to switch</span>
+        </div>
+        <div id="sheetOverlapList" class="overlap-grid"></div>
+      </div>
+    </div>
+  </aside>
+
+  <script>
+    // Time helpers
+    const START_MIN = 8 * 60;       // 08:00 AM (480)
+    const END_MIN   = 17 * 60 + 30; // 05:30 PM (1050)
+
+    function toMin(str) {
+      const [t, mod] = str.trim().split(' ');
+      let [h, m] = t.split(':').map(Number);
+      if (mod === 'PM' && h !== 12) h += 12;
+      if (mod === 'AM' && h === 12) h = 0;
+      return h * 60 + m;
+    }
+
+    function fmtMin(m) {
+      let h = Math.floor(m / 60);
+      let mins = m % 60;
+      const mod = h >= 12 ? 'PM' : 'AM';
+      if (h > 12) h -= 12;
+      if (h === 0) h = 12;
+      return `${h}:${mins.toString().padStart(2, '0')} ${mod}`;
+    }
+
+    // Minimalist Track Definitions with subtle indicator colors
+    const TRACKS = [
+      { id: 'tech',      short: 'D7 Main',      name: 'D7 Auditorium',       sub: 'Tech Track',      color: '#38bdf8' },
+      { id: 'deeptech',  short: 'Deep Tech',    name: 'D7 Amphitheater',     sub: 'Deep Tech',       color: '#a855f7' },
+      { id: 'lightning', short: 'D6 Lightning', name: 'D6 Multi-purpose',    sub: 'Lightning Talks', color: '#f97316' },
+      { id: 'agentwars', short: 'D6 Wars',      name: 'D6 Multi-purpose',    sub: 'Agent Wars',      color: '#eab308' },
+      { id: 'vibe',      short: 'D6 Vibe',      name: 'D6 Multi-purpose',    sub: 'Vibe Lounge',     color: '#84cc16' },
+      { id: 'workshop',  short: 'Raman Lab',    name: 'Raman Hall',          sub: 'Workshops',       color: '#10b981' },
+      { id: 'lounges',   short: 'Lounges',      name: 'D7 Pre-Function',     sub: 'Creators/Meetup', color: '#ec4899' }
+    ];
+
+    // Official Agenda Data (https://devfest.gdgchennai.in/agenda)
+    const SESSIONS = [
+      // Common Check-in
+      { id: 'checkin', col: 'lounges', spanAll: true, timeLabel: '8:00 AM - 9:00 AM', start: toMin('8:00 AM'), end: toMin('9:00 AM'), hall: 'D7 Pre-Function Area', track: 'General', level: '', title: 'Check-in & Badge Collection', speaker: 'Welcome kits, registration & breakfast coffee' },
+
+      // D7 Auditorium (Tech)
+      { id: 'welcome', col: 'tech', timeLabel: '9:00 AM - 9:15 AM', start: toMin('9:00 AM'), end: toMin('9:15 AM'), hall: 'D7 Auditorium', track: 'Tech', level: '', title: 'Welcome Note', speaker: 'GDG Chennai Organizing Team' },
+      { id: 'keynote', col: 'tech', timeLabel: '9:15 AM - 9:45 AM', start: toMin('9:15 AM'), end: toMin('9:45 AM'), hall: 'D7 Auditorium', track: 'Tech', level: '', title: 'Keynote', speaker: 'Swaathi Kakarla & Karthik Kamalakannan' },
+      { id: 'next-billion', col: 'tech', timeLabel: '9:45 AM - 10:15 AM', start: toMin('9:45 AM'), end: toMin('10:15 AM'), hall: 'D7 Auditorium', track: 'Tech', level: '', title: "The Next Billion Users Won't Be Human", speaker: 'Sanju Sivalingam' },
+      { id: 'qualcomm-dev', col: 'tech', timeLabel: '10:15 AM - 10:25 AM', start: toMin('10:15 AM'), end: toMin('10:25 AM'), hall: 'D7 Auditorium', track: 'Tech', level: 'Beginner', title: 'Qualcomm as a Dev-AI Native Company', speaker: 'Kartikey Rawat' },
+      { id: 'poshmark-ai', col: 'tech', timeLabel: '10:25 AM - 10:35 AM', start: toMin('10:25 AM'), end: toMin('10:35 AM'), hall: 'D7 Auditorium', track: 'Tech', level: 'Intermediate', title: 'From Models to Decisions: AI Reshaping Poshmark', speaker: 'Manu Vishwakarma & Shreya Sevelar' },
+      // Empty 10:35 - 10:45 AM
+      { id: 'kotlin-ota', col: 'tech', timeLabel: '10:45 AM - 11:10 AM', start: toMin('10:45 AM'), end: toMin('11:10 AM'), hall: 'D7 Auditorium', track: 'Tech', level: 'Intermediate', title: 'Kotlin Over the Air: Android/KMP Delivery', speaker: 'Aditya Shinde' },
+      { id: 'gemma-101', col: 'tech', timeLabel: '11:10 AM - 11:35 AM', start: toMin('11:10 AM'), end: toMin('11:35 AM'), hall: 'D7 Auditorium', track: 'Tech', level: 'Expert', title: 'Gemma 101: Fine-Tuning Open Models with LoRA', speaker: 'Neeraj Pathak' },
+      { id: 'owasp-nettacker', col: 'tech', timeLabel: '11:35 AM - 12:00 PM', start: toMin('11:35 AM'), end: toMin('12:00 PM'), hall: 'D7 Auditorium', track: 'Tech', level: '', title: 'OWASP Nettacker for Security Testing', speaker: 'Achintya Jai' },
+      { id: 'beyond-happy-path', col: 'tech', timeLabel: '12:00 PM - 12:25 PM', start: toMin('12:00 PM'), end: toMin('12:25 PM'), hall: 'D7 Auditorium', track: 'Tech', level: 'Intermediate', title: 'Beyond the Happy Path: Production Agent Guardrails', speaker: 'Saurabh Mishra' },
+
+      // D7 Amphitheater (Deep Tech)
+      { id: 'city-breathe', col: 'deeptech', timeLabel: '10:45 AM - 11:20 AM', start: toMin('10:45 AM'), end: toMin('11:20 AM'), hall: 'D7 Amphitheater', track: 'Deep Tech', level: 'Beginner', title: 'Can AI Help a City Breathe?', speaker: 'Dishant Parakh' },
+      { id: 'physical-ai-trust', col: 'deeptech', timeLabel: '11:20 AM - 11:55 AM', start: toMin('11:20 AM'), end: toMin('11:55 AM'), hall: 'D7 Amphitheater', track: 'Deep Tech', level: 'Intermediate', title: 'When AI Leaves the Lab: Trusting Physical AI', speaker: 'Pulkit Verma' },
+      { id: 'water-pipeline', col: 'deeptech', timeLabel: '11:55 AM - 12:30 PM', start: toMin('11:55 AM'), end: toMin('12:30 PM'), hall: 'D7 Amphitheater', track: 'Deep Tech', level: 'Intermediate', title: 'Automatic Defect Detection of Water/Sewer Pipeline', speaker: 'Dr Moumita Mukherjee' },
+
+      // D6 Lightning Talks
+      { id: 'android-perf', col: 'lightning', timeLabel: '11:00 AM - 11:20 AM', start: toMin('11:00 AM'), end: toMin('11:20 AM'), hall: 'D6 Multi-purpose Hall', track: 'Lightning', level: 'Intermediate', title: 'Simplified Performance Debugging on Android', speaker: 'Shangeeth Sivan Adiyapatham' },
+      { id: 'ai-sres', col: 'lightning', timeLabel: '11:25 AM - 11:45 AM', start: toMin('11:25 AM'), end: toMin('11:45 AM'), hall: 'D6 Multi-purpose Hall', track: 'Lightning', level: '', title: 'AI Assisted SREs Are a Thing!', speaker: 'Imran Roshan' },
+      { id: 'local-gemma', col: 'lightning', timeLabel: '11:50 AM - 12:10 PM', start: toMin('11:50 AM'), end: toMin('12:10 PM'), hall: 'D6 Multi-purpose Hall', track: 'Lightning', level: 'Beginner', title: 'Local AI: The Google Gemma Edition', speaker: 'Gokulbarath N' },
+      { id: 'infra-agentic', col: 'lightning', timeLabel: '12:15 PM - 12:35 PM', start: toMin('12:15 PM'), end: toMin('12:35 PM'), hall: 'D6 Multi-purpose Hall', track: 'Lightning', level: 'Expert', title: 'Rethinking Infrastructure for Agentic Workloads', speaker: 'Dhanush Kandhan' },
+
+      // D6 Agent Wars
+      { id: 'wars-signup', col: 'agentwars', timeLabel: '11:00 AM - 11:30 AM', start: toMin('11:00 AM'), end: toMin('11:30 AM'), hall: 'D6 Multi-purpose Hall', track: 'Agent Wars', level: 'Intermediate', title: 'Agent Wars: Signup & Qualifier', speaker: 'Live Arena' },
+      { id: 'wars-qual', col: 'agentwars', timeLabel: '11:30 AM - 12:00 PM', start: toMin('11:30 AM'), end: toMin('12:00 PM'), hall: 'D6 Multi-purpose Hall', track: 'Agent Wars', level: 'Intermediate', title: 'Agent Wars: Tournament Qualifiers', speaker: 'Live Arena' },
+      { id: 'wars-qual-ext', col: 'agentwars', timeLabel: '12:00 PM - 12:40 PM', start: toMin('12:00 PM'), end: toMin('12:40 PM'), hall: 'D6 Multi-purpose Hall', track: 'Agent Wars', level: 'Intermediate', title: 'Agent Wars: Qualifiers Extended', speaker: 'Live Arena' },
+
+      // D6 Vibe Lounge
+      { id: 'vibe-am', col: 'vibe', timeLabel: '11:00 AM - 12:00 PM', start: toMin('11:00 AM'), end: toMin('12:00 PM'), hall: 'D6 Multi-purpose Hall', track: 'Vibe Lounge', level: 'Beginner', title: 'Vibe Lounge', speaker: 'Open Coding Lounge' },
+      { id: 'vibe-noon', col: 'vibe', timeLabel: '12:00 PM - 12:35 PM', start: toMin('12:00 PM'), end: toMin('12:35 PM'), hall: 'D6 Multi-purpose Hall', track: 'Vibe Lounge', level: 'Beginner', title: 'Vibe Coding Lounge', speaker: 'Open Coding Lounge' },
+
+      // Raman Hall Workshop
+      { id: 'offload-testing', col: 'workshop', timeLabel: '11:00 AM - 12:30 PM', start: toMin('11:00 AM'), end: toMin('12:30 PM'), hall: 'Raman Hall', track: 'Workshop', level: 'Beginner', title: 'Offload Testing to Agents', speaker: 'Somasundaram Mahesh' },
+
+      // Pre-Function Lounges
+      { id: 'lounges-am', col: 'lounges', timeLabel: '10:45 AM - 12:25 PM', start: toMin('10:45 AM'), end: toMin('12:25 PM'), hall: 'D7 Pre-Function Area', track: 'Lounges', level: 'Beginner', title: 'Creators & Meetup Lounge', speaker: 'Podcasting, Spotlights & Community Meetups' },
+
+      // Common Lunch Break (Note: 1:45 PM - 2:00 PM is empty transition space)
+      { id: 'lunch', col: 'lounges', spanAll: true, timeLabel: '12:30 PM - 1:45 PM', start: toMin('12:30 PM'), end: toMin('1:45 PM'), hall: 'Food Courts', track: 'Break', level: '', title: 'Lunch & Exhibition Break', speaker: 'All tracks pause; sessions resume at 2:00 PM' },
+
+      // AFTERNOON
+      // D7 Auditorium
+      { id: 'webmcp', col: 'tech', timeLabel: '2:00 PM - 2:25 PM', start: toMin('2:00 PM'), end: toMin('2:25 PM'), hall: 'D7 Auditorium', track: 'Tech', level: 'Intermediate', title: "Don't Let AI Agents Push Your Buttons: WebMCP", speaker: 'Jeeththenthar L' },
+      { id: 'gemini-nano', col: 'tech', timeLabel: '2:25 PM - 2:50 PM', start: toMin('2:25 PM'), end: toMin('2:50 PM'), hall: 'D7 Auditorium', track: 'Tech', level: '', title: 'From Receipts to Smart Search: Gemini Nano on Android', speaker: 'Dinoy Raj' },
+      { id: 'tokenomics', col: 'tech', timeLabel: '2:50 PM - 3:15 PM', start: toMin('2:50 PM'), end: toMin('3:15 PM'), hall: 'D7 Auditorium', track: 'Tech', level: 'Intermediate', title: 'Tokenomics: Cutting Costs in Multi-Agent AI', speaker: 'Bhargav Patel' },
+      { id: 'firebase-ai', col: 'tech', timeLabel: '3:15 PM - 3:40 PM', start: toMin('3:15 PM'), end: toMin('3:40 PM'), hall: 'D7 Auditorium', track: 'Tech', level: 'Beginner', title: 'Secure Frontend AI: Firebase AI Logic & Gemini', speaker: 'Srushti Raybhoge' },
+      { id: 'goldrush-ai', col: 'tech', timeLabel: '3:40 PM - 4:05 PM', start: toMin('3:40 PM'), end: toMin('4:05 PM'), hall: 'D7 Auditorium', track: 'Tech', level: 'Beginner', title: 'Opportunities in AI: Culture of Goldrush in California', speaker: 'Hariprasad Sudharshan' },
+      { id: 'lead-gen-gemini', col: 'tech', timeLabel: '4:05 PM - 4:30 PM', start: toMin('4:05 PM'), end: toMin('4:30 PM'), hall: 'D7 Auditorium', track: 'Tech', level: 'Beginner', title: 'Using Gemini & AI Studio to Build a B2B Lead Gen Engine', speaker: 'Varun Poladiya' },
+
+      // D7 Amphitheater
+      { id: 'malware-deepfake', col: 'deeptech', timeLabel: '2:00 PM - 2:35 PM', start: toMin('2:00 PM'), end: toMin('2:35 PM'), hall: 'D7 Amphitheater', track: 'Deep Tech', level: 'Intermediate', title: 'From Malware Images to Deepfake Detection', speaker: 'Dr Lakshmanan Nataraj' },
+      { id: 'ai-vr-health', col: 'deeptech', timeLabel: '2:35 PM - 3:10 PM', start: toMin('2:35 PM'), end: toMin('3:10 PM'), hall: 'D7 Amphitheater', track: 'Deep Tech', level: 'Beginner', title: 'AI & VR for Healthcare', speaker: 'Dr Nimeshika Jayachandran' },
+      { id: 'ml-physical-world', col: 'deeptech', timeLabel: '3:10 PM - 4:30 PM', start: toMin('3:10 PM'), end: toMin('4:30 PM'), hall: 'D7 Amphitheater', track: 'Deep Tech', level: 'Intermediate', title: 'Machine Learning the Physical World (Lecture & Q&A)', speaker: 'Dr Ayana Ghosh' },
+
+      // D6 Lightning Talks
+      { id: 'ai-native-prod', col: 'lightning', timeLabel: '2:00 PM - 2:20 PM', start: toMin('2:00 PM'), end: toMin('2:20 PM'), hall: 'D6 Multi-purpose Hall', track: 'Lightning', level: 'Beginner', title: 'Lessons from Building an AI Native Product Ground Up', speaker: 'Rashmi Asokan' },
+      { id: 'edge-continuum', col: 'lightning', timeLabel: '2:25 PM - 2:45 PM', start: toMin('2:25 PM'), end: toMin('2:45 PM'), hall: 'D6 Multi-purpose Hall', track: 'Lightning', level: 'Intermediate', title: 'Open Source On-Device Inference Across Edge Continuum', speaker: 'Aakash Dhakshnamoorthy' },
+      { id: 'privacy-gemma4', col: 'lightning', timeLabel: '2:50 PM - 3:10 PM', start: toMin('2:50 PM'), end: toMin('3:10 PM'), hall: 'D6 Multi-purpose Hall', track: 'Lightning', level: 'Beginner', title: 'Building Privacy-First Edge AI with Gemma 4', speaker: 'Gokulakrishnan L' },
+      { id: 'qualcomm-edge', col: 'lightning', timeLabel: '3:15 PM - 3:35 PM', start: toMin('3:15 PM'), end: toMin('3:35 PM'), hall: 'D6 Multi-purpose Hall', track: 'Lightning', level: 'Intermediate', title: 'Building AI at the Edge with Qualcomm AI Stack', speaker: 'Kartikey Rawat' },
+
+      // D6 Agent Wars
+      { id: 'wars-semis', col: 'agentwars', timeLabel: '2:00 PM - 2:20 PM', start: toMin('2:00 PM'), end: toMin('2:20 PM'), hall: 'D6 Multi-purpose Hall', track: 'Agent Wars', level: 'Intermediate', title: 'Agent Wars: Semi-Finals', speaker: 'Elimination Bracket' },
+      { id: 'wars-finals', col: 'agentwars', timeLabel: '2:20 PM - 4:30 PM', start: toMin('2:20 PM'), end: toMin('4:30 PM'), hall: 'D6 Multi-purpose Hall', track: 'Agent Wars', level: 'Intermediate', title: 'Agent Wars: Live Tournament Finals', speaker: 'Championship Finale' },
+
+      // D6 Vibe Lounge
+      { id: 'vibe-pm', col: 'vibe', timeLabel: '2:00 PM - 4:30 PM', start: toMin('2:00 PM'), end: toMin('4:30 PM'), hall: 'D6 Multi-purpose Hall', track: 'Vibe Lounge', level: 'Beginner', title: 'Vibe Coding Lounge', speaker: 'Open Coding Lounge' },
+
+      // Raman Hall Afternoon Workshop
+      { id: 'arduino-uno', col: 'workshop', timeLabel: '2:00 PM - 4:45 PM', start: toMin('2:00 PM'), end: toMin('4:45 PM'), hall: 'Raman Hall', track: 'Workshop', level: 'Intermediate', title: 'Building Physical AI: Arduino UNO Q Workshop', speaker: 'Salman Faris' },
+
+      // Pre-Function Afternoon Lounges
+      { id: 'lounges-pm', col: 'lounges', timeLabel: '2:00 PM - 4:15 PM', start: toMin('2:00 PM'), end: toMin('4:15 PM'), hall: 'D7 Pre-Function Area', track: 'Lounges', level: 'Beginner', title: 'Creators & Meetup Lounge', speaker: 'Spotlights, OSS Maintainer Booths & Mentor Hours' },
+
+      // Closing & High Tea
+      { id: 'high-tea', col: 'lounges', spanAll: true, timeLabel: '4:30 PM - 5:00 PM', start: toMin('4:30 PM'), end: toMin('5:00 PM'), hall: 'D7 Pre-Function Area', track: 'Break', level: '', title: 'Quick Break & High Tea', speaker: 'Snacks & networking across lounges' },
+      { id: 'closing', col: 'tech', spanAll: true, timeLabel: '5:00 PM - 5:30 PM', start: toMin('5:00 PM'), end: toMin('5:30 PM'), hall: 'D7 Auditorium', track: 'Closing', level: '', title: 'Closing Note & Awards Ceremony', speaker: 'All Tracks Converge in D7 Auditorium' }
+    ];
+
+    // State
+    let activeTrack = window.innerWidth < 768 ? 'tech' : 'ALL';
+    let selectedId = null;
+    let onlySaved = false;
+    let zoomIndex = 1;
+    const ZOOMS = [
+      { label: '0.8x', px: 2.8 },
+      { label: '1x',   px: 3.6 },
+      { label: '1.4x', px: 5.0 }
+    ];
+
+    let savedIds = new Set(JSON.parse(localStorage.getItem('df26_saved') || '[]'));
+
+    function saveBookmarks() {
+      localStorage.setItem('df26_saved', JSON.stringify([...savedIds]));
+      document.getElementById('savedCount').textContent = savedIds.size;
+    }
+
+    function toggleStar(id, ev) {
+      if (ev) ev.stopPropagation();
+      if (savedIds.has(id)) savedIds.delete(id);
+      else savedIds.add(id);
+      saveBookmarks();
+      render();
+    }
+
+    function toggleStarSelected() {
+      if (!selectedId) return;
+      toggleStar(selectedId);
+    }
+
+    function toggleSavedFilter() {
+      onlySaved = !onlySaved;
+      document.getElementById('btnSaved').classList.toggle('active', onlySaved);
+      render();
+    }
+
+    function cycleZoom() {
+      zoomIndex = (zoomIndex + 1) % ZOOMS.length;
+      document.getElementById('btnZoom').textContent = ZOOMS[zoomIndex].label;
+      render();
+    }
+
+    function setTrack(id) {
+      activeTrack = id;
+      renderNav();
+      render();
+    }
+
+    function isOverlapping(a, b) {
+      if (a.id === b.id) return false;
+      return a.start < b.end && a.end > b.start;
+    }
+
+    function renderNav() {
+      const nav = document.getElementById('trackNav');
+      const allBtn = `
+        <button class="track-tab ${activeTrack === 'ALL' ? 'active' : ''}" onclick="setTrack('ALL')">
+          All 7 Lanes
+        </button>
+      `;
+      const trackBtns = TRACKS.map(t => `
+        <button class="track-tab ${activeTrack === t.id ? 'active' : ''}" onclick="setTrack('${t.id}')">
+          <span class="dot" style="background:${t.color}"></span>
+          ${t.short}
+        </button>
+      `).join('');
+
+      nav.innerHTML = `<div class="track-nav-inner">${allBtn}${trackBtns}</div>`;
+    }
+
+    function render() {
+      const pxPerMin = ZOOMS[zoomIndex].px;
+      const totalMinutes = END_MIN - START_MIN;
+      const totalHeight = totalMinutes * pxPerMin;
+      const query = document.getElementById('searchInput').value.trim().toLowerCase();
+
+      const visibleTracks = activeTrack === 'ALL'
+        ? TRACKS
+        : TRACKS.filter(t => t.id === activeTrack);
+
+      const colTemplate = activeTrack === 'ALL'
+        ? `56px repeat(${visibleTracks.length}, minmax(155px, 1fr))`
+        : `56px 1fr`;
+
+      const container = document.getElementById('calendarContainer');
+
+      // 1. Header Row
+      const headerHtml = `
+        <div class="matrix-header" style="grid-template-columns: ${colTemplate};">
+          <div class="gutter-head mono">IST</div>
+          ${visibleTracks.map(t => `
+            <div class="col-head">
+              <div class="col-head-title">
+                <span class="dot" style="background:${t.color}"></span>
+                ${t.name}
+              </div>
+              <div class="col-head-sub">${t.sub}</div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+
+      // 2. Time Gutter Labels (every 30 mins)
+      let gutterLabels = '';
+      for (let m = START_MIN; m <= END_MIN; m += 30) {
+        const top = (m - START_MIN) * pxPerMin;
+        const isHour = m % 60 === 0;
+        gutterLabels += `
+          <div class="time-label mono ${isHour ? '' : 'half'}" style="top:${top}px;">
+            ${isHour ? fmtMin(m).replace(':00 ', ' ') : ':30'}
+          </div>
+        `;
+      }
+
+      // 3. Horizontal Grid Lines
+      let linesHtml = `<div id="timeSliceBand"></div><div id="nowIndicator"></div>`;
+      for (let m = START_MIN; m <= END_MIN; m += 30) {
+        const top = (m - START_MIN) * pxPerMin;
+        const cls = m % 60 === 0 ? 'line-hour' : 'line-half';
+        linesHtml += `<div class="${cls}" style="top:${top}px;"></div>`;
+      }
+
+      // 4. Columns & Proportional Session Blocks
+      const colsHtml = visibleTracks.map((t, idx) => {
+        const colSessions = SESSIONS.filter(s => {
+          if (s.spanAll) return idx === 0; // Render spanning breaks in first visible column
+          return s.col === t.id;
+        });
+
+        const blocks = colSessions.map(s => {
+          const top = (s.start - START_MIN) * pxPerMin;
+          const height = Math.max((s.end - s.start) * pxPerMin - 2, 22);
+          const dur = s.end - s.start;
+          const isStarred = savedIds.has(s.id);
+
+          const matchQuery = !query ||
+            s.title.toLowerCase().includes(query) ||
+            s.speaker.toLowerCase().includes(query) ||
+            s.timeLabel.toLowerCase().includes(query);
+          const matchSaved = !onlySaved || isStarred;
+          const filterDim = (matchQuery && matchSaved) ? '' : 'opacity: 0.12;';
+
+          const trackMeta = TRACKS.find(tr => tr.id === s.col) || t;
+          const spanStyle = (s.spanAll && activeTrack === 'ALL')
+            ? `width: calc(${visibleTracks.length * 100}% - 8px);`
+            : '';
+
+          if (s.spanAll) {
+            return `
+              <div
+                id="ev-${s.id}"
+                data-id="${s.id}"
+                onclick="selectSession('${s.id}', event)"
+                class="ev-block span-all"
+                style="top:${top}px; height:${height}px; ${spanStyle} ${filterDim}"
+              >
+                <div style="display:flex; align-items:center; gap:8px; min-width:0;">
+                  <span class="ev-time mono">${s.timeLabel}</span>
+                  <span class="ev-title" style="-webkit-line-clamp:1;">${s.title}</span>
+                </div>
+                <span class="ev-meta" style="margin:0;">${s.speaker}</span>
+              </div>
+            `;
+          }
+
+          return `
+            <div
+              id="ev-${s.id}"
+              data-id="${s.id}"
+              onclick="selectSession('${s.id}', event)"
+              class="ev-block"
+              style="top:${top}px; height:${height}px; border-left-color:${trackMeta.color}; ${filterDim}"
+            >
+              <div class="ev-header">
+                <span class="ev-time mono">${s.timeLabel}</span>
+                <div style="display:flex; align-items:center; gap:4px;">
+                  <span class="conflict-tag mono">Conflict</span>
+                  <button class="ev-star ${isStarred ? 'starred' : ''}" onclick="toggleStar('${s.id}', event)">★</button>
+                </div>
+              </div>
+              <div class="ev-title">${s.title}</div>
+              ${dur >= 25 ? `<div class="ev-meta">${s.speaker}</div>` : ''}
+            </div>
+          `;
+        }).join('');
+
+        return `<div class="track-col" style="height:${totalHeight}px;">${blocks}</div>`;
+      }).join('');
+
+      container.innerHTML = `
+        ${headerHtml}
+        <div class="matrix-body" style="grid-template-columns: ${colTemplate}; height:${totalHeight}px;">
+          <div class="time-gutter">${gutterLabels}</div>
+          <div class="grid-lines">${linesHtml}</div>
+          ${colsHtml}
+        </div>
+      `;
+
+      updateSelectionUI();
+      updateNowLine();
+    }
+
+    function selectSession(id, ev) {
+      if (ev) ev.stopPropagation();
+      selectedId = (selectedId === id) ? null : id;
+      updateSelectionUI();
+    }
+
+    function clearSelection() {
+      if (!selectedId) return;
+      selectedId = null;
+      updateSelectionUI();
+    }
+
+    function updateSelectionUI() {
+      const pxPerMin = ZOOMS[zoomIndex].px;
+      const blocks = document.querySelectorAll('.ev-block');
+      const sheet = document.getElementById('inspectorSheet');
+      const band = document.getElementById('timeSliceBand');
+
+      if (!selectedId) {
+        sheet.classList.remove('open');
+        if (band) band.style.display = 'none';
+        blocks.forEach(b => b.classList.remove('is-selected', 'is-overlap', 'is-dimmed'));
+        return;
+      }
+
+      const sel = SESSIONS.find(s => s.id === selectedId);
+      if (!sel) return;
+
+      // Show time-slice band
+      if (band) {
+        band.style.display = 'block';
+        band.style.top = `${(sel.start - START_MIN) * pxPerMin}px`;
+        band.style.height = `${(sel.end - sel.start) * pxPerMin}px`;
+      }
+
+      const overlaps = SESSIONS.filter(s => isOverlapping(sel, s)).sort((a, b) => a.start - b.start);
+      const overlapIds = new Set(overlaps.map(o => o.id));
+
+      blocks.forEach(b => {
+        const id = b.dataset.id;
+        b.classList.remove('is-selected', 'is-overlap', 'is-dimmed');
+        if (id === selectedId) b.classList.add('is-selected');
+        else if (overlapIds.has(id)) b.classList.add('is-overlap');
+        else b.classList.add('is-dimmed');
+      });
+
+      // Populate Bottom Sheet
+      document.getElementById('sheetTime').textContent = sel.timeLabel;
+      document.getElementById('sheetHall').textContent = `${sel.hall} (${sel.track})`;
+      const lvl = document.getElementById('sheetLevel');
+      if (sel.level) {
+        lvl.textContent = sel.level;
+        lvl.style.display = 'inline-block';
+      } else {
+        lvl.style.display = 'none';
+      }
+      document.getElementById('sheetTitle').textContent = sel.title;
+      document.getElementById('sheetSpeaker').textContent = sel.speaker;
+
+      const starBtn = document.getElementById('sheetStarBtn');
+      const isStarred = savedIds.has(sel.id);
+      starBtn.textContent = isStarred ? '★ Saved' : '☆ Save';
+      starBtn.classList.toggle('active', isStarred);
+
+      document.getElementById('sheetOverlapCount').textContent = overlaps.length;
+      const listEl = document.getElementById('sheetOverlapList');
+
+      if (!overlaps.length) {
+        listEl.innerHTML = `<div style="font-size:12px; color:var(--text-muted); padding:4px 0;">No conflicting sessions during this time window.</div>`;
+      } else {
+        listEl.innerHTML = overlaps.map(o => {
+          const tMeta = TRACKS.find(t => t.id === o.col);
+          return `
+            <div class="overlap-item" style="border-left-color:${tMeta ? tMeta.color : 'var(--conflict)'}" onclick="jumpToSession('${o.id}', '${o.col}', event)">
+              <div style="display:flex; justify-content:space-between; font-size:10px; color:var(--text-muted);" class="mono">
+                <span>${o.timeLabel}</span>
+                <span>${o.hall}</span>
+              </div>
+              <div style="font-size:12px; font-weight:600; color:var(--text); margin-top:2px;">${o.title}</div>
+              <div style="font-size:11px; color:var(--text-muted);">${o.speaker}</div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      sheet.classList.add('open');
+    }
+
+    function jumpToSession(id, col, ev) {
+      if (ev) ev.stopPropagation();
+      if (activeTrack !== 'ALL' && activeTrack !== col) {
+        activeTrack = col;
+        renderNav();
+      }
+      selectedId = id;
+      render();
+      const target = document.getElementById(`ev-${id}`);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function updateNowLine() {
+      const now = new Date();
+      const mins = now.getHours() * 60 + now.getMinutes();
+      const ind = document.getElementById('nowIndicator');
+      if (!ind) return;
+      if (mins >= START_MIN && mins <= END_MIN) {
+        ind.style.display = 'block';
+        ind.style.top = `${(mins - START_MIN) * ZOOMS[zoomIndex].px}px`;
+      } else {
+        ind.style.display = 'none';
+      }
+    }
+
+    // Offline Service Worker Registration via Blob for single-file PWA support
+    if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
+      const swCode = `
+        const CACHE = 'devfest-26-v1';
+        self.addEventListener('install', e => self.skipWaiting());
+        self.addEventListener('activate', e => e.waitUntil(self.clients.claim()));
+        self.addEventListener('fetch', e => {
+          e.respondWith(
+            caches.match(e.request).then(res => res || fetch(e.request).then(fetchRes => {
+              return caches.open(CACHE).then(cache => {
+                cache.put(e.request, fetchRes.clone());
+                return fetchRes;
+              });
+            }).catch(() => caches.match(e.request)))
+          );
+        });
+      `;
+      const blob = new Blob([swCode], { type: 'application/javascript' });
+      navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(() => {});
+    }
+
+    window.addEventListener('keydown', e => {
+      if (e.key === 'Escape') clearSelection();
+    });
+
+    // Initialize
+    saveBookmarks();
+    renderNav();
+    render();
+    setInterval(updateNowLine, 60000);
+  </script>
 </body>
 </html>
