@@ -483,6 +483,17 @@
                 z-index: 1;
             }
 
+            /* Live Line Layer — sits above lane columns so the hairline paints over cards */
+            .live-layer {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 60px;
+                right: 0;
+                pointer-events: none;
+                z-index: 12;
+            }
+
             .guide-hour {
                 position: absolute;
                 left: 0;
@@ -514,7 +525,7 @@
                 position: absolute;
                 left: 0;
                 right: 0;
-                border-top: 1.75px solid var(--ctp-red);
+                border-top: 1.7px solid var(--ctp-red);
                 pointer-events: none;
                 z-index: 35;
                 display: none;
@@ -1043,8 +1054,17 @@
         </aside>
 
         <script>
-            const START_MIN = 8 * 60; // 08:00 AM
-            const END_MIN = 17 * 60 + 30; // 05:30 PM
+            // Event config — loaded from config.json, see loadData()
+            let START_MIN = 8 * 60;
+            let END_MIN = 17 * 60 + 30;
+            let EVENT_YMD = [2026, 9, 17];
+
+            function computeConfig(cfg) {
+                START_MIN = toMin(cfg.dayStart);
+                END_MIN = toMin(cfg.dayEnd);
+                const [y, m, d] = cfg.eventDate.split("-").map(Number);
+                EVENT_YMD = [y, m - 1, d]; // month is 0-based
+            }
 
             function toMin(tStr) {
                 const [t, mod] = tStr.trim().split(" ");
@@ -1063,649 +1083,9 @@
                 return `${h}:${mins.toString().padStart(2, "0")} ${mod}`;
             }
 
-            // 7 Architectural Lanes mapped to official Catppuccin Accent Tokens
-            const LANES = [
-                {
-                    id: "tech",
-                    code: "D7-A",
-                    short: "Main Stage",
-                    name: "D7 Auditorium",
-                    sub: "Tech Track",
-                    accent: "var(--ctp-blue)",
-                },
-                {
-                    id: "deeptech",
-                    code: "D7-B",
-                    short: "Deep Tech",
-                    name: "D7 Amphitheater",
-                    sub: "Deep Tech",
-                    accent: "var(--ctp-mauve)",
-                },
-                {
-                    id: "lightning",
-                    code: "D6-L",
-                    short: "Lightning",
-                    name: "D6 Multi-purpose",
-                    sub: "Lightning Talks",
-                    accent: "var(--ctp-sapphire)",
-                },
-                {
-                    id: "agentwars",
-                    code: "D6-W",
-                    short: "Agent Wars",
-                    name: "D6 Multi-purpose",
-                    sub: "Tournament",
-                    accent: "var(--ctp-yellow)",
-                },
-                {
-                    id: "vibe",
-                    code: "D6-V",
-                    short: "Vibe Lounge",
-                    name: "D6 Multi-purpose",
-                    sub: "Vibe Coding",
-                    accent: "var(--ctp-teal)",
-                },
-                {
-                    id: "workshop",
-                    code: "RMN",
-                    short: "Workshops",
-                    name: "Raman Hall",
-                    sub: "Hands-On Lab",
-                    accent: "var(--ctp-green)",
-                },
-                {
-                    id: "lounges",
-                    code: "PRE",
-                    short: "Lounges",
-                    name: "D7 Pre-Function",
-                    sub: "Creators/Meetup",
-                    accent: "var(--ctp-flamingo)",
-                },
-            ];
-
-            // Official Agenda Data (https://devfest.gdgchennai.in/agenda)
-            const SESSIONS = [
-                // Common Check-In
-                {
-                    id: "checkin",
-                    col: "lounges",
-                    spanAll: true,
-                    timeLabel: "8:00 AM - 9:00 AM",
-                    start: toMin("8:00 AM"),
-                    end: toMin("9:00 AM"),
-                    hall: "D7 Pre-Function Area",
-                    track: "General",
-                    level: "",
-                    title: "Check-in & Badge Collection",
-                    speaker:
-                        "Welcome kits, attendee registration & breakfast coffee",
-                },
-
-                // D7 Auditorium (Tech Track)
-                {
-                    id: "welcome",
-                    col: "tech",
-                    timeLabel: "9:00 AM - 9:15 AM",
-                    start: toMin("9:00 AM"),
-                    end: toMin("9:15 AM"),
-                    hall: "D7 Auditorium",
-                    track: "Tech",
-                    level: "",
-                    title: "Welcome Note",
-                    speaker: "GDG Chennai Organizing Team",
-                },
-                {
-                    id: "keynote",
-                    col: "tech",
-                    timeLabel: "9:15 AM - 9:45 AM",
-                    start: toMin("9:15 AM"),
-                    end: toMin("9:45 AM"),
-                    hall: "D7 Auditorium",
-                    track: "Tech",
-                    level: "",
-                    title: "Keynote",
-                    speaker: "Swaathi Kakarla & Karthik Kamalakannan",
-                },
-                {
-                    id: "next-billion",
-                    col: "tech",
-                    timeLabel: "9:45 AM - 10:15 AM",
-                    start: toMin("9:45 AM"),
-                    end: toMin("10:15 AM"),
-                    hall: "D7 Auditorium",
-                    track: "Tech",
-                    level: "",
-                    title: "The Next Billion Users Won't Be Human",
-                    speaker: "Sanju Sivalingam",
-                },
-                {
-                    id: "qualcomm-dev",
-                    col: "tech",
-                    timeLabel: "10:15 AM - 10:25 AM",
-                    start: toMin("10:15 AM"),
-                    end: toMin("10:25 AM"),
-                    hall: "D7 Auditorium",
-                    track: "Tech",
-                    level: "Beginner",
-                    title: "Qualcomm as a Dev-AI Native Company",
-                    speaker: "Kartikey Rawat",
-                },
-                {
-                    id: "poshmark-ai",
-                    col: "tech",
-                    timeLabel: "10:25 AM - 10:35 AM",
-                    start: toMin("10:25 AM"),
-                    end: toMin("10:35 AM"),
-                    hall: "D7 Auditorium",
-                    track: "Tech",
-                    level: "Intermediate",
-                    title: "From Models to Decisions: AI Reshaping Poshmark",
-                    speaker: "Manu Vishwakarma & Shreya Sevelar",
-                },
-                // 10:35 AM - 10:45 AM intentionally left empty
-                {
-                    id: "kotlin-ota",
-                    col: "tech",
-                    timeLabel: "10:45 AM - 11:10 AM",
-                    start: toMin("10:45 AM"),
-                    end: toMin("11:10 AM"),
-                    hall: "D7 Auditorium",
-                    track: "Tech",
-                    level: "Intermediate",
-                    title: "Kotlin Over the Air: Reimagining Android/KMP Delivery",
-                    speaker: "Aditya Shinde",
-                },
-                {
-                    id: "gemma-101",
-                    col: "tech",
-                    timeLabel: "11:10 AM - 11:35 AM",
-                    start: toMin("11:10 AM"),
-                    end: toMin("11:35 AM"),
-                    hall: "D7 Auditorium",
-                    track: "Tech",
-                    level: "Expert",
-                    title: "Gemma 101: Fine-Tuning Open Models with LoRA",
-                    speaker: "Neeraj Pathak",
-                },
-                {
-                    id: "owasp-nettacker",
-                    col: "tech",
-                    timeLabel: "11:35 AM - 12:00 PM",
-                    start: toMin("11:35 AM"),
-                    end: toMin("12:00 PM"),
-                    hall: "D7 Auditorium",
-                    track: "Tech",
-                    level: "",
-                    title: "Developing & Using OWASP Nettacker for Security Testing",
-                    speaker: "Achintya Jai",
-                },
-                {
-                    id: "beyond-happy-path",
-                    col: "tech",
-                    timeLabel: "12:00 PM - 12:25 PM",
-                    start: toMin("12:00 PM"),
-                    end: toMin("12:25 PM"),
-                    hall: "D7 Auditorium",
-                    track: "Tech",
-                    level: "Intermediate",
-                    title: "Beyond the Happy Path: Production Agent Guardrails on GCP",
-                    speaker: "Saurabh Mishra",
-                },
-
-                // D7 Amphitheater (Deep Tech)
-                {
-                    id: "city-breathe",
-                    col: "deeptech",
-                    timeLabel: "10:45 AM - 11:20 AM",
-                    start: toMin("10:45 AM"),
-                    end: toMin("11:20 AM"),
-                    hall: "D7 Amphitheater",
-                    track: "Deep Tech",
-                    level: "Beginner",
-                    title: "Can AI Help a City Breathe?",
-                    speaker: "Dishant Parakh",
-                },
-                {
-                    id: "physical-ai-trust",
-                    col: "deeptech",
-                    timeLabel: "11:20 AM - 11:55 AM",
-                    start: toMin("11:20 AM"),
-                    end: toMin("11:55 AM"),
-                    hall: "D7 Amphitheater",
-                    track: "Deep Tech",
-                    level: "Intermediate",
-                    title: "When AI Leaves the Lab: Building Physical AI People Can Trust",
-                    speaker: "Pulkit Verma",
-                },
-                {
-                    id: "water-pipeline",
-                    col: "deeptech",
-                    timeLabel: "11:55 AM - 12:30 PM",
-                    start: toMin("11:55 AM"),
-                    end: toMin("12:30 PM"),
-                    hall: "D7 Amphitheater",
-                    track: "Deep Tech",
-                    level: "Intermediate",
-                    title: "Automatic Defect Detection of Water / Sewer Pipeline",
-                    speaker: "Dr Moumita Mukherjee",
-                },
-
-                // D6 Lightning Talks
-                {
-                    id: "android-perf",
-                    col: "lightning",
-                    timeLabel: "11:00 AM - 11:20 AM",
-                    start: toMin("11:00 AM"),
-                    end: toMin("11:20 AM"),
-                    hall: "D6 Multi-purpose Hall",
-                    track: "Lightning",
-                    level: "Intermediate",
-                    title: "Simplified Performance Debugging on Android",
-                    speaker: "Shangeeth Sivan Adiyapatham",
-                },
-                {
-                    id: "ai-sres",
-                    col: "lightning",
-                    timeLabel: "11:25 AM - 11:45 AM",
-                    start: toMin("11:25 AM"),
-                    end: toMin("11:45 AM"),
-                    hall: "D6 Multi-purpose Hall",
-                    track: "Lightning",
-                    level: "",
-                    title: "AI Assisted SREs Are a Thing!",
-                    speaker: "Imran Roshan",
-                },
-                {
-                    id: "local-gemma",
-                    col: "lightning",
-                    timeLabel: "11:50 AM - 12:10 PM",
-                    start: toMin("11:50 AM"),
-                    end: toMin("12:10 PM"),
-                    hall: "D6 Multi-purpose Hall",
-                    track: "Lightning",
-                    level: "Beginner",
-                    title: "Local AI: The Google Gemma Edition",
-                    speaker: "Gokulbarath N",
-                },
-                {
-                    id: "infra-agentic",
-                    col: "lightning",
-                    timeLabel: "12:15 PM - 12:35 PM",
-                    start: toMin("12:15 PM"),
-                    end: toMin("12:35 PM"),
-                    hall: "D6 Multi-purpose Hall",
-                    track: "Lightning",
-                    level: "Expert",
-                    title: "Rethinking Infrastructure for Agentic Workloads",
-                    speaker: "Dhanush Kandhan",
-                },
-
-                // D6 Agent Wars
-                {
-                    id: "wars-signup",
-                    col: "agentwars",
-                    timeLabel: "11:00 AM - 11:30 AM",
-                    start: toMin("11:00 AM"),
-                    end: toMin("11:30 AM"),
-                    hall: "D6 Multi-purpose Hall",
-                    track: "Agent Wars",
-                    level: "Intermediate",
-                    title: "Agent Wars: Signup & Qualifier",
-                    speaker: "D6 Arena",
-                },
-                {
-                    id: "wars-qual",
-                    col: "agentwars",
-                    timeLabel: "11:30 AM - 12:00 PM",
-                    start: toMin("11:30 AM"),
-                    end: toMin("12:00 PM"),
-                    hall: "D6 Multi-purpose Hall",
-                    track: "Agent Wars",
-                    level: "Intermediate",
-                    title: "Agent Wars: Live Tournament Qualifiers",
-                    speaker: "D6 Arena",
-                },
-                {
-                    id: "wars-qual-ext",
-                    col: "agentwars",
-                    timeLabel: "12:00 PM - 12:40 PM",
-                    start: toMin("12:00 PM"),
-                    end: toMin("12:40 PM"),
-                    hall: "D6 Multi-purpose Hall",
-                    track: "Agent Wars",
-                    level: "Intermediate",
-                    title: "Agent Wars: Qualifiers Extended",
-                    speaker: "D6 Arena",
-                },
-
-                // D6 Vibe Lounge
-                {
-                    id: "vibe-am",
-                    col: "vibe",
-                    timeLabel: "11:00 AM - 12:00 PM",
-                    start: toMin("11:00 AM"),
-                    end: toMin("12:00 PM"),
-                    hall: "D6 Multi-purpose Hall",
-                    track: "Vibe Lounge",
-                    level: "Beginner",
-                    title: "Vibe Lounge",
-                    speaker: "D6 Multi-purpose Hall",
-                },
-                {
-                    id: "vibe-noon",
-                    col: "vibe",
-                    timeLabel: "12:00 PM - 12:35 PM",
-                    start: toMin("12:00 PM"),
-                    end: toMin("12:35 PM"),
-                    hall: "D6 Multi-purpose Hall",
-                    track: "Vibe Lounge",
-                    level: "Beginner",
-                    title: "Vibe Coding Lounge",
-                    speaker: "D6 Multi-purpose Hall",
-                },
-
-                // Raman Hall Workshop
-                {
-                    id: "offload-testing",
-                    col: "workshop",
-                    timeLabel: "11:00 AM - 12:30 PM",
-                    start: toMin("11:00 AM"),
-                    end: toMin("12:30 PM"),
-                    hall: "Raman Hall",
-                    track: "Workshop",
-                    level: "Beginner",
-                    title: "Offload Testing to Agents",
-                    speaker: "Somasundaram Mahesh",
-                },
-
-                // Pre-Function Lounges
-                {
-                    id: "lounges-am",
-                    col: "lounges",
-                    timeLabel: "10:45 AM - 12:25 PM",
-                    start: toMin("10:45 AM"),
-                    end: toMin("12:25 PM"),
-                    hall: "D7 Pre-Function Area",
-                    track: "Lounges",
-                    level: "Beginner",
-                    title: "Creators & Meetup Lounge",
-                    speaker: "Podcasting, Creator Studio & Mentor Meetups",
-                },
-
-                // Common Lunch Break
-                {
-                    id: "lunch",
-                    col: "lounges",
-                    spanAll: true,
-                    timeLabel: "12:30 PM - 1:45 PM",
-                    start: toMin("12:30 PM"),
-                    end: toMin("1:45 PM"),
-                    hall: "Research Park Food Courts",
-                    track: "Break",
-                    level: "",
-                    title: "Lunch & Exhibition Break (F&B)",
-                    speaker: "All parallel tracks pause • Resumes at 2:00 PM",
-                },
-
-                // AFTERNOON
-                // D7 Auditorium
-                {
-                    id: "webmcp",
-                    col: "tech",
-                    timeLabel: "2:00 PM - 2:25 PM",
-                    start: toMin("2:00 PM"),
-                    end: toMin("2:25 PM"),
-                    hall: "D7 Auditorium",
-                    track: "Tech",
-                    level: "Intermediate",
-                    title: "Don't Let AI Agents Push Your Buttons: WebMCP",
-                    speaker: "Jeeththenthar L",
-                },
-                {
-                    id: "gemini-nano",
-                    col: "tech",
-                    timeLabel: "2:25 PM - 2:50 PM",
-                    start: toMin("2:25 PM"),
-                    end: toMin("2:50 PM"),
-                    hall: "D7 Auditorium",
-                    track: "Tech",
-                    level: "",
-                    title: "From Receipts to Smart Search: Gemini Nano on Android",
-                    speaker: "Dinoy Raj",
-                },
-                {
-                    id: "tokenomics",
-                    col: "tech",
-                    timeLabel: "2:50 PM - 3:15 PM",
-                    start: toMin("2:50 PM"),
-                    end: toMin("3:15 PM"),
-                    hall: "D7 Auditorium",
-                    track: "Tech",
-                    level: "Intermediate",
-                    title: "Tokenomics: Cutting Token Costs in Multi-Agent AI",
-                    speaker: "Bhargav Patel",
-                },
-                {
-                    id: "firebase-ai",
-                    col: "tech",
-                    timeLabel: "3:15 PM - 3:40 PM",
-                    start: toMin("3:15 PM"),
-                    end: toMin("3:40 PM"),
-                    hall: "D7 Auditorium",
-                    track: "Tech",
-                    level: "Beginner",
-                    title: "Secure Frontend AI: Firebase AI Logic & Gemini",
-                    speaker: "Srushti Raybhoge",
-                },
-                {
-                    id: "goldrush-ai",
-                    col: "tech",
-                    timeLabel: "3:40 PM - 4:05 PM",
-                    start: toMin("3:40 PM"),
-                    end: toMin("4:05 PM"),
-                    hall: "D7 Auditorium",
-                    track: "Tech",
-                    level: "Beginner",
-                    title: "Opportunities in AI: Culture of Goldrush in California",
-                    speaker: "Hariprasad Sudharshan",
-                },
-                {
-                    id: "lead-gen-gemini",
-                    col: "tech",
-                    timeLabel: "4:05 PM - 4:30 PM",
-                    start: toMin("4:05 PM"),
-                    end: toMin("4:30 PM"),
-                    hall: "D7 Auditorium",
-                    track: "Tech",
-                    level: "Beginner",
-                    title: "Using Gemini & AI Studio to Build a B2B Lead Gen Engine",
-                    speaker: "Varun Poladiya",
-                },
-
-                // D7 Amphitheater
-                {
-                    id: "malware-deepfake",
-                    col: "deeptech",
-                    timeLabel: "2:00 PM - 2:35 PM",
-                    start: toMin("2:00 PM"),
-                    end: toMin("2:35 PM"),
-                    hall: "D7 Amphitheater",
-                    track: "Deep Tech",
-                    level: "Intermediate",
-                    title: "From Malware Images to Deepfake Detection",
-                    speaker: "Dr Lakshmanan Nataraj",
-                },
-                {
-                    id: "ai-vr-health",
-                    col: "deeptech",
-                    timeLabel: "2:35 PM - 3:10 PM",
-                    start: toMin("2:35 PM"),
-                    end: toMin("3:10 PM"),
-                    hall: "D7 Amphitheater",
-                    track: "Deep Tech",
-                    level: "Beginner",
-                    title: "AI & VR for Healthcare",
-                    speaker: "Dr Nimeshika Jayachandran",
-                },
-                {
-                    id: "ml-physical-world",
-                    col: "deeptech",
-                    timeLabel: "3:10 PM - 4:30 PM",
-                    start: toMin("3:10 PM"),
-                    end: toMin("4:30 PM"),
-                    hall: "D7 Amphitheater",
-                    track: "Deep Tech",
-                    level: "Intermediate",
-                    title: "Machine Learning the Physical World (80m Lecture & Q&A)",
-                    speaker: "Dr Ayana Ghosh",
-                },
-
-                // D6 Lightning Talks
-                {
-                    id: "ai-native-prod",
-                    col: "lightning",
-                    timeLabel: "2:00 PM - 2:20 PM",
-                    start: toMin("2:00 PM"),
-                    end: toMin("2:20 PM"),
-                    hall: "D6 Multi-purpose Hall",
-                    track: "Lightning",
-                    level: "Beginner",
-                    title: "Lessons from Building an AI Native Product Ground Up",
-                    speaker: "Rashmi Asokan",
-                },
-                {
-                    id: "edge-continuum",
-                    col: "lightning",
-                    timeLabel: "2:25 PM - 2:45 PM",
-                    start: toMin("2:25 PM"),
-                    end: toMin("2:45 PM"),
-                    hall: "D6 Multi-purpose Hall",
-                    track: "Lightning",
-                    level: "Intermediate",
-                    title: "Open Source On-Device Inference Across Edge Continuum",
-                    speaker: "Aakash Dhakshnamoorthy",
-                },
-                {
-                    id: "privacy-gemma4",
-                    col: "lightning",
-                    timeLabel: "2:50 PM - 3:10 PM",
-                    start: toMin("2:50 PM"),
-                    end: toMin("3:10 PM"),
-                    hall: "D6 Multi-purpose Hall",
-                    track: "Lightning",
-                    level: "Beginner",
-                    title: "Building Privacy-First Edge AI with Gemma 4",
-                    speaker: "Gokulakrishnan L",
-                },
-                {
-                    id: "qualcomm-edge",
-                    col: "lightning",
-                    timeLabel: "3:15 PM - 3:35 PM",
-                    start: toMin("3:15 PM"),
-                    end: toMin("3:35 PM"),
-                    hall: "D6 Multi-purpose Hall",
-                    track: "Lightning",
-                    level: "Intermediate",
-                    title: "Building AI at the Edge with Qualcomm AI Stack",
-                    speaker: "Kartikey Rawat",
-                },
-
-                // D6 Agent Wars
-                {
-                    id: "wars-semis",
-                    col: "agentwars",
-                    timeLabel: "2:00 PM - 2:20 PM",
-                    start: toMin("2:00 PM"),
-                    end: toMin("2:20 PM"),
-                    hall: "D6 Multi-purpose Hall",
-                    track: "Agent Wars",
-                    level: "Intermediate",
-                    title: "Agent Wars: Semi-Finals",
-                    speaker: "Elimination Bracket",
-                },
-                {
-                    id: "wars-finals",
-                    col: "agentwars",
-                    timeLabel: "2:20 PM - 4:30 PM",
-                    start: toMin("2:20 PM"),
-                    end: toMin("4:30 PM"),
-                    hall: "D6 Multi-purpose Hall",
-                    track: "Agent Wars",
-                    level: "Intermediate",
-                    title: "Agent Wars: Live Tournament Finals",
-                    speaker: "Championship Finale & Leaderboard",
-                },
-
-                // D6 Vibe Lounge
-                {
-                    id: "vibe-pm",
-                    col: "vibe",
-                    timeLabel: "2:00 PM - 4:30 PM",
-                    start: toMin("2:00 PM"),
-                    end: toMin("4:30 PM"),
-                    hall: "D6 Multi-purpose Hall",
-                    track: "Vibe Lounge",
-                    level: "Beginner",
-                    title: "Vibe Coding Lounge",
-                    speaker: "D6 Multi-purpose Hall",
-                },
-
-                // Raman Hall Afternoon Workshop
-                {
-                    id: "arduino-uno",
-                    col: "workshop",
-                    timeLabel: "2:00 PM - 4:45 PM",
-                    start: toMin("2:00 PM"),
-                    end: toMin("4:45 PM"),
-                    hall: "Raman Hall",
-                    track: "Workshop",
-                    level: "Intermediate",
-                    title: "Building Physical AI: Arduino UNO Q Workshop (165m)",
-                    speaker: "Salman Faris",
-                },
-
-                // Pre-Function Afternoon Lounges
-                {
-                    id: "lounges-pm",
-                    col: "lounges",
-                    timeLabel: "2:00 PM - 4:15 PM",
-                    start: toMin("2:00 PM"),
-                    end: toMin("4:15 PM"),
-                    hall: "D7 Pre-Function Area",
-                    track: "Lounges",
-                    level: "Beginner",
-                    title: "Creators & Meetup Lounge",
-                    speaker: "Developer Spotlights, OSS Booths & Mentor Hours",
-                },
-
-                // Evening Break & Closing
-                {
-                    id: "high-tea",
-                    col: "lounges",
-                    spanAll: true,
-                    timeLabel: "4:30 PM - 5:00 PM",
-                    start: toMin("4:30 PM"),
-                    end: toMin("5:00 PM"),
-                    hall: "D7 Pre-Function Area",
-                    track: "Break",
-                    level: "",
-                    title: "Quick Break & Evening Tea (F&B)",
-                    speaker: "All parallel halls adjourn to D7 Auditorium",
-                },
-                {
-                    id: "closing",
-                    col: "tech",
-                    spanAll: true,
-                    timeLabel: "5:00 PM - 5:30 PM",
-                    start: toMin("5:00 PM"),
-                    end: toMin("5:30 PM"),
-                    hall: "D7 Auditorium",
-                    track: "Closing",
-                    level: "",
-                    title: "Closing Note & Awards Ceremony",
-                    speaker: "All Tracks Converge in D7 Auditorium",
-                },
-            ];
+            // Lanes + sessions — loaded from events.json, see loadData()
+            let LANES = [];
+            let SESSIONS = [];
 
             // State
             let currentTheme = localStorage.getItem("df26_ctp_theme") || "dark";
@@ -1882,7 +1262,8 @@
                 }
 
                 // 3. Horizontal Hairline Guides + Active Window Band
-                let guidesHtml = `<div id="activeWindowBand"></div><div id="liveTimeLine"></div>`;
+                let guidesHtml = `<div id="activeWindowBand"></div>`;
+                const liveLayerHtml = `<div id="liveTimeLine"></div>`;
                 for (let m = START_MIN; m <= END_MIN; m += 30) {
                     const y = (m - START_MIN) * px;
                     guidesHtml += `<div class="${m % 60 === 0 ? "guide-hour" : "guide-half"}" style="top:${y}px;"></div>`;
@@ -1999,6 +1380,7 @@
         <div class="matrix-canvas" style="grid-template-columns: ${gridCols}; height:${canvasHeight}px;">
           <div class="time-axis">${axisHtml}</div>
           <div class="grid-guides">${guidesHtml}</div>
+          <div class="live-layer">${liveLayerHtml}</div>
           ${columnsHtml}
         </div>
       `;
@@ -2133,10 +1515,14 @@
 
             function updateLiveLine() {
                 const now = new Date();
-                const mins = now.getHours() * 60 + now.getMinutes();
                 const line = document.getElementById("liveTimeLine");
                 if (!line) return;
-                if (mins >= START_MIN && mins <= END_MIN) {
+                const isEventDay =
+                    now.getFullYear() === EVENT_YMD[0] &&
+                    now.getMonth() === EVENT_YMD[1] &&
+                    now.getDate() === EVENT_YMD[2];
+                const mins = now.getHours() * 60 + now.getMinutes();
+                if (isEventDay && mins >= START_MIN && mins <= END_MIN) {
                     line.style.display = "block";
                     line.style.top = `${(mins - START_MIN) * DENSITIES[densityIndex].px}px`;
                 } else {
@@ -2175,11 +1561,42 @@
             });
 
             // Boot
-            applyTheme(currentTheme);
-            syncSavedStorage();
-            renderLaneTabs();
-            render();
-            setInterval(updateLiveLine, 60000);
+            async function loadData() {
+                const [cfgRes, evRes] = await Promise.all([
+                    fetch("config.json"),
+                    fetch("events.json"),
+                ]);
+                if (!cfgRes.ok) throw new Error(`config.json: HTTP ${cfgRes.status}`);
+                if (!evRes.ok) throw new Error(`events.json: HTTP ${evRes.status}`);
+                const cfg = await cfgRes.json();
+                const ev = await evRes.json();
+                computeConfig(cfg);
+                LANES = ev.lanes;
+                SESSIONS = ev.sessions.map((s) => {
+                    const [from, to] = s.timeLabel.split(" - ");
+                    return { ...s, start: toMin(from), end: toMin(to) };
+                });
+            }
+
+            function fatalError() {
+                document.getElementById("calendarMount").innerHTML =
+                    `<div style="padding:24px;font-size:13px;color:var(--ctp-red);">Schedule failed to load. Serve over HTTP and check config.json / events.json exist.</div>`;
+            }
+
+            (async () => {
+                applyTheme(currentTheme);
+                syncSavedStorage();
+                try {
+                    await loadData();
+                } catch (err) {
+                    console.error(err);
+                    fatalError();
+                    return;
+                }
+                renderLaneTabs();
+                render();
+                setInterval(updateLiveLine, 60000);
+            })();
         </script>
     </body>
 </html>

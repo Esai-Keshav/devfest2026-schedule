@@ -1,0 +1,516 @@
+{
+  "lanes": [
+    {
+      "id": "tech",
+      "code": "D7-A",
+      "short": "Main Stage",
+      "name": "D7 Auditorium",
+      "sub": "Tech Track",
+      "accent": "var(--ctp-blue)"
+    },
+    {
+      "id": "deeptech",
+      "code": "D7-B",
+      "short": "Deep Tech",
+      "name": "D7 Amphitheater",
+      "sub": "Deep Tech",
+      "accent": "var(--ctp-mauve)"
+    },
+    {
+      "id": "lightning",
+      "code": "D6-L",
+      "short": "Lightning",
+      "name": "D6 Multi-purpose",
+      "sub": "Lightning Talks",
+      "accent": "var(--ctp-sapphire)"
+    },
+    {
+      "id": "agentwars",
+      "code": "D6-W",
+      "short": "Agent Wars",
+      "name": "D6 Multi-purpose",
+      "sub": "Tournament",
+      "accent": "var(--ctp-yellow)"
+    },
+    {
+      "id": "vibe",
+      "code": "D6-V",
+      "short": "Vibe Lounge",
+      "name": "D6 Multi-purpose",
+      "sub": "Vibe Coding",
+      "accent": "var(--ctp-teal)"
+    },
+    {
+      "id": "workshop",
+      "code": "RMN",
+      "short": "Workshops",
+      "name": "Raman Hall",
+      "sub": "Hands-On Lab",
+      "accent": "var(--ctp-green)"
+    },
+    {
+      "id": "lounges",
+      "code": "PRE",
+      "short": "Lounges",
+      "name": "D7 Pre-Function",
+      "sub": "Creators/Meetup",
+      "accent": "var(--ctp-flamingo)"
+    }
+  ],
+  "sessions": [
+    {
+      "id": "checkin",
+      "col": "lounges",
+      "spanAll": true,
+      "timeLabel": "8:00 AM - 9:00 AM",
+      "hall": "D7 Pre-Function Area",
+      "track": "General",
+      "level": "",
+      "title": "Check-in & Badge Collection",
+      "speaker": "Welcome kits, attendee registration & breakfast coffee"
+    },
+    {
+      "id": "welcome",
+      "col": "tech",
+      "timeLabel": "9:00 AM - 9:15 AM",
+      "hall": "D7 Auditorium",
+      "track": "Tech",
+      "level": "",
+      "title": "Welcome Note",
+      "speaker": "GDG Chennai Organizing Team"
+    },
+    {
+      "id": "keynote",
+      "col": "tech",
+      "timeLabel": "9:15 AM - 9:45 AM",
+      "hall": "D7 Auditorium",
+      "track": "Tech",
+      "level": "",
+      "title": "Keynote",
+      "speaker": "Swaathi Kakarla & Karthik Kamalakannan"
+    },
+    {
+      "id": "next-billion",
+      "col": "tech",
+      "timeLabel": "9:45 AM - 10:15 AM",
+      "hall": "D7 Auditorium",
+      "track": "Tech",
+      "level": "",
+      "title": "The Next Billion Users Won't Be Human",
+      "speaker": "Sanju Sivalingam"
+    },
+    {
+      "id": "qualcomm-dev",
+      "col": "tech",
+      "timeLabel": "10:15 AM - 10:25 AM",
+      "hall": "D7 Auditorium",
+      "track": "Tech",
+      "level": "Beginner",
+      "title": "Qualcomm as a Dev-AI Native Company",
+      "speaker": "Kartikey Rawat"
+    },
+    {
+      "id": "poshmark-ai",
+      "col": "tech",
+      "timeLabel": "10:25 AM - 10:35 AM",
+      "hall": "D7 Auditorium",
+      "track": "Tech",
+      "level": "Intermediate",
+      "title": "From Models to Decisions: AI Reshaping Poshmark",
+      "speaker": "Manu Vishwakarma & Shreya Sevelar"
+    },
+    {
+      "id": "kotlin-ota",
+      "col": "tech",
+      "timeLabel": "10:45 AM - 11:10 AM",
+      "hall": "D7 Auditorium",
+      "track": "Tech",
+      "level": "Intermediate",
+      "title": "Kotlin Over the Air: Reimagining Android/KMP Delivery",
+      "speaker": "Aditya Shinde"
+    },
+    {
+      "id": "gemma-101",
+      "col": "tech",
+      "timeLabel": "11:10 AM - 11:35 AM",
+      "hall": "D7 Auditorium",
+      "track": "Tech",
+      "level": "Expert",
+      "title": "Gemma 101: Fine-Tuning Open Models with LoRA",
+      "speaker": "Neeraj Pathak"
+    },
+    {
+      "id": "owasp-nettacker",
+      "col": "tech",
+      "timeLabel": "11:35 AM - 12:00 PM",
+      "hall": "D7 Auditorium",
+      "track": "Tech",
+      "level": "",
+      "title": "Developing & Using OWASP Nettacker for Security Testing",
+      "speaker": "Achintya Jai"
+    },
+    {
+      "id": "beyond-happy-path",
+      "col": "tech",
+      "timeLabel": "12:00 PM - 12:25 PM",
+      "hall": "D7 Auditorium",
+      "track": "Tech",
+      "level": "Intermediate",
+      "title": "Beyond the Happy Path: Production Agent Guardrails on GCP",
+      "speaker": "Saurabh Mishra"
+    },
+    {
+      "id": "city-breathe",
+      "col": "deeptech",
+      "timeLabel": "10:45 AM - 11:20 AM",
+      "hall": "D7 Amphitheater",
+      "track": "Deep Tech",
+      "level": "Beginner",
+      "title": "Can AI Help a City Breathe?",
+      "speaker": "Dishant Parakh"
+    },
+    {
+      "id": "physical-ai-trust",
+      "col": "deeptech",
+      "timeLabel": "11:20 AM - 11:55 AM",
+      "hall": "D7 Amphitheater",
+      "track": "Deep Tech",
+      "level": "Intermediate",
+      "title": "When AI Leaves the Lab: Building Physical AI People Can Trust",
+      "speaker": "Pulkit Verma"
+    },
+    {
+      "id": "water-pipeline",
+      "col": "deeptech",
+      "timeLabel": "11:55 AM - 12:30 PM",
+      "hall": "D7 Amphitheater",
+      "track": "Deep Tech",
+      "level": "Intermediate",
+      "title": "Automatic Defect Detection of Water / Sewer Pipeline",
+      "speaker": "Dr Moumita Mukherjee"
+    },
+    {
+      "id": "android-perf",
+      "col": "lightning",
+      "timeLabel": "11:00 AM - 11:20 AM",
+      "hall": "D6 Multi-purpose Hall",
+      "track": "Lightning",
+      "level": "Intermediate",
+      "title": "Simplified Performance Debugging on Android",
+      "speaker": "Shangeeth Sivan Adiyapatham"
+    },
+    {
+      "id": "ai-sres",
+      "col": "lightning",
+      "timeLabel": "11:25 AM - 11:45 AM",
+      "hall": "D6 Multi-purpose Hall",
+      "track": "Lightning",
+      "level": "",
+      "title": "AI Assisted SREs Are a Thing!",
+      "speaker": "Imran Roshan"
+    },
+    {
+      "id": "local-gemma",
+      "col": "lightning",
+      "timeLabel": "11:50 AM - 12:10 PM",
+      "hall": "D6 Multi-purpose Hall",
+      "track": "Lightning",
+      "level": "Beginner",
+      "title": "Local AI: The Google Gemma Edition",
+      "speaker": "Gokulbarath N"
+    },
+    {
+      "id": "infra-agentic",
+      "col": "lightning",
+      "timeLabel": "12:15 PM - 12:35 PM",
+      "hall": "D6 Multi-purpose Hall",
+      "track": "Lightning",
+      "level": "Expert",
+      "title": "Rethinking Infrastructure for Agentic Workloads",
+      "speaker": "Dhanush Kandhan"
+    },
+    {
+      "id": "wars-signup",
+      "col": "agentwars",
+      "timeLabel": "11:00 AM - 11:30 AM",
+      "hall": "D6 Multi-purpose Hall",
+      "track": "Agent Wars",
+      "level": "Intermediate",
+      "title": "Agent Wars: Signup & Qualifier",
+      "speaker": "D6 Arena"
+    },
+    {
+      "id": "wars-qual",
+      "col": "agentwars",
+      "timeLabel": "11:30 AM - 12:00 PM",
+      "hall": "D6 Multi-purpose Hall",
+      "track": "Agent Wars",
+      "level": "Intermediate",
+      "title": "Agent Wars: Live Tournament Qualifiers",
+      "speaker": "D6 Arena"
+    },
+    {
+      "id": "wars-qual-ext",
+      "col": "agentwars",
+      "timeLabel": "12:00 PM - 12:40 PM",
+      "hall": "D6 Multi-purpose Hall",
+      "track": "Agent Wars",
+      "level": "Intermediate",
+      "title": "Agent Wars: Qualifiers Extended",
+      "speaker": "D6 Arena"
+    },
+    {
+      "id": "vibe-am",
+      "col": "vibe",
+      "timeLabel": "11:00 AM - 12:00 PM",
+      "hall": "D6 Multi-purpose Hall",
+      "track": "Vibe Lounge",
+      "level": "Beginner",
+      "title": "Vibe Lounge",
+      "speaker": "D6 Multi-purpose Hall"
+    },
+    {
+      "id": "vibe-noon",
+      "col": "vibe",
+      "timeLabel": "12:00 PM - 12:35 PM",
+      "hall": "D6 Multi-purpose Hall",
+      "track": "Vibe Lounge",
+      "level": "Beginner",
+      "title": "Vibe Coding Lounge",
+      "speaker": "D6 Multi-purpose Hall"
+    },
+    {
+      "id": "offload-testing",
+      "col": "workshop",
+      "timeLabel": "11:00 AM - 12:30 PM",
+      "hall": "Raman Hall",
+      "track": "Workshop",
+      "level": "Beginner",
+      "title": "Offload Testing to Agents",
+      "speaker": "Somasundaram Mahesh"
+    },
+    {
+      "id": "lounges-am",
+      "col": "lounges",
+      "timeLabel": "10:45 AM - 12:25 PM",
+      "hall": "D7 Pre-Function Area",
+      "track": "Lounges",
+      "level": "Beginner",
+      "title": "Creators & Meetup Lounge",
+      "speaker": "Podcasting, Creator Studio & Mentor Meetups"
+    },
+    {
+      "id": "lunch",
+      "col": "lounges",
+      "spanAll": true,
+      "timeLabel": "12:30 PM - 1:45 PM",
+      "hall": "Research Park Food Courts",
+      "track": "Break",
+      "level": "",
+      "title": "Lunch & Exhibition Break (F&B)",
+      "speaker": "All parallel tracks pause • Resumes at 2:00 PM"
+    },
+    {
+      "id": "webmcp",
+      "col": "tech",
+      "timeLabel": "2:00 PM - 2:25 PM",
+      "hall": "D7 Auditorium",
+      "track": "Tech",
+      "level": "Intermediate",
+      "title": "Don't Let AI Agents Push Your Buttons: WebMCP",
+      "speaker": "Jeeththenthar L"
+    },
+    {
+      "id": "gemini-nano",
+      "col": "tech",
+      "timeLabel": "2:25 PM - 2:50 PM",
+      "hall": "D7 Auditorium",
+      "track": "Tech",
+      "level": "",
+      "title": "From Receipts to Smart Search: Gemini Nano on Android",
+      "speaker": "Dinoy Raj"
+    },
+    {
+      "id": "tokenomics",
+      "col": "tech",
+      "timeLabel": "2:50 PM - 3:15 PM",
+      "hall": "D7 Auditorium",
+      "track": "Tech",
+      "level": "Intermediate",
+      "title": "Tokenomics: Cutting Token Costs in Multi-Agent AI",
+      "speaker": "Bhargav Patel"
+    },
+    {
+      "id": "firebase-ai",
+      "col": "tech",
+      "timeLabel": "3:15 PM - 3:40 PM",
+      "hall": "D7 Auditorium",
+      "track": "Tech",
+      "level": "Beginner",
+      "title": "Secure Frontend AI: Firebase AI Logic & Gemini",
+      "speaker": "Srushti Raybhoge"
+    },
+    {
+      "id": "goldrush-ai",
+      "col": "tech",
+      "timeLabel": "3:40 PM - 4:05 PM",
+      "hall": "D7 Auditorium",
+      "track": "Tech",
+      "level": "Beginner",
+      "title": "Opportunities in AI: Culture of Goldrush in California",
+      "speaker": "Hariprasad Sudharshan"
+    },
+    {
+      "id": "lead-gen-gemini",
+      "col": "tech",
+      "timeLabel": "4:05 PM - 4:30 PM",
+      "hall": "D7 Auditorium",
+      "track": "Tech",
+      "level": "Beginner",
+      "title": "Using Gemini & AI Studio to Build a B2B Lead Gen Engine",
+      "speaker": "Varun Poladiya"
+    },
+    {
+      "id": "malware-deepfake",
+      "col": "deeptech",
+      "timeLabel": "2:00 PM - 2:35 PM",
+      "hall": "D7 Amphitheater",
+      "track": "Deep Tech",
+      "level": "Intermediate",
+      "title": "From Malware Images to Deepfake Detection",
+      "speaker": "Dr Lakshmanan Nataraj"
+    },
+    {
+      "id": "ai-vr-health",
+      "col": "deeptech",
+      "timeLabel": "2:35 PM - 3:10 PM",
+      "hall": "D7 Amphitheater",
+      "track": "Deep Tech",
+      "level": "Beginner",
+      "title": "AI & VR for Healthcare",
+      "speaker": "Dr Nimeshika Jayachandran"
+    },
+    {
+      "id": "ml-physical-world",
+      "col": "deeptech",
+      "timeLabel": "3:10 PM - 4:30 PM",
+      "hall": "D7 Amphitheater",
+      "track": "Deep Tech",
+      "level": "Intermediate",
+      "title": "Machine Learning the Physical World (80m Lecture & Q&A)",
+      "speaker": "Dr Ayana Ghosh"
+    },
+    {
+      "id": "ai-native-prod",
+      "col": "lightning",
+      "timeLabel": "2:00 PM - 2:20 PM",
+      "hall": "D6 Multi-purpose Hall",
+      "track": "Lightning",
+      "level": "Beginner",
+      "title": "Lessons from Building an AI Native Product Ground Up",
+      "speaker": "Rashmi Asokan"
+    },
+    {
+      "id": "edge-continuum",
+      "col": "lightning",
+      "timeLabel": "2:25 PM - 2:45 PM",
+      "hall": "D6 Multi-purpose Hall",
+      "track": "Lightning",
+      "level": "Intermediate",
+      "title": "Open Source On-Device Inference Across Edge Continuum",
+      "speaker": "Aakash Dhakshnamoorthy"
+    },
+    {
+      "id": "privacy-gemma4",
+      "col": "lightning",
+      "timeLabel": "2:50 PM - 3:10 PM",
+      "hall": "D6 Multi-purpose Hall",
+      "track": "Lightning",
+      "level": "Beginner",
+      "title": "Building Privacy-First Edge AI with Gemma 4",
+      "speaker": "Gokulakrishnan L"
+    },
+    {
+      "id": "qualcomm-edge",
+      "col": "lightning",
+      "timeLabel": "3:15 PM - 3:35 PM",
+      "hall": "D6 Multi-purpose Hall",
+      "track": "Lightning",
+      "level": "Intermediate",
+      "title": "Building AI at the Edge with Qualcomm AI Stack",
+      "speaker": "Kartikey Rawat"
+    },
+    {
+      "id": "wars-semis",
+      "col": "agentwars",
+      "timeLabel": "2:00 PM - 2:20 PM",
+      "hall": "D6 Multi-purpose Hall",
+      "track": "Agent Wars",
+      "level": "Intermediate",
+      "title": "Agent Wars: Semi-Finals",
+      "speaker": "Elimination Bracket"
+    },
+    {
+      "id": "wars-finals",
+      "col": "agentwars",
+      "timeLabel": "2:20 PM - 4:30 PM",
+      "hall": "D6 Multi-purpose Hall",
+      "track": "Agent Wars",
+      "level": "Intermediate",
+      "title": "Agent Wars: Live Tournament Finals",
+      "speaker": "Championship Finale & Leaderboard"
+    },
+    {
+      "id": "vibe-pm",
+      "col": "vibe",
+      "timeLabel": "2:00 PM - 4:30 PM",
+      "hall": "D6 Multi-purpose Hall",
+      "track": "Vibe Lounge",
+      "level": "Beginner",
+      "title": "Vibe Coding Lounge",
+      "speaker": "D6 Multi-purpose Hall"
+    },
+    {
+      "id": "arduino-uno",
+      "col": "workshop",
+      "timeLabel": "2:00 PM - 4:45 PM",
+      "hall": "Raman Hall",
+      "track": "Workshop",
+      "level": "Intermediate",
+      "title": "Building Physical AI: Arduino UNO Q Workshop (165m)",
+      "speaker": "Salman Faris"
+    },
+    {
+      "id": "lounges-pm",
+      "col": "lounges",
+      "timeLabel": "2:00 PM - 4:15 PM",
+      "hall": "D7 Pre-Function Area",
+      "track": "Lounges",
+      "level": "Beginner",
+      "title": "Creators & Meetup Lounge",
+      "speaker": "Developer Spotlights, OSS Booths & Mentor Hours"
+    },
+    {
+      "id": "high-tea",
+      "col": "lounges",
+      "spanAll": true,
+      "timeLabel": "4:30 PM - 5:00 PM",
+      "hall": "D7 Pre-Function Area",
+      "track": "Break",
+      "level": "",
+      "title": "Quick Break & Evening Tea (F&B)",
+      "speaker": "All parallel halls adjourn to D7 Auditorium"
+    },
+    {
+      "id": "closing",
+      "col": "tech",
+      "spanAll": true,
+      "timeLabel": "5:00 PM - 5:30 PM",
+      "hall": "D7 Auditorium",
+      "track": "Closing",
+      "level": "",
+      "title": "Closing Note & Awards Ceremony",
+      "speaker": "All Tracks Converge in D7 Auditorium"
+    }
+  ]
+}
