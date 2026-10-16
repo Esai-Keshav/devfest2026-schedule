@@ -1,0 +1,5 @@
+# Agent scratch workspaces
+.superpowers/
+
+# Local installs
+node_modules/
